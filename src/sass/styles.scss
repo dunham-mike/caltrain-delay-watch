@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+@import "../../node_modules/bulma/sass/utilities/initial-variables.sass";
+
+// Import a Google Font
+// @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+// $body-family: "Manrope", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+// Set your brand colors
+// $dark: rgba(38, 38, 38, 1);
+// $purple: #8A4D76;
+// $pink: #FA7C91;
+// $brown: #757763;
+// $beige-light: #D0D1CD;
+// $beige-lighter: #EFF0EB;
+
+
+// https://coolors.co/1c1c1c-242424-313131-ffffff-f71735
+$grey-darker: rgba(28, 28, 28, 1);
+$grey-dark: rgba(36, 36, 36, 1);
+$grey: rgba(49, 49, 49, 1);
+$grey-light: rgba(112, 112, 112, 1);
+
+// Update Bulma's global variables
+// $family-sans-serif: "Nunito", sans-serif;
+// $grey-dark: $brown;
+// $grey-light: $beige-light;
+$primary: #F71735; //rgba(239, 91, 37, 1);
+$info: #5BC0EB;
+// $link: 
+$success: #85FFC7;
+$warning: #EFCB68;
+$danger: #700548;
+
+
+/* 
+Aquamarine: #85FFC7
+Orange Yellow: #EFCB68
+Boston University Red: #D00000
+Harvard Crimson: #C20114
+Tractor Red: #F71735
+Pearl: #E5F2C9;
+Old Rose: #C97B84
+Jungle Green: #1B998B
+Dark Midnight Blue: #04395E
+Electric Lavender: #F9B9F2
+*/
+// $link: $pink;
+// $widescreen-enabled: false;
+// $fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $grey;
+$control-border-width: 2px;
+// $background: $beige-lighter;
+// $input-border-color: transparent;
+// $input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/title.sass";
+@import "../../node_modules/bulma/sass/form/_all.sass";
+@import "../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../node_modules/bulma/sass/layout/hero.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
+@import "../../node_modules/bulma/sass/layout/footer.sass";
+@import "../../node_modules/bulma/sass/grid/columns.sass";
