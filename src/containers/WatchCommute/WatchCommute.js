@@ -1,15 +1,120 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faTrain, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
-// import CaltrainMap from '../../images/caltrain-zone-map.png';
 
 const Dashboard = (props) => {
+    const [station, setStation] = useState(null);
+    const [direction, setDirection] = useState(null);
+    const [selectedTrain, setSelectedTrain] = useState(null);
+    const [maxTrainsToShow, setMaxTrainsToShow] = useState(10);
+
+    const changeStationHandler = (event) => {
+        if (event.target.value === "Select Your Station") {
+            setStation(null);
+        } else {
+            setStation(event.target.value);
+        }
+    }
+
+    const changeDirectionHandler = (newDirection) => {
+        if (direction !== newDirection) {
+            setDirection(newDirection);
+        }
+    }
+
+    const showMoreTrainsHandler = () => {
+        setMaxTrainsToShow(prevState => prevState + 10);
+    }
+
+    const selectTrainHandler = (train) => {
+        setSelectedTrain(train);
+    }
+
+    let selectedTrainText = '(none)';
+
+    if(selectedTrain !== null) {
+        selectedTrainText = selectedTrain.station 
+        + ' Station: ' 
+        + (selectedTrain.direction === "Northbound" ? "NB" : "SB") + ' ' 
+        + selectedTrain.trainNumber + ' at ' + selectedTrain.time;
+    }
+
+    let trainSchedule = null;
+
+    if(station !== null && direction !== null) {
+        let activeTrains = trains.filter((train => train.station === station && train.direction === direction))
+
+        if(activeTrains.length === 0) {
+            trainSchedule = (
+                <React.Fragment>
+                    <div class="has-text-weight-semibold has-text-centered" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>
+                        Cannot find any trains for that station and direction of travel. Please try another.
+                    </div>
+                </React.Fragment>
+            )
+        } else {
+            const maxTrainsToShowPerColumn = Math.ceil(Math.min(maxTrainsToShow, activeTrains.length) / 2);
+
+            const trainElements = activeTrains.map(train => {
+                return (
+                    <button 
+                        class={"button is-info" + (selectedTrain !== null && train.trainNumber === selectedTrain.trainNumber ? '' : " is-outlined")} 
+                        style={{ width: '200px', margin: '0.1875rem' }} 
+                        key={train.trainNumber}
+                        onClick={() => selectTrainHandler(train)}
+                    >
+                        {train.time} - {train.direction === "Northbound" ? 'NB' : 'SB'} {train.trainNumber}
+                    </button>
+                );
+            })
+
+            const firstHalfTrainElements = trainElements.slice(0, maxTrainsToShowPerColumn);
+            const secondHalfTrainElements = trainElements.slice(maxTrainsToShowPerColumn, maxTrainsToShow);
+
+            let showLaterTimesButton = null;
+
+            if(activeTrains.length > maxTrainsToShow) {
+                showLaterTimesButton = (
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <button class="button is-warning is-outlined" style={{ width: '200px', margin: '0.1875rem' }} onClick={showMoreTrainsHandler}>Show Later Times</button>
+                    </div>
+                );
+            }
+
+            trainSchedule = (
+                <React.Fragment>
+                    <div class="has-text-weight-semibold" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>Choose Train to Watch:</div>
+                    <div class="columns" style={{ marginTop: '0.75rem', marginBottom: '0' }}>
+                        <div class="column is-6" style={{ margin: '0', padding: '0' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                {firstHalfTrainElements}
+                            </div>
+                        </div>
+                        <div class="column is-6" style={{ margin: '0', padding: '0' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                {secondHalfTrainElements}
+                            </div>
+                        </div>
+                    </div>
+                    {showLaterTimesButton}
+                </React.Fragment>
+            );
+        }
+    }
+
     return (
         <div class="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
             <div>
                 <div class="is-size-5 has-text-weight-semibold">Watch Commute</div>
-                <div style={{ marginTop: '0.75rem' }}>Current AM Commute: (none)</div>
+                <div class="columns" style={{ marginTop: '0' }}>
+                    <div class="column is-3" style={{ display: 'flex', alignItems: 'center' }}>
+                        <div>Current AM Commute: </div>
+                    </div>
+                    <div class="column" style={{ display: 'flex', justifyContent: 'center' }}>
+                        <button class="button is-info is-light">{selectedTrainText}</button>
+                    </div>
+                </div>
             </div>
             <div>
                 <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
@@ -21,57 +126,57 @@ const Dashboard = (props) => {
                         <div class="field">
                             <p class="control has-icons-left">
                                 <span class="select">
-                                    <select>
-                                        <option selected>Select Your Station</option>
+                                    <select onChange={changeStationHandler} value={(station ? station : null)}>
+                                        <option>Select Your Station</option>
 
                                         <optgroup label="Zone 1">
-                                            <option>San Francisco</option>
-                                            <option>22nd Street</option>
-                                            <option>Bayshore</option>
-                                            <option>South San Francisco</option>
-                                            <option>San Bruno</option>
+                                            <option value="San Francisco">San Francisco</option>
+                                            <option value="22nd Street">22nd Street</option>
+                                            <option value="Bayshore">Bayshore</option>
+                                            <option value="South San Francisco">South San Francisco</option>
+                                            <option value="San Bruno">San Bruno</option>
                                         </optgroup>
 
                                         <optgroup label="Zone 2">
-                                            <option>Millbrae</option>
+                                            <option value="Millbrae">Millbrae</option>
                                             {/* Skipping Broadway (Weekend Only) */}
-                                            <option>Burlingame</option>
-                                            <option>San Mateo</option>
-                                            <option>Hayward Park</option>
-                                            <option>Hillsdale</option>
-                                            <option>Belmont</option>
-                                            <option>San Carlos</option>
-                                            <option>Redwood City</option>
+                                            <option value="Burlingame">Burlingame</option>
+                                            <option value="San Mateo">San Mateo</option>
+                                            <option value="Hayward Park">Hayward Park</option>
+                                            <option value="Hillsdale">Hillsdale</option>
+                                            <option value="Belmont">Belmont</option>
+                                            <option value="San Carlos">San Carlos</option>
+                                            <option value="Redwood City">Redwood City</option>
                                         </optgroup>
 
                                         <optgroup label="Zone 3">
                                             {/* Skipping Atherton (Weekend Only) */}
-                                            <option>Menlo Park</option>
-                                            <option>Palo Alto</option>
+                                            <option value="Menlo Park">Menlo Park</option>
+                                            <option value="Palo Alto">Palo Alto</option>
                                             {/* Skipping Stanford (Football Only) */}
-                                            <option>California Ave.</option>
-                                            <option>San Antonio</option>
-                                            <option>Mountain View</option>
-                                            <option>Sunnyvale</option>
+                                            <option value="California Ave.">California Ave.</option>
+                                            <option value="San Antonio">San Antonio</option>
+                                            <option value="Mountain View">Mountain View</option>
+                                            <option value="Sunnyvale">Sunnyvale</option>
                                         </optgroup>
 
                                         <optgroup label="Zone 4">
-                                            <option>Lawrence</option>
-                                            <option>Santa Clara</option>
-                                            <option>College Park</option>
-                                            <option>San Jose Diridon</option>
-                                            <option>Tamien</option>
+                                            <option value="Lawrence">Lawrence</option>
+                                            <option value="Santa Clara">Santa Clara</option>
+                                            <option value="College Park">College Park</option>
+                                            <option value="San Jose Diridon">San Jose Diridon</option>
+                                            <option value="Tamien">Tamien</option>
                                         </optgroup>
 
                                         <optgroup label="Zone 5">
-                                            <option>Capitol</option>
-                                            <option>Blossom Hill</option>
+                                            <option value="Capitol">Capitol</option>
+                                            <option value="Blossom Hill">Blossom Hill</option>
                                         </optgroup>
 
                                         <optgroup label="Zone 6">
-                                            <option>Morgan Hill</option>
-                                            <option>San Martin</option>
-                                            <option>Gilroy</option>
+                                            <option value="Morgan Hill">Morgan Hill</option>
+                                            <option value="San Martin">San Martin</option>
+                                            <option value="Gilroy">Gilroy</option>
                                         </optgroup>
 
                                     </select>
@@ -85,7 +190,10 @@ const Dashboard = (props) => {
                     <div class="column" style={{ display: 'flex', justifyContent: 'center' }}>
                         <div class="field has-addons">
                             <p class="control">
-                                <button class="button is-success is-outlined">
+                                <button 
+                                    onClick={()=> changeDirectionHandler('Northbound')}
+                                    class={"button is-success" + (direction !== "Northbound" ? ' is-outlined' : '')}
+                                >
                                     <span class="icon">
                                         <FontAwesomeIcon icon={faLongArrowAltUp} style={{ fontSize: '20px'}} />                                
                                     </span>
@@ -93,7 +201,10 @@ const Dashboard = (props) => {
                                 </button>
                             </p>
                             <p class="control">
-                                <button class="button is-warning is-outlined">
+                                <button 
+                                    onClick={()=> changeDirectionHandler('Southbound')}
+                                    class={"button is-warning" + (direction !== "Southbound" ? ' is-outlined' : '')}
+                                >
                                     <span>Southbound</span>
                                     <span class="icon">
                                         <FontAwesomeIcon icon={faLongArrowAltDown} style={{ fontSize: '20px'}} />                                
@@ -103,38 +214,142 @@ const Dashboard = (props) => {
 
                         </div>
                         
-                        
-
                     </div>
                 </div>
-                <div class="has-text-weight-semibold" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>Choose Train to Watch:</div>
-                <div class="columns" style={{ marginTop: '0.75rem', marginBottom: '0' }}>
-                    <div class="column is-6" style={{ margin: '0', padding: '0' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>5:32 am - NB 101</button>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>6:06 am - NB 103</button>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>7:08 am - NB 207</button>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>8:08 am - NB 217</button>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>8:30 am - NB 221</button>
-                        </div>
-                    </div>
-                    <div class="column is-6" style={{ margin: '0', padding: '0' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>9:33 am - NB 231</button>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>10:18 am - NB 135</button>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>11:15 am - NB 139</button>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>12:15 pm - NB 143</button>
-                            <button class="button is-info is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>1:15 pm - NB 147</button>
-                        </div>
-                    </div>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <button class="button is-warning is-outlined" style={{ width: '200px', margin: '0.1875rem' }}>Show Later Times</button>
-                </div>
+                {trainSchedule}
                 
             </div>
         </div>
     );
 }
+
+const trains = [
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '5:32 am',
+        trainNumber: '101'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '6:06 am',
+        trainNumber: '103'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '7:08 am',
+        trainNumber: '207'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '8:08 am',
+        trainNumber: '217'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '8:30 am',
+        trainNumber: '221'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '9:33 am',
+        trainNumber: '231'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '10:18 am',
+        trainNumber: '135'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '11:15 am',
+        trainNumber: '139'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '12:15 pm',
+        trainNumber: '143'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '1:15 pm',
+        trainNumber: '147'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '2:15 pm',
+        trainNumber: '151'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '3:17 pm',
+        trainNumber: '155'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '4:20 pm',
+        trainNumber: '159'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '4:45 pm',
+        trainNumber: '261'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '5:49 pm',
+        trainNumber: '269'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '6:49 pm',
+        trainNumber: '279'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '7:48 pm',
+        trainNumber: '289'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '8:48 pm',
+        trainNumber: '193'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '9:48 pm',
+        trainNumber: '195'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '10:48 pm',
+        trainNumber: '197'
+    },
+    {
+        station: 'Burlingame',
+        direction: 'Northbound',
+        time: '11:34 pm',
+        trainNumber: '199'
+    }
+];
 
 export default Dashboard;
