@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { store } from '../../store/store';
 
 import { faTrain, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
 
 const Dashboard = (props) => {
+    // Setting Up Data From Store
+    const globalState = useContext(store);
+    const { dispatch, state } = globalState;
+
+    let commuteType = 'AM';
+    if(props.location.state) {
+        commuteType = props.location.state.commuteType;
+    }
+
+    let selectedTrain = state.amTrainWatched;
+    if(commuteType === 'PM') {
+        selectedTrain = state.pmTrainWatched;
+    }
+
+    // Managing Local State
     const [station, setStation] = useState(null);
     const [direction, setDirection] = useState(null);
-    const [selectedTrain, setSelectedTrain] = useState(null);
     const [maxTrainsToShow, setMaxTrainsToShow] = useState(10);
 
     const changeStationHandler = (event) => {
@@ -28,9 +43,10 @@ const Dashboard = (props) => {
     }
 
     const selectTrainHandler = (train) => {
-        setSelectedTrain(train);
+        dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
     }
 
+    // Conditional Page Elements
     let selectedTrainText = '(none)';
 
     if(selectedTrain !== null) {
@@ -109,7 +125,7 @@ const Dashboard = (props) => {
                 <div class="is-size-5 has-text-weight-semibold">Watch Commute</div>
                 <div class="columns" style={{ marginTop: '0' }}>
                     <div class="column is-3" style={{ display: 'flex', alignItems: 'center' }}>
-                        <div>Current AM Commute: </div>
+                        <div>Current {commuteType} Commute: </div>
                     </div>
                     <div class="column" style={{ display: 'flex', justifyContent: 'center' }}>
                         <button class="button is-info is-light">{selectedTrainText}</button>
@@ -120,13 +136,13 @@ const Dashboard = (props) => {
                 <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
             </div>
             <div style={{ marginTop: '1.5rem' }}>
-                <div class="is-size-5 has-text-weight-semibold">Update AM Commute</div>
+                <div class="is-size-5 has-text-weight-semibold">Update {commuteType} Commute</div>
                 <div class="columns" style={{ marginTop: '1.5rem' }}>
                     <div class="column" style={{ display: 'flex', justifyContent: 'center' }}>
                         <div class="field">
                             <p class="control has-icons-left">
                                 <span class="select">
-                                    <select onChange={changeStationHandler} value={(station ? station : null)}>
+                                    <select onChange={changeStationHandler} value={(station ? station : '')}>
                                         <option>Select Your Station</option>
 
                                         <optgroup label="Zone 1">

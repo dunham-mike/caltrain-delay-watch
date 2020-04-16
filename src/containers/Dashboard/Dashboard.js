@@ -24,7 +24,12 @@ const Dashboard = (props) => {
                 Your AM Commute
             </div>
             <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
-                <RouterLink to="/watch-commute">
+                <RouterLink to={{ 
+                    pathname: '/watch-commute',
+                    state: {
+                        commuteType: 'AM'
+                    }
+                }}>
                     <button class="button is-warning is-outlined">Set up your morning commute to watch!</button>
                 </RouterLink>
             </div>
@@ -35,7 +40,12 @@ const Dashboard = (props) => {
                 Your PM Commute
             </div>
             <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
-                <RouterLink to="/watch-commute">
+                <RouterLink to={{ 
+                    pathname: '/watch-commute',
+                    state: {
+                        commuteType: 'PM'
+                    }
+                }}>
                     <button class="button is-info is-outlined">Set up your evening commute to watch!</button>
                 </RouterLink>
             </div>
