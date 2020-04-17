@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useHistory } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrain, faLongArrowAltUp, faLongArrowAltDown, faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 import { store } from '../../store/store';
@@ -9,6 +10,9 @@ const Dashboard = (props) => {
     // Setting Up Data From Store
     const context = useContext(store);
     const { dispatch, state } = context;
+
+    // History
+    let history = useHistory();
 
     // Setting Up Data Passed Via RouterLink
     let commuteType = 'AM';
@@ -46,6 +50,7 @@ const Dashboard = (props) => {
 
     const selectTrainHandler = (train) => {
         dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
+        history.push('/');
     }
 
     // Conditional Page Elements
