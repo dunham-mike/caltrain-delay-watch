@@ -1,14 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { store } from '../../store/store';
 
-import { faTrain, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
+import { faTrain, faLongArrowAltUp, faLongArrowAltDown, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+
+import { store } from '../../store/store';
 
 const Dashboard = (props) => {
     // Setting Up Data From Store
-    const globalState = useContext(store);
-    const { dispatch, state } = globalState;
+    const context = useContext(store);
+    const { dispatch, state } = context;
 
+    // Setting Up Data Passed Via RouterLink
     let commuteType = 'AM';
     if(props.location.state) {
         commuteType = props.location.state.commuteType;
@@ -48,12 +50,24 @@ const Dashboard = (props) => {
 
     // Conditional Page Elements
     let selectedTrainText = '(none)';
+    let deleteTrainButton = null;
 
     if(selectedTrain !== null) {
         selectedTrainText = selectedTrain.station 
-        + ' Station: ' 
-        + (selectedTrain.direction === "Northbound" ? "NB" : "SB") + ' ' 
-        + selectedTrain.trainNumber + ' at ' + selectedTrain.time;
+            + ' Station: ' 
+            + (selectedTrain.direction === "Northbound" ? "NB" : "SB") + ' ' 
+            + selectedTrain.trainNumber + ' at ' + selectedTrain.time;
+        
+        deleteTrainButton = (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4.5rem' }}>
+                <button class="button is-primary is-outlined" onClick={() => selectTrainHandler(null)}>
+                    <span class="icon">
+                        <FontAwesomeIcon icon={faWindowClose} />                                
+                    </span>
+                    <span>Or Delete Current Train</span>
+                </button>
+            </div>
+        );
     }
 
     let trainSchedule = null;
@@ -125,10 +139,10 @@ const Dashboard = (props) => {
                 <div class="is-size-5 has-text-weight-semibold">Watch Commute</div>
                 <div class="columns" style={{ marginTop: '0' }}>
                     <div class="column is-3" style={{ display: 'flex', alignItems: 'center' }}>
-                        <div>Current {commuteType} Commute: </div>
+                        <div>Current {commuteType} Train: </div>
                     </div>
                     <div class="column" style={{ display: 'flex', justifyContent: 'center' }}>
-                        <button class="button is-info is-light">{selectedTrainText}</button>
+                        <button class={"button is-info is-light has-text-weight-bold"}>{selectedTrainText}</button>                        
                     </div>
                 </div>
             </div>
@@ -233,7 +247,7 @@ const Dashboard = (props) => {
                     </div>
                 </div>
                 {trainSchedule}
-                
+                {deleteTrainButton}
             </div>
         </div>
     );
