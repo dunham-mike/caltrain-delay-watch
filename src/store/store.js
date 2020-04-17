@@ -1,11 +1,26 @@
 import React, { createContext, useReducer } from 'react';
 
+import moment from 'moment-timezone';
+// import tz from 'moment-timezone';
+
 // Pattern from: https://blog.logrocket.com/use-hooks-and-context-not-react-and-redux/
 
 const initialState = {
         amTrainWatched: null,
         pmTrainWatched: null,
-        currentAlerts: [],
+        // lastAlertUpdateTime: moment().subtract(1, 'day'), // TODO: replace with real data
+        lastAlertUpdateTime: moment().subtract(7, 'minute'), // TODO: replace with real data
+        currentAlert: null,
+        // currentAlert: {
+        //     calendarDate: moment().subtract(1, 'hour'),
+        //     train: {
+        //         station: 'Burlingame',
+        //         direction: 'Northbound',
+        //         time: '6:06 am',
+        //         trainNumber: '103'
+        //     },
+        //     expectedArrivalTime: '6:38 am'
+        // },
         historicalAlerts: []
     };
 
@@ -18,7 +33,6 @@ const StateProvider = ( { children } ) => {
 
         switch(action.type) {
             case 'UPDATE_TRAIN_WATCHED':
-                console.log('updating train watched');
                 if(action.trainType === 'AM') {
                     newState = {
                         ...state,

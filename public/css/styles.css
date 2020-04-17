@@ -40,7 +40,7 @@ Electric Lavender: #F9B9F2
   width: 0.625em; }
 
 .title:not(:last-child),
-.subtitle:not(:last-child) {
+.subtitle:not(:last-child), .box:not(:last-child) {
   margin-bottom: 1.5rem; }
 
 .button.is-loading::after, .select.is-loading::after, .control.is-loading::after {
@@ -2029,6 +2029,20 @@ a.has-text-danger:hover, a.has-text-danger:focus {
     font-size: 1rem; }
   .subtitle.is-7 {
     font-size: 0.75rem; }
+
+.box {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  color: #242424;
+  display: block;
+  padding: 1.25rem; }
+
+a.box:hover, a.box:focus {
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px #3273dc; }
+
+a.box:active {
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #3273dc; }
 
 .input, .textarea, .select select {
   background-color: white;
