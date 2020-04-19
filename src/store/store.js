@@ -21,7 +21,11 @@ const initialState = {
         //     },
         //     expectedArrivalTime: '6:38 am'
         // },
-        historicalAlerts: []
+        historicalAlerts: [],
+        timetables: {
+            weekday: null,
+            weekend: null
+        },
     };
 
 const store = createContext(initialState);
@@ -47,6 +51,16 @@ const StateProvider = ( { children } ) => {
                     throw new Error();
                 }
 
+                return newState;
+            case 'LOAD_WEEKDAY_TIMETABLES':
+                const newTimetables = { ...state.timetables };
+
+                newTimetables.weekday = action.timetables;
+
+                newState = {
+                    ...state,
+                    timetables: newTimetables
+                }
                 return newState;
             default:
                 throw new Error();
