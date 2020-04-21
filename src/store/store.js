@@ -6,6 +6,9 @@ import moment from 'moment-timezone';
 // Pattern from: https://blog.logrocket.com/use-hooks-and-context-not-react-and-redux/
 
 const initialState = {
+        user: null,
+        token: null,
+        error: null,
         amTrainWatched: null,
         pmTrainWatched: null,
         // lastAlertUpdateTime: moment().subtract(1, 'day'), // TODO: replace with real data
@@ -36,6 +39,21 @@ const StateProvider = ( { children } ) => {
         let newState;
 
         switch(action.type) {
+            case 'LOG_IN_USER':
+                newState = {
+                    ...state,
+                    user: action.user,
+                    token: action.token
+                }
+
+                return newState;
+            case 'SET_ERROR':
+                newState = {
+                    ...state,
+                    error: action.error
+                }
+
+                return newState;
             case 'UPDATE_TRAIN_WATCHED':
                 if(action.trainType === 'AM') {
                     newState = {

@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 
-import login from '../../utilities/login';
+import useLogin from '../../utilities/useLogin';
 
 export const CreateAccount = (props) => {
     const [error, setError] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
+    const [userPassword, setUserPassword] = useState(null);
+    const [loginStatus, setLoginStatus] = useState(false);
+
+    // Track whether component is mounted to avoid setting a login status after it is unmounted. Pattern from: https://www.cnblogs.com/Answer1215/p/10410150.html
+    const mountedRef = useRef(false)
+    useEffect(() => {
+        mountedRef.current = true
+        return () => (mountedRef.current = false)
+    }, []);
+
+    useLogin(userEmail, userPassword)
+        .then(loginResult => {
+            if(mountedRef.current) {
+                setLoginStatus(loginResult);
+            }
+        });
 
     let errorMessage = null;
-    if (error) {
+    if(error) {
         errorMessage = (<div className="field has-text-primary" id="signupErrorMessage" style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
                             {error}
                         </div>);
     }
 
     let authRedirect = null;
-    if (props.isAuth) {
-        authRedirect = <Redirect to={props.authRedirectPath} />
+    if(loginStatus) {
+        authRedirect = <Redirect to={'/'} />
     }
 
     const submitHandler = async (values, { setSubmitting }) => {
@@ -34,8 +51,12 @@ export const CreateAccount = (props) => {
                 }
             })
             console.log('response:', response);
+
             if(response.data === 'Account successfully created') {
-                login();
+                // Small delay necessary for login request to resolve successfully
+                await new Promise(resolve => setTimeout(resolve, 100));
+                setUserEmail(values.email);
+                setUserPassword(values.password);
             } else {
                 setError(response.data);
             }
