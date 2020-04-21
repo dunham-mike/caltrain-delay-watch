@@ -1,31 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
+import { store } from '../../store/store';
 
-import useLogin from '../../utilities/useLogin';
-
-export const CreateAccount = (props) => {
+export const CreateAccount = () => {
     const [error, setError] = useState(null);
-    const [userEmail, setUserEmail] = useState(null);
-    const [userPassword, setUserPassword] = useState(null);
-    const [loginStatus, setLoginStatus] = useState(false);
 
-    // Track whether component is mounted to avoid setting a login status after it is unmounted. Pattern from: https://www.cnblogs.com/Answer1215/p/10410150.html
-    const mountedRef = useRef(false)
-    useEffect(() => {
-        mountedRef.current = true
-        return () => (mountedRef.current = false)
-    }, []);
-
-    useLogin(userEmail, userPassword)
-        .then(loginResult => {
-            if(mountedRef.current) {
-                setLoginStatus(loginResult);
-            }
-        });
+    const context = useContext(store);
+    const { dispatch, state } = context;
 
     let errorMessage = null;
     if(error) {
@@ -35,8 +20,29 @@ export const CreateAccount = (props) => {
     }
 
     let authRedirect = null;
-    if(loginStatus) {
+    if(state.user) {
         authRedirect = <Redirect to={'/'} />
+    }
+
+    const loginUser = async (email, password) => {
+        try {
+            const response = await axios.post('http://localhost:8082/api/auth/login',
+                {
+                    "user": {
+                        "email": email,
+                        "password": password
+                    }
+                })
+
+            if(response === 'Email or password is invalid.') {
+                dispatch({ type: 'SET_ERROR', error: response });
+            } else {
+                dispatch({ type: 'LOG_IN_USER', user: response.data.email, token: response.data.token });
+            }
+        } catch(err) {
+            console.log(err);
+            dispatch({ type: 'SET_ERROR', error: 'Unable to log in' });
+        }
     }
 
     const submitHandler = async (values, { setSubmitting }) => {
@@ -55,12 +61,11 @@ export const CreateAccount = (props) => {
             if(response.data === 'Account successfully created') {
                 // Small delay necessary for login request to resolve successfully
                 await new Promise(resolve => setTimeout(resolve, 100));
-                setUserEmail(values.email);
-                setUserPassword(values.password);
+                await loginUser(values.email, values.password);
             } else {
                 setError(response.data);
+                setSubmitting(false);
             }
-            setSubmitting(false);
         } catch(err) {
             setError(err);
             setSubmitting(false);
