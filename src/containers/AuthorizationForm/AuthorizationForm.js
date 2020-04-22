@@ -69,7 +69,7 @@ export const AuthorizationForm = (props) => {
             })
             console.log('response:', response);
 
-            if(response.data === 'Account successfully created') {
+            if(response.data === 'Account successfully created.') {
                 // Small delay necessary for login request to resolve successfully
                 await new Promise(resolve => setTimeout(resolve, 100));
                 await loginUser(values.email, values.password);
