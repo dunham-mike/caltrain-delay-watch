@@ -47,6 +47,9 @@ const StateProvider = ( { children } ) => {
                 }
 
                 return newState;
+            case 'LOG_OUT_USER':
+                newState = initialState;
+                return newState;
             // case 'SET_ERROR':
             //     newState = {
             //         ...state,

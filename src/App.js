@@ -6,6 +6,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import WatchCommute from './containers/WatchCommute/WatchCommute';
 import AuthorizationForm from './containers/AuthorizationForm/AuthorizationForm';
 import LandingPage from './containers/LandingPage/LandingPage';
+import Logout from './containers/AuthorizationForm/Logout/Logout';
 
 import { store } from './store/store';
 
@@ -30,7 +31,7 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact component={Dashboard} />
                     <Route path="/watch-commute" component={WatchCommute} />
-                    {/* ADD LOGOUT PAGE */}
+                    <Route path="/logout" component={Logout} />
                     <Redirect to="/" />
                 </Switch>
             </Suspense>
