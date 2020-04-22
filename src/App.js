@@ -20,7 +20,7 @@ const App = () => {
                 <Route path="/" exact component={LandingPage} />
                 <Route path="/create-account" component={AuthorizationForm} />
                 <Route path="/login" component={AuthorizationForm} />
-                <Redirect to="/login" />
+                <Redirect to="/" />
             </Switch>
         </Suspense>
     );
