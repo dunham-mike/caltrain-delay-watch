@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import Dashboard from './containers/Dashboard/Dashboard';
 import WatchCommute from './containers/WatchCommute/WatchCommute';
-import CreateAccount from './components/CreateAccount/CreateAccount';
+import AuthorizationForm from './containers/AuthorizationForm/AuthorizationForm';
 
 function App() {
     return (
@@ -24,7 +24,8 @@ function App() {
                     <Switch>
                         <Route path="/" exact component={Dashboard} />
                         <Route path="/watch-commute" component={WatchCommute} />
-                        <Route path="/create-account" component={CreateAccount} />
+                        <Route path="/create-account" component={AuthorizationForm} />
+                        <Route path="/login" component={AuthorizationForm} />
                         <Redirect to="/" />
                     </Switch>
                 </Suspense>

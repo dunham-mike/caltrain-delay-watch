@@ -6,17 +6,19 @@ import { Redirect } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import { store } from '../../store/store';
 
-export const CreateAccount = () => {
+import AuthorizationErrorModal from '../../components/AuthorizationErrorModal/AuthorizationErrorModal';
+
+export const AuthorizationForm = (props) => {
     const [error, setError] = useState(null);
 
     const context = useContext(store);
     const { dispatch, state } = context;
 
-    let errorMessage = null;
-    if(error) {
-        errorMessage = (<div className="field has-text-primary" id="signupErrorMessage" style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
-                            {error}
-                        </div>);
+    let componentVersion = null;
+    if(props.location.pathname === "/create-account") {
+        componentVersion = "CreateAccount";
+    } else if(props.location.pathname === "/login") {
+        componentVersion = "Login";
     }
 
     let authRedirect = null;
@@ -24,7 +26,7 @@ export const CreateAccount = () => {
         authRedirect = <Redirect to={'/'} />
     }
 
-    const loginUser = async (email, password) => {
+    const loginUser = async (email, password, { setSubmitting }) => {
         try {
             const response = await axios.post('http://localhost:8082/api/auth/login',
                 {
@@ -34,19 +36,28 @@ export const CreateAccount = () => {
                     }
                 })
 
-            if(response === 'Email or password is invalid.') {
-                dispatch({ type: 'SET_ERROR', error: response });
-            } else {
+            if(response.data.email && response.data.token) {
                 dispatch({ type: 'LOG_IN_USER', user: response.data.email, token: response.data.token });
+            } else {
+                setError(response.data);
+                setSubmitting(false);
             }
         } catch(err) {
             console.log(err);
-            dispatch({ type: 'SET_ERROR', error: 'Unable to log in' });
+            setError(err);
+            setSubmitting(false);
         }
     }
 
-    const submitHandler = async (values, { setSubmitting }) => {
-        console.log('submitHandler() fired!');
+    const loginSubmitHandler = async (values, { setSubmitting }) => {
+        console.log('loginSubmitHandler() fired!');
+        console.log(values);
+        
+        await loginUser(values.email, values.password, { setSubmitting });
+    }
+
+    const createAccountSubmitHandler = async (values, { setSubmitting }) => {
+        console.log('createAccountSubmitHandler() fired!');
         console.log(values);
         try {
             const response = await axios.post('http://localhost:8082/api/auth/create-account',
@@ -71,12 +82,17 @@ export const CreateAccount = () => {
             setSubmitting(false);
         }
     }
+
+    const closeAuthorizationErrorModal = () => {
+        setError(null);
+    }
     
     return(
         <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
             {authRedirect}
+            <AuthorizationErrorModal isAuthorizationErrorModalActive={error !== null} errorMessage={error} closeAuthorizationErrorModal={closeAuthorizationErrorModal} />
             <div className="is-size-5 has-text-weight-bold" style={{ display: 'flex', justifyContent: 'center' }}>
-                <div>Create Account</div>
+                <div>{componentVersion === 'CreateAccount' ? 'Create Account' : 'Log In'}</div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Formik
@@ -90,7 +106,11 @@ export const CreateAccount = () => {
                             .max(20, 'Must be 20 characters or less')
                             .required('Required'),
                     })}
-                    onSubmit={(values, { setSubmitting }) => { submitHandler(values, { setSubmitting })}}
+                    onSubmit={
+                        componentVersion === 'CreateAccount'
+                        ? (values, { setSubmitting }) => { createAccountSubmitHandler(values, { setSubmitting })}
+                        : (values, { setSubmitting }) => { loginSubmitHandler(values, { setSubmitting })}
+                    }
                 >
                     {({ isSubmitting, isValid, dirty, touched }) => (
                         <Form>
@@ -124,12 +144,14 @@ export const CreateAccount = () => {
                                     }
                                     type="submit"
                                 >
-                                    Create Account
+                                    {componentVersion === 'CreateAccount' ? 'Create Account' : 'Log In'}
                                 </button>
                             </div>
-                            {errorMessage}
                             <div className="field" style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
-                                <RouterLink to="/login" className="has-text-info">Need to log in instead?</RouterLink>
+                                {componentVersion === 'CreateAccount' 
+                                    ? <RouterLink to="/login" className="has-text-info">Need to log in instead?</RouterLink> 
+                                    : <RouterLink to="/create-account" className="has-text-info">Need to create an account instead?</RouterLink>
+                                }
                             </div>
                         </Form>
                     )}
@@ -139,4 +161,4 @@ export const CreateAccount = () => {
     );
 }
 
-export default CreateAccount;
+export default AuthorizationForm;

@@ -47,13 +47,13 @@ const StateProvider = ( { children } ) => {
                 }
 
                 return newState;
-            case 'SET_ERROR':
-                newState = {
-                    ...state,
-                    error: action.error
-                }
+            // case 'SET_ERROR':
+            //     newState = {
+            //         ...state,
+            //         error: action.error
+            //     }
 
-                return newState;
+            //     return newState;
             case 'UPDATE_TRAIN_WATCHED':
                 if(action.trainType === 'AM') {
                     newState = {
