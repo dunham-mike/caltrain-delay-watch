@@ -8,7 +8,7 @@ import { faTrain, faLongArrowAltUp, faLongArrowAltDown, faWindowClose } from '@f
 
 import { store } from '../../store/store';
 
-const Dashboard = (props) => {
+const WatchCommute = (props) => {
     // Setting Up Data From Store
     const context = useContext(store);
     const { dispatch, state } = context;
@@ -17,7 +17,9 @@ const Dashboard = (props) => {
     useEffect(() => {
         if(state.timetables.weekday === null) {
             console.log('Starting backend API call...');
-            axios.get('http://localhost:8082/api/timetables/caltrain/weekday')
+            axios.get('http://localhost:8082/api/timetables/caltrain/weekday',
+                   { headers: { 'Authorization': `Bearer ${state.token}` } }
+                )
                 .then(fetchResponse => {
                     console.log('fetchResponse:', fetchResponse);
                     dispatch({ type: 'LOAD_WEEKDAY_TIMETABLES', timetables: fetchResponse.data.timetables });
@@ -26,8 +28,7 @@ const Dashboard = (props) => {
                     console.log('[Error] Loading Caltrain weekday timetables failed:', fetchError);
                 });
         }
-    }, [state.timetables.weekday, dispatch]);
-    
+    }, [state.timetables.weekday, state.token, dispatch]);
 
     // Setting Up Data Passed Via RouterLink
     let commuteType = 'AM';
@@ -331,133 +332,4 @@ const Dashboard = (props) => {
     );
 }
 
-// const trains = [
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '5:32 am',
-//         trainNumber: '101'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '6:06 am',
-//         trainNumber: '103'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '7:08 am',
-//         trainNumber: '207'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '8:08 am',
-//         trainNumber: '217'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '8:30 am',
-//         trainNumber: '221'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '9:33 am',
-//         trainNumber: '231'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '10:18 am',
-//         trainNumber: '135'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '11:15 am',
-//         trainNumber: '139'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '12:15 pm',
-//         trainNumber: '143'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '1:15 pm',
-//         trainNumber: '147'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '2:15 pm',
-//         trainNumber: '151'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '3:17 pm',
-//         trainNumber: '155'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '4:20 pm',
-//         trainNumber: '159'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '4:45 pm',
-//         trainNumber: '261'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '5:49 pm',
-//         trainNumber: '269'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '6:49 pm',
-//         trainNumber: '279'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '7:48 pm',
-//         trainNumber: '289'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '8:48 pm',
-//         trainNumber: '193'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '9:48 pm',
-//         trainNumber: '195'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '10:48 pm',
-//         trainNumber: '197'
-//     },
-//     {
-//         station: 'Burlingame',
-//         direction: 'Northbound',
-//         time: '11:34 pm',
-//         trainNumber: '199'
-//     }
-// ];
-
-export default Dashboard;
+export default WatchCommute;
