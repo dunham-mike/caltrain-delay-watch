@@ -42,9 +42,7 @@ const App = () => {
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <nav className="navbar is-fixed-top has-background-grey-dark">
                 <div style={{ maxWidth: '850px', width: '100%', margin: 'auto', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}} >
-                    <div className="navbar-brand" 
-                        // style={{maxWidth: '850px', width: '100%', margin: 'auto'}}
-                        >
+                    <div className="navbar-brand">
                         <RouterLink className="navbar-item has-text-primary is-size-4 has-text-weight-bold" to="/">
                             Caltrain Delay Watch
                         </RouterLink>
