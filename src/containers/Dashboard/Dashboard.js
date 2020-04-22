@@ -1,9 +1,23 @@
 import React, { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 import moment from 'moment-timezone';
 
+import TrainWatched from './TrainWatched/TrainWatched';
 import { store } from '../../store/store';
+
+const FieldHasAddons = styled.div`
+    @media (max-width: 480px) {
+        display: none;
+    }
+`
+
+const FieldNoAddons = styled.div`
+    @media (min-width: 481px) {
+        display: none;
+    }
+`
 
 const Dashboard = (props) => {
     const context = useContext(store);
@@ -87,32 +101,22 @@ const Dashboard = (props) => {
 
     if(state.amTrainWatched) {
         amData = (
-            <div class="field has-addons">      
-                <p class="control">
-                    <RouterLink to={{ 
-                        pathname: '/watch-commute',
-                        state: { commuteType: 'AM' }
-                    }}>
-                        <button class="button is-warning is-light has-text-weight-bold">
-                            {state.amTrainWatched.station 
-                                + ' Station: ' 
-                                + (state.amTrainWatched.direction === "Northbound" ? "NB" : "SB") + ' ' 
-                                + state.amTrainWatched.trainNumber + ' at ' + state.amTrainWatched.time
-                            }
-                        </button>
-                    </RouterLink>
-                </p>
-                <p class="control">
-                    <RouterLink to={{ 
-                        pathname: '/watch-commute',
-                        state: {
-                            commuteType: 'AM'
-                        }
-                    }}>
-                        <button class="button is-warning">Edit</button>
-                    </RouterLink>
-                </p>
-            </div>
+            <React.Fragment>
+                <FieldHasAddons>  
+                    <TrainWatched 
+                        hasAddons={true}
+                        commuteType="AM"
+                        trainWatched={state.amTrainWatched}
+                    />
+                </FieldHasAddons>
+                <FieldNoAddons>
+                    <TrainWatched 
+                        hasAddons={false}
+                        commuteType="AM"
+                        trainWatched={state.amTrainWatched}
+                    />
+                </FieldNoAddons>
+            </React.Fragment>
         );
     }
 
@@ -131,30 +135,22 @@ const Dashboard = (props) => {
 
     if(state.pmTrainWatched) {
         pmData = (
-            <div class="field has-addons">      
-                <p class="control">
-                    <RouterLink to={{ 
-                        pathname: '/watch-commute',
-                        state: { commuteType: 'PM' }
-                    }}>
-                        <button class="button is-info is-light has-text-weight-bold">
-                            {state.pmTrainWatched.station 
-                                + ' Station: ' 
-                                + (state.pmTrainWatched.direction === "Northbound" ? "NB" : "SB") + ' ' 
-                                + state.pmTrainWatched.trainNumber + ' at ' + state.pmTrainWatched.time
-                            }
-                        </button>
-                    </RouterLink>
-                </p>
-                <p class="control">
-                    <RouterLink to={{ 
-                        pathname: '/watch-commute',
-                        state: { commuteType: 'PM' }
-                    }}>
-                        <button class="button is-info">Edit</button>
-                        </RouterLink>
-                </p>
-            </div>
+            <React.Fragment>
+                <FieldHasAddons>  
+                    <TrainWatched 
+                        hasAddons={true}
+                        commuteType="PM"
+                        trainWatched={state.pmTrainWatched}
+                    />
+                </FieldHasAddons>
+                <FieldNoAddons>
+                    <TrainWatched 
+                        hasAddons={false}
+                        commuteType="PM"
+                        trainWatched={state.pmTrainWatched}
+                    />
+                </FieldNoAddons>
+            </React.Fragment>
         );
     }
     
