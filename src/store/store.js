@@ -40,6 +40,7 @@ const StateProvider = ( { children } ) => {
 
         switch(action.type) {
             case 'LOG_IN_USER':
+                console.log('token:', action.token);
                 newState = {
                     ...state,
                     user: action.user,
