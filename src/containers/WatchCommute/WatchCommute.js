@@ -68,9 +68,9 @@ const WatchCommute = (props) => {
     }
 
     let history = useHistory();
-    const selectTrainHandler = (train) => {
+    const selectTrainHandler = async (train) => { // TODO: remove async
         dispatch({ type: 'INITIATE_SERVER_REQUEST' });
-
+ 
         if(train === null) {            
             axios.delete('http://localhost:8082/api/watched-trains',
                 { // Different format due to delete's parameters: https://github.com/axios/axios/issues/897#issuecomment-343715381
@@ -145,7 +145,7 @@ const WatchCommute = (props) => {
         
         deleteTrainButton = (
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4.5rem' }}>
-                <button class="button is-primary is-outlined" onClick={() => selectTrainHandler(null)}>
+                <button class={"button is-primary is-outlined" + (state.loading ? " is-loading" : "")} onClick={() => selectTrainHandler(null)}>
                     <span class="icon">
                         <FontAwesomeIcon icon={faWindowClose} />                                
                     </span>
@@ -231,7 +231,9 @@ const WatchCommute = (props) => {
             const trainElements = activeTrains.map(train => {
                 return (
                     <button 
-                        class={"button is-info" + (selectedTrain !== null && train.trainNumber === selectedTrain.trainNumber && train.time === selectedTrain.time ? '' : " is-outlined")} 
+                        class={"button is-info" 
+                            + (selectedTrain !== null && train.trainNumber === selectedTrain.trainNumber && train.time === selectedTrain.time ? '' : " is-outlined")
+                        } 
                         style={{ width: '200px', margin: '0.1875rem' }} 
                         key={train.trainNumber}
                         onClick={() => selectTrainHandler(train)}
