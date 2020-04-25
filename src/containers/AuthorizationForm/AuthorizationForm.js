@@ -74,12 +74,10 @@ export const AuthorizationForm = (props) => {
                 await new Promise(resolve => setTimeout(resolve, 200));
                 await loginUser(values.email, values.password, { setSubmitting });
             } else {
-                console.log('Set error: line 77');
                 setError(response.data);
                 setSubmitting(false);
             }
         } catch(err) {
-            console.log('Set error: line 82');
             console.log(err);
             setError(err);
             setSubmitting(false);
