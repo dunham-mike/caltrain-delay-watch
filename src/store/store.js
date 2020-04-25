@@ -53,12 +53,12 @@ const StateProvider = ( { children } ) => {
             case 'LOG_OUT_USER':
                 newState = initialState;
                 return newState;
-            case 'INITIATE_LOADING_USER_DATA':
-                newState = {
-                    ...state,
-                    loading: true,
-                }
-                return newState;
+            // case 'INITIATE_LOADING_USER_DATA':
+            //     newState = {
+            //         ...state,
+            //         loading: true,
+            //     }
+            //     return newState;
             case 'SET_ERROR':
                 newState = {
                     ...state,
@@ -76,16 +76,24 @@ const StateProvider = ( { children } ) => {
                 }
 
                 return newState;
+            case 'INITIATE_SERVER_REQUEST':
+                newState = {
+                    ...state,
+                    loading: true,
+                }
+                return newState;
             case 'UPDATE_TRAIN_WATCHED':
                 if(action.trainType === 'AM') {
                     newState = {
                         ...state,
-                        amTrainWatched: action.train
+                        amTrainWatched: action.train,
+                        loading: false,
                     }
                 } else if(action.trainType === 'PM') {
                     newState = {
                         ...state,
-                        pmTrainWatched: action.train
+                        pmTrainWatched: action.train,
+                        loading: false,
                     }
                 } else {
                     throw new Error();
@@ -99,7 +107,8 @@ const StateProvider = ( { children } ) => {
 
                 newState = {
                     ...state,
-                    timetables: newTimetables
+                    timetables: newTimetables,
+                    loading: false,
                 }
                 return newState;
             default:

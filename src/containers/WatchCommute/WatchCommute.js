@@ -19,7 +19,7 @@ const WatchCommute = (props) => {
     // Load Timetables
     useEffect(() => {
         if(state.timetables.weekday === null) {
-            console.log('Starting backend API call...');
+            dispatch({ type: 'INITIATE_SERVER_REQUEST' });
             axios.get('http://localhost:8082/api/timetables/caltrain/weekday',
                    { headers: { 'Authorization': `Bearer ${state.token}` } }
                 )
@@ -69,8 +69,9 @@ const WatchCommute = (props) => {
 
     let history = useHistory();
     const selectTrainHandler = (train) => {
+        dispatch({ type: 'INITIATE_SERVER_REQUEST' });
 
-        if(train === null) {
+        if(train === null) {            
             axios.delete('http://localhost:8082/api/watched-trains',
                 { // Different format due to delete's parameters: https://github.com/axios/axios/issues/897#issuecomment-343715381
                     data: {

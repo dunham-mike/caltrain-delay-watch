@@ -30,8 +30,7 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         if(state.loading === false && state.error === null & state.initialDataLoaded === false) {
-            dispatch({ type: 'INITIATE_LOADING_USER_DATA' });
-            console.log('fire API call to load initial user data!');
+            dispatch({ type: 'INITIATE_SERVER_REQUEST' });
 
             axios.get('http://localhost:8082/api/watched-trains',
                    { headers: { 'Authorization': `Bearer ${state.token}` } }

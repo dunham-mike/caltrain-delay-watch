@@ -61,23 +61,26 @@ export const AuthorizationForm = (props) => {
         console.log(values);
         try {
             const response = await axios.post('http://localhost:8082/api/auth/create-account',
-            {
-                "user": {
-                    "email": values.email,
-                    "password": values.password
-                }
-            })
+                {
+                    "user": {
+                        "email": values.email,
+                        "password": values.password
+                    }
+                })
             console.log('response:', response);
 
             if(response.data === 'Account successfully created.') {
                 // Small delay necessary for login request to resolve successfully
-                await new Promise(resolve => setTimeout(resolve, 100));
-                await loginUser(values.email, values.password);
+                await new Promise(resolve => setTimeout(resolve, 200));
+                await loginUser(values.email, values.password, { setSubmitting });
             } else {
+                console.log('Set error: line 77');
                 setError(response.data);
                 setSubmitting(false);
             }
         } catch(err) {
+            console.log('Set error: line 82');
+            console.log(err);
             setError(err);
             setSubmitting(false);
         }
