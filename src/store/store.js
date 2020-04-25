@@ -8,7 +8,9 @@ import moment from 'moment-timezone';
 const initialState = {
         user: null,
         token: null,
+        loading: false,
         error: null,
+        initialDataLoaded: false,
         amTrainWatched: null,
         pmTrainWatched: null,
         // lastAlertUpdateTime: moment().subtract(1, 'day'), // TODO: replace with real data
@@ -18,7 +20,7 @@ const initialState = {
         //     calendarDate: moment().subtract(1, 'hour'),
         //     train: {
         //         station: 'Burlingame',
-        //         direction: 'Northbound',
+        //         direction: 'NB',
         //         time: '6:06 am',
         //         trainNumber: '103'
         //     },
@@ -51,13 +53,29 @@ const StateProvider = ( { children } ) => {
             case 'LOG_OUT_USER':
                 newState = initialState;
                 return newState;
-            // case 'SET_ERROR':
-            //     newState = {
-            //         ...state,
-            //         error: action.error
-            //     }
+            case 'INITIATE_LOADING_USER_DATA':
+                newState = {
+                    ...state,
+                    loading: true,
+                }
+                return newState;
+            case 'SET_ERROR':
+                newState = {
+                    ...state,
+                    error: action.error
+                }
 
-            //     return newState;
+                return newState;
+            case 'LOAD_USER_DATA':
+                newState = {
+                    ...state,
+                    loading: false,
+                    initialDataLoaded: true,
+                    amTrainWatched: action.amTrainWatched,
+                    pmTrainWatched: action.pmTrainWatched,
+                }
+
+                return newState;
             case 'UPDATE_TRAIN_WATCHED':
                 if(action.trainType === 'AM') {
                     newState = {

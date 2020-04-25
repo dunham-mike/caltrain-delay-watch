@@ -77,7 +77,7 @@ const WatchCommute = (props) => {
     if(selectedTrain !== null) {
         selectedTrainText = selectedTrain.station 
             + ' Station: ' 
-            + (selectedTrain.direction === "Northbound" ? "NB" : "SB") + ' ' 
+            + (selectedTrain.direction === "NB" ? "NB" : "SB") + ' ' 
             + selectedTrain.trainNumber + ' at ' + selectedTrain.time;
         
         deleteTrainButton = (
@@ -96,9 +96,9 @@ const WatchCommute = (props) => {
         let activeTrains = [];
 
         let shortActiveDirection = null;
-        if(activeDirection === "Northbound") {
+        if(activeDirection === "NB") {
             shortActiveDirection = "NB";
-        } else if(activeDirection === "Southbound") {
+        } else if(activeDirection === "SB") {
             shortActiveDirection = "SB";
         } else {
             return activeTrains;
@@ -134,7 +134,7 @@ const WatchCommute = (props) => {
             for(let j=0; j<stationTimetable.length; j++) {
                 const trainObject = {
                     station: activeStation,
-                    direction: (shortActiveDirection === 'NB' ? 'Northbound' : 'Southbound'),
+                    direction: (shortActiveDirection === 'NB' ? 'NB' : 'SB'),
                     time: moment('1970-01-01 ' + stationTimetable[j].arrivalTime).format('h:mm a'),
                     trainNumber: stationTimetable[j].trainNumber,
                 };
@@ -173,7 +173,7 @@ const WatchCommute = (props) => {
                         key={train.trainNumber}
                         onClick={() => selectTrainHandler(train)}
                     >
-                        {train.time} - {train.direction === "Northbound" ? 'NB' : 'SB'} {train.trainNumber}
+                        {train.time} - {train.direction === "NB" ? 'NB' : 'SB'} {train.trainNumber}
                     </button>
                 );
             })
@@ -300,8 +300,8 @@ const WatchCommute = (props) => {
                         <div class="field has-addons">
                             <p class="control">
                                 <button 
-                                    onClick={()=> changeDirectionHandler('Northbound')}
-                                    class={"button is-success" + (direction !== "Northbound" ? ' is-outlined' : '')}
+                                    onClick={()=> changeDirectionHandler('NB')}
+                                    class={"button is-success" + (direction !== "NB" ? ' is-outlined' : '')}
                                 >
                                     <span class="icon">
                                         <FontAwesomeIcon icon={faLongArrowAltUp} style={{ fontSize: '20px'}} />                                
@@ -311,8 +311,8 @@ const WatchCommute = (props) => {
                             </p>
                             <p class="control">
                                 <button 
-                                    onClick={()=> changeDirectionHandler('Southbound')}
-                                    class={"button is-warning" + (direction !== "Southbound" ? ' is-outlined' : '')}
+                                    onClick={()=> changeDirectionHandler('SB')}
+                                    class={"button is-warning" + (direction !== "SB" ? ' is-outlined' : '')}
                                 >
                                     <span>Southbound</span>
                                     <span class="icon">

@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import moment from 'moment-timezone';
 
@@ -21,9 +22,33 @@ const FieldNoAddons = styled.div`
 
 const Dashboard = (props) => {
     const context = useContext(store);
-    const { state } = context;
+    const { dispatch, state } = context;
 
     let lastAlertUpdateTimeText = null;
+
+    // Load Data
+
+    useEffect(() => {
+        if(state.loading === false && state.error === null & state.initialDataLoaded === false) {
+            dispatch({ type: 'INITIATE_LOADING_USER_DATA' });
+            console.log('fire API call to load initial user data!');
+
+            axios.get('http://localhost:8082/api/watched-trains',
+                   { headers: { 'Authorization': `Bearer ${state.token}` } }
+                )
+                .then(fetchResponse => {
+                    console.log('fetchResponse:', fetchResponse);
+                    dispatch({ 
+                        type: 'LOAD_USER_DATA', 
+                        amTrainWatched: (fetchResponse.data.amWatchedTrain ? fetchResponse.data.amWatchedTrain.trainInfo : null), 
+                        pmTrainWatched: (fetchResponse.data.pmWatchedTrain ? fetchResponse.data.pmWatchedTrain.trainInfo : null) });
+                })
+                .catch(fetchError => {
+                    console.log('[Error] Loading Watched Trains for user failed:', fetchError);
+                    dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains for user failed.' });
+                });
+        }
+    }, [state.loading, state.error, state.initialDataLoaded, dispatch, state.token]);
 
     // Alert Data
 
@@ -160,20 +185,22 @@ const Dashboard = (props) => {
             <div>
                 <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
             </div>
-            <div class="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
-                Your AM Train
-            </div>
-            <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
-                {amData}
-            </div>
-            <div>
-                <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
-            </div>
-            <div class="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
-                Your PM Train
-            </div>
-            <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
-                {pmData}
+            <div class={(state.loading || state.error ? "is-hidden" : "" )}>
+                <div class="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
+                    Your AM Train
+                </div>
+                <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
+                    {amData}
+                </div>
+                <div>
+                    <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
+                </div>
+                <div class="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
+                    Your PM Train
+                </div>
+                <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
+                    {pmData}
+                </div>
             </div>
         </div>
     );

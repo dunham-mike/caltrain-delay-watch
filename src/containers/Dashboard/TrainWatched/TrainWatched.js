@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 const TrainWatched = (props) => {
     let trainWatchedText = props.trainWatched.station 
         + (props.hasAddons ? ' Station: ' : ': ')
-        + (props.trainWatched.direction === "Northbound" ? "NB" : "SB") + ' ' 
+        + (props.trainWatched.direction === "NB" ? "NB" : "SB") + ' ' 
         + props.trainWatched.trainNumber + ' at ' + props.trainWatched.time;
 
     return (
