@@ -8,6 +8,9 @@ import { faTrain, faLongArrowAltUp, faLongArrowAltDown, faWindowClose } from '@f
 
 import { store } from '../../store/store';
 
+const operator = 'Caltrain';
+const scheduleType = 'Weekday';
+
 const WatchCommute = (props) => {
     // Setting Up Data From Store
     const context = useContext(store);
@@ -66,6 +69,65 @@ const WatchCommute = (props) => {
 
     let history = useHistory();
     const selectTrainHandler = (train) => {
+
+        if(train === null) {
+            axios.delete('http://localhost:8082/api/watched-trains',
+                { // Different format due to delete's parameters: https://github.com/axios/axios/issues/897#issuecomment-343715381
+                    data: {
+                        commuteType: commuteType
+                    },
+                    headers: { 'Authorization': `Bearer ${state.token}` },
+                    withCredentials: true
+                }
+            )
+            .then(fetchResponse => {
+                console.log('fetchResponse:', fetchResponse);
+                // 'Watched Train successfully cleared.';
+                // TODO: Confirm that got correct response status code from server.
+
+                dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
+                history.push('/');
+            })
+            .catch(fetchError => {
+                console.log('[Error] Deleting Watched Train for user failed:', fetchError);
+                dispatch({ type: 'SET_ERROR', error: 'Deleting Watched Train for user failed.' });
+            });
+        } else {
+            axios.post('http://localhost:8082/api/watched-trains',
+                {
+                    commuteType: commuteType,
+                    trainInfo: {
+                        operator: operator,
+                        scheduleType: scheduleType,
+                        station: train.station,
+                        direction: train.direction,
+                        time: train.time,
+                        trainNumber: train.trainNumber
+                    }
+
+                },
+                { headers: { 'Authorization': `Bearer ${state.token}` } }
+
+                /* 
+                    station: activeStation,
+                    direction: (shortActiveDirection === 'NB' ? 'NB' : 'SB'),
+                    time: moment('1970-01-01 ' + stationTimetable[j].arrivalTime).format('h:mm a'),
+                    trainNumber: stationTimetable[j].trainNumber,
+                */
+            )
+            .then(fetchResponse => {
+                console.log('fetchResponse:', fetchResponse);
+                // TODO: Confirm that got correct response status code from server.
+
+                dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
+                history.push('/');
+            })
+            .catch(fetchError => {
+                console.log('[Error] Updating Watched Train for user failed:', fetchError);
+                dispatch({ type: 'SET_ERROR', error: 'Updating Watched Train for user failed.' });
+            });
+        }
+
         dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
         history.push('/');
     }
@@ -168,7 +230,7 @@ const WatchCommute = (props) => {
             const trainElements = activeTrains.map(train => {
                 return (
                     <button 
-                        class={"button is-info" + (selectedTrain !== null && train.trainNumber === selectedTrain.trainNumber ? '' : " is-outlined")} 
+                        class={"button is-info" + (selectedTrain !== null && train.trainNumber === selectedTrain.trainNumber && train.time === selectedTrain.time ? '' : " is-outlined")} 
                         style={{ width: '200px', margin: '0.1875rem' }} 
                         key={train.trainNumber}
                         onClick={() => selectTrainHandler(train)}
