@@ -101,6 +101,7 @@ const WatchCommute = (props) => {
                         operator: operator,
                         scheduleType: scheduleType,
                         station: train.station,
+                        stopId: train.stopId,
                         direction: train.direction,
                         time: train.time,
                         trainNumber: train.trainNumber
@@ -181,22 +182,23 @@ const WatchCommute = (props) => {
                 }
             */
 
-            const stationIdKeys = Object.keys(timetablesData);
+            const stopIdKeys = Object.keys(timetablesData);
 
-            let stationId = null;
-            for(let i=0; i<stationIdKeys.length; i++) {
-                const stopData = timetablesData[stationIdKeys[i]];
+            let stopId = null;
+            for(let i=0; i<stopIdKeys.length; i++) {
+                const stopData = timetablesData[stopIdKeys[i]];
 
                 if(stopData.stationName === activeStation && stopData.direction === shortActiveDirection) {
-                    stationId = stationIdKeys[i];
+                    stopId = stopIdKeys[i];
                     break;
                 }
             }
 
-            const stationTimetable = timetablesData[stationId].timetable;
+            const stationTimetable = timetablesData[stopId].timetable;
             for(let j=0; j<stationTimetable.length; j++) {
                 const trainObject = {
                     station: activeStation,
+                    stopId: stopId,
                     direction: (shortActiveDirection === 'NB' ? 'NB' : 'SB'),
                     time: moment('1970-01-01 ' + stationTimetable[j].arrivalTime).format('h:mm a'),
                     trainNumber: stationTimetable[j].trainNumber,
