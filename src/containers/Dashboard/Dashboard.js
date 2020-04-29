@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -20,34 +20,71 @@ const FieldNoAddons = styled.div`
     }
 `
 
+// TODO: Add section for most recent notifications and a recent one, if it exists.
+
 const Dashboard = (props) => {
     const context = useContext(store);
     const { dispatch, state } = context;
 
     let lastAlertUpdateTimeText = null;
 
-    // Load Data
+    // Load Initial Data
+
+    const fetchUserData = useCallback(async () => {
+        const fetchResponse = await axios.get('http://localhost:8082/api/watched-trains',
+                { headers: { 'Authorization': `Bearer ${state.token}` } }
+            )
+            .catch(fetchError => {
+                console.log('[Error] Loading Watched Trains and Notifications for user failed:', fetchError);
+                return null;
+            });
+
+        return fetchResponse;
+    }, [state.token]);
+
+    const fetchCurrentStatus = useCallback(async () => {
+        const fetchResponse = await axios.get('http://localhost:8082/api/current-status',
+                { headers: { 'Authorization': `Bearer ${state.token}` } }
+            )
+            .catch(fetchError => {
+                console.log('[Error] Loading Current Status failed:', fetchError);
+                return null;
+            });
+
+        return fetchResponse;
+    }, [state.token]);
 
     useEffect(() => {
         if(state.loading === false && state.error === null & state.initialDataLoaded === false) {
-            dispatch({ type: 'INITIATE_SERVER_REQUEST' });
+            
+            const fetchInitialData = async () => {
+                dispatch({ type: 'INITIATE_SERVER_REQUEST' });
 
-            axios.get('http://localhost:8082/api/watched-trains',
-                   { headers: { 'Authorization': `Bearer ${state.token}` } }
-                )
-                .then(fetchResponse => {
-                    console.log('fetchResponse:', fetchResponse);
+                const userFetchResponse = await fetchUserData();
+                const currentStatusFetchResponse = await fetchCurrentStatus();
+
+                if(userFetchResponse !== null && currentStatusFetchResponse !== null) {
                     dispatch({ 
-                        type: 'LOAD_USER_DATA', 
-                        amTrainWatched: (fetchResponse.data.amWatchedTrain ? fetchResponse.data.amWatchedTrain.trainInfo : null), 
-                        pmTrainWatched: (fetchResponse.data.pmWatchedTrain ? fetchResponse.data.pmWatchedTrain.trainInfo : null) });
-                })
-                .catch(fetchError => {
-                    console.log('[Error] Loading Watched Trains for user failed:', fetchError);
-                    dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains for user failed.' });
-                });
+                        type: 'SET_USER_DATA', 
+                        mostRecentNotifications: (userFetchResponse.data.mostRecentNotifications ? userFetchResponse.data.mostRecentNotifications : null),
+                        amTrainWatched: (userFetchResponse.data.amWatchedTrain ? userFetchResponse.data.amWatchedTrain.trainInfo : null), 
+                        pmTrainWatched: (userFetchResponse.data.pmWatchedTrain ? userFetchResponse.data.pmWatchedTrain.trainInfo : null) 
+                    });
+
+                    dispatch({
+                        type: 'SET_CURRENT_STATUS',
+                        currentStatus: currentStatusFetchResponse.data
+                    })
+
+                    dispatch({ type: 'INITIAL_LOADING_COMPLETE' });
+                } else {
+                    dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
+                }
+            }
+
+            fetchInitialData();
         }
-    }, [state.loading, state.error, state.initialDataLoaded, dispatch, state.token]);
+    }, [state.loading, state.error, state.initialDataLoaded, dispatch, fetchUserData, fetchCurrentStatus]);
 
     // Alert Data
 

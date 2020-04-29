@@ -15,7 +15,9 @@ const initialState = {
         pmTrainWatched: null,
         // lastAlertUpdateTime: moment().subtract(1, 'day'), // TODO: replace with real data
         lastAlertUpdateTime: moment().subtract(7, 'minute'), // TODO: replace with real data
+        mostRecentNotifications: null,
         currentAlert: null,
+        currentStatus: null,
         // currentAlert: {
         //     calendarDate: moment().subtract(1, 'hour'),
         //     train: {
@@ -48,33 +50,38 @@ const StateProvider = ( { children } ) => {
                     user: action.user,
                     token: action.token
                 }
-
                 return newState;
             case 'LOG_OUT_USER':
                 newState = initialState;
                 return newState;
-            // case 'INITIATE_LOADING_USER_DATA':
-            //     newState = {
-            //         ...state,
-            //         loading: true,
-            //     }
-            //     return newState;
             case 'SET_ERROR':
                 newState = {
                     ...state,
                     error: action.error
                 }
-
                 return newState;
-            case 'LOAD_USER_DATA':
+            case 'SET_USER_DATA':
+                newState = {
+                    ...state,
+                    // loading: false,
+                    // initialDataLoaded: true,
+                    mostRecentNotifications: action.mostRecentNotifications,
+                    amTrainWatched: action.amTrainWatched,
+                    pmTrainWatched: action.pmTrainWatched,
+                }
+                return newState;
+            case 'SET_CURRENT_STATUS':
+                newState = {
+                    ...state,
+                    currentStatus: action.currentStatus,
+                }
+                return newState;
+            case 'INITIAL_LOADING_COMPLETE': 
                 newState = {
                     ...state,
                     loading: false,
                     initialDataLoaded: true,
-                    amTrainWatched: action.amTrainWatched,
-                    pmTrainWatched: action.pmTrainWatched,
                 }
-
                 return newState;
             case 'INITIATE_SERVER_REQUEST':
                 newState = {
@@ -98,7 +105,6 @@ const StateProvider = ( { children } ) => {
                 } else {
                     throw new Error();
                 }
-
                 return newState;
             case 'LOAD_WEEKDAY_TIMETABLES':
                 const newTimetables = { ...state.timetables };
