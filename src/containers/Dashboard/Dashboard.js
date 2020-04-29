@@ -101,7 +101,7 @@ const Dashboard = (props) => {
 
         if(state.currentStatus && moment.utc().isBefore(moment.utc(state.currentStatus.createdAt).add(5, 'minutes'))) {
             console.log('New status updates are available every 5 minutes on weekdays. Please try again after ' +
-                moment.utc(state.currentStatus.createdAt).add(5, 'minutes').format('h:mm a')
+                moment.utc(state.currentStatus.createdAt).tz("America/Los_Angeles").add(5, 'minutes').format('h:mm a')
             );
         } else {
             const isRefreshSuccessful = await fetchAppData();

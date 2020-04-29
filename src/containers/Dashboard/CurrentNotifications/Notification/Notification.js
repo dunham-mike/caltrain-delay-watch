@@ -20,15 +20,20 @@ const Notification = (props) => {
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.75rem' }} key={props.notification.station + ' ' + props.notification.trainNumber}>
             <div className="box">
                 <div className="content is-size-6">
-                    <strong>Delayed:</strong> {props.notification.direction} {props.notification.trainNumber} at {props.notification.station} Station<br/>
-                    <ul style={{ listStyle: 'disc', paddingLeft: '30px' }}>
-                        <li className="has-text-primary">Expected Departure: {moment.utc(props.notification.expectedDepartureTime).tz("America/Los_Angeles").format('h:mm a')}</li>
-                        <li>Originally Scheduled Departure: {moment.utc(props.notification.scheduledDepartureTime).tz("America/Los_Angeles").format('h:mm a')}</li>
-                    </ul> 
+                    <div className="has-text-centered">
+                        <strong>Delayed:</strong> {props.notification.direction} {props.notification.trainNumber} at {props.notification.station} Station<br/>
+                    </div>
+                    
+                    <div>
+                        <hr style={{ width: '80%', margin: '0.75rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
+                    </div>
+                    <div>
+                        <strong>Notification Sent:</strong> {moment.utc(props.notification.createdAt).tz("America/Los_Angeles").format("h:mm a")}
+                    </div>
                     <strong>More Info:</strong>
                     <ul style={{ listStyle: 'disc', paddingLeft: '30px' }}>
                         <li><a href={`http://www.caltrain.com/stations/${stationUrlText}.html`} 
-                            target="_blank" rel="noopener noreferrer">Real-time Train Info and Alerts for {props.notification.station} Station</a></li>
+                            target="_blank" rel="noopener noreferrer">Official Real-time Info and Alerts for {props.notification.station} Station</a></li>
                         <li>
                         <a href="https://twitter.com/Caltrain" target="_blank" rel="noopener noreferrer">Caltrain Twitter Feed</a>
                         </li>
