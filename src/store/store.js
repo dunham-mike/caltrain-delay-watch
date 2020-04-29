@@ -15,8 +15,8 @@ const initialState = {
         pmTrainWatched: null,
         // lastAlertUpdateTime: moment().subtract(1, 'day'), // TODO: replace with real data
         lastAlertUpdateTime: moment().subtract(7, 'minute'), // TODO: replace with real data
-        mostRecentNotifications: null,
-        currentAlert: null,
+        mostRecentNotifications: [],
+        // currentAlert: null,
         currentStatus: null,
         // currentAlert: {
         //     calendarDate: moment().subtract(1, 'hour'),
