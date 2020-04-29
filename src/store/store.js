@@ -68,10 +68,9 @@ const StateProvider = ( { children } ) => {
                     currentStatus: action.currentStatus,
                 }
                 return newState;
-            case 'INITIAL_LOADING_COMPLETE': 
+            case 'INITIAL_DATA_LOADED': 
                 newState = {
                     ...state,
-                    loading: false,
                     initialDataLoaded: true,
                 }
                 return newState;
@@ -79,6 +78,12 @@ const StateProvider = ( { children } ) => {
                 newState = {
                     ...state,
                     loading: true,
+                }
+                return newState;
+            case 'SERVER_REQUEST_COMPLETE':
+                newState = {
+                    ...state,
+                    loading: false,
                 }
                 return newState;
             case 'UPDATE_TRAIN_WATCHED':

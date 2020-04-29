@@ -3,6 +3,9 @@ import moment from 'moment-timezone';
 
 import Notification from './Notification/Notification';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+
 const CurrentNotifications = (props) => {
     const currentNotificationsArray = props.mostRecentNotifications.filter(notif => {
         return notif.status === "Late" && moment.utc(notif.expectedDepartureTime).isAfter(moment.utc().subtract(2, 'hours'))
@@ -11,8 +14,6 @@ const CurrentNotifications = (props) => {
     currentNotificationsArray.sort(
         (a, b) => (moment.utc(a.scheduledDepartureTime).isBefore(moment.utc(b.scheduledDepartureTime)) ? 1 : -1)
     );
-
-    console.log(currentNotificationsArray);
 
     let lastAlertUpdateTimeText = null;
 
@@ -26,8 +27,15 @@ const CurrentNotifications = (props) => {
 
     let notifications = (
         <React.Fragment>
-            <div className="is-size-5 has-text-weight-semibold">
-                No Current Notifications
+            <div className="is-size-5 has-text-weight-semibold" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div>No Current Notifications</div>
+                <div>
+                    <button className="button is-white is-outlined is-small" onClick={props.refreshStatuses}>
+                        <span className="icon">
+                            <FontAwesomeIcon icon={faSyncAlt} />                                
+                        </span>
+                    </button>
+                </div>
             </div>
             <div className="is-size-7 has-text-weight-light">
                 {lastAlertUpdateTimeText}
@@ -43,8 +51,17 @@ const CurrentNotifications = (props) => {
     if(currentNotificationsArray.length > 0) {
         notifications = (
             <React.Fragment>
-                <div className="is-size-5 has-text-weight-semibold has-text-primary">
-                    Current {(currentNotificationsArray.length > 1) ? "Notifications" : "Notification"}
+                <div className="is-size-5 has-text-weight-semibold has-text-primary" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <div>
+                        Current {(currentNotificationsArray.length > 1) ? "Notifications" : "Notification"}
+                    </div>
+                    <div>
+                        <button className="button is-white is-outlined is-small" onClick={props.refreshStatuses}>
+                            <span className="icon">
+                                <FontAwesomeIcon icon={faSyncAlt} />                                
+                            </span>
+                        </button>
+                    </div>
                 </div>
                 <div className="is-size-7 has-text-weight-light">
                     {lastAlertUpdateTimeText}

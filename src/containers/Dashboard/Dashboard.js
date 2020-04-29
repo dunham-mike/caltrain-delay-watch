@@ -2,12 +2,11 @@ import React, { useContext, useEffect, useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-
 import moment from 'moment-timezone';
 
+import { store } from '../../store/store';
 import TrainWatched from './TrainWatched/TrainWatched';
 import CurrentNotifications from './CurrentNotifications/CurrentNotifications';
-import { store } from '../../store/store';
 
 const FieldHasAddons = styled.div`
     @media (max-width: 480px) {
@@ -20,10 +19,6 @@ const FieldNoAddons = styled.div`
         display: none;
     }
 `
-
-// TODO: Display current status for watched trains if it exists
-// TODO: Add section to display the historical notifications.
-// TODO: Refactor AM and PM Commute JSX into the component?
 
 const Dashboard = (props) => {
     const context = useContext(store);
@@ -55,37 +50,69 @@ const Dashboard = (props) => {
         return fetchResponse;
     }, [state.token]);
 
+    const fetchAppData = useCallback(async () => {
+        dispatch({ type: 'INITIATE_SERVER_REQUEST' });
+
+        const userFetchResponse = await fetchUserData();
+        const currentStatusFetchResponse = await fetchCurrentStatus();
+
+        if(userFetchResponse !== null && currentStatusFetchResponse !== null) {
+            dispatch({ 
+                type: 'SET_USER_DATA', 
+                mostRecentNotifications: (userFetchResponse.data.mostRecentNotifications ? userFetchResponse.data.mostRecentNotifications : null),
+                amTrainWatched: (userFetchResponse.data.amWatchedTrain ? userFetchResponse.data.amWatchedTrain.trainInfo : null), 
+                pmTrainWatched: (userFetchResponse.data.pmWatchedTrain ? userFetchResponse.data.pmWatchedTrain.trainInfo : null) 
+            });
+
+            dispatch({
+                type: 'SET_CURRENT_STATUS',
+                currentStatus: currentStatusFetchResponse.data
+            })
+
+            dispatch({ type: 'SERVER_REQUEST_COMPLETE' });
+
+            return true;
+        } else {
+            dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
+
+            return false;
+        }
+    }, [dispatch, fetchUserData, fetchCurrentStatus]);
+
     useEffect(() => {
         if(state.loading === false && state.error === null & state.initialDataLoaded === false) {
 
             const fetchInitialData = async () => {
-                dispatch({ type: 'INITIATE_SERVER_REQUEST' });
 
-                const userFetchResponse = await fetchUserData();
-                const currentStatusFetchResponse = await fetchCurrentStatus();
-
-                if(userFetchResponse !== null && currentStatusFetchResponse !== null) {
-                    dispatch({ 
-                        type: 'SET_USER_DATA', 
-                        mostRecentNotifications: (userFetchResponse.data.mostRecentNotifications ? userFetchResponse.data.mostRecentNotifications : null),
-                        amTrainWatched: (userFetchResponse.data.amWatchedTrain ? userFetchResponse.data.amWatchedTrain.trainInfo : null), 
-                        pmTrainWatched: (userFetchResponse.data.pmWatchedTrain ? userFetchResponse.data.pmWatchedTrain.trainInfo : null) 
-                    });
-
-                    dispatch({
-                        type: 'SET_CURRENT_STATUS',
-                        currentStatus: currentStatusFetchResponse.data
-                    })
-
-                    dispatch({ type: 'INITIAL_LOADING_COMPLETE' });
-                } else {
-                    dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
+                const isInitialLoadSuccessful = await fetchAppData();
+                if (isInitialLoadSuccessful) {
+                    dispatch({ type: 'INITIAL_DATA_LOADED' });
                 }
             }
 
             fetchInitialData();
         }
-    }, [state.loading, state.error, state.initialDataLoaded, dispatch, fetchUserData, fetchCurrentStatus]);
+    }, [state.loading, state.error, state.initialDataLoaded, dispatch, fetchAppData]);
+
+    // Refresh statuses
+
+    const refreshStatuses = async () => {
+        console.log('Refresh statuses here');
+
+        if(state.currentStatus && moment.utc().isBefore(moment.utc(state.currentStatus.createdAt).add(5, 'minutes'))) {
+            console.log('New status updates are available every 5 minutes on weekdays. Please try again after ' +
+                moment.utc(state.currentStatus.createdAt).add(5, 'minutes').format('h:mm a')
+            );
+        } else {
+            const isRefreshSuccessful = await fetchAppData();
+            if(isRefreshSuccessful) {
+                console.log('Data successfully refreshed!');
+            } else {
+                console.log('Unable to refresh data. Please reload the page.');
+            }
+        }
+
+    }
 
     // Update train statuses if needed
 
@@ -222,6 +249,7 @@ const Dashboard = (props) => {
                         <CurrentNotifications 
                             statusLastUpdatedTime={(state.currentStatus ? state.currentStatus.createdAt : null)} 
                             mostRecentNotifications={state.mostRecentNotifications}  
+                            refreshStatuses={refreshStatuses}
                         />
                         <div>
                             <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
