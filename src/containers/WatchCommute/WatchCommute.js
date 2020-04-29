@@ -146,8 +146,8 @@ const WatchCommute = (props) => {
         
         deleteTrainButton = (
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4.5rem' }}>
-                <button class={"button is-primary is-outlined" + (state.loading ? " is-loading" : "")} onClick={() => selectTrainHandler(null)}>
-                    <span class="icon">
+                <button className={"button is-primary is-outlined" + (state.loading ? " is-loading" : "")} onClick={() => selectTrainHandler(null)}>
+                    <span className="icon">
                         <FontAwesomeIcon icon={faWindowClose} />                                
                     </span>
                     <span>Or Delete Current Train</span>
@@ -222,7 +222,7 @@ const WatchCommute = (props) => {
         if(activeTrains.length === 0) {
             trainSchedule = (
                 <React.Fragment>
-                    <div class="has-text-weight-semibold has-text-centered" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>
+                    <div className="has-text-weight-semibold has-text-centered" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>
                         Cannot find any trains for that station and direction of travel. Please try another.
                     </div>
                 </React.Fragment>
@@ -233,7 +233,7 @@ const WatchCommute = (props) => {
             const trainElements = activeTrains.map(train => {
                 return (
                     <button 
-                        class={"button is-info" 
+                        className={"button is-info" 
                             + (selectedTrain !== null && train.trainNumber === selectedTrain.trainNumber && train.time === selectedTrain.time ? '' : " is-outlined")
                         } 
                         style={{ width: '200px', margin: '0.1875rem' }} 
@@ -253,21 +253,21 @@ const WatchCommute = (props) => {
             if(activeTrains.length > maxTrainsToShow) {
                 showLaterTimesButton = (
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <button class="button is-warning is-outlined" style={{ width: '200px', margin: '0.1875rem' }} onClick={showMoreTrainsHandler}>Show Later Times</button>
+                        <button className="button is-warning is-outlined" style={{ width: '200px', margin: '0.1875rem' }} onClick={showMoreTrainsHandler}>Show Later Times</button>
                     </div>
                 );
             }
 
             trainSchedule = (
                 <React.Fragment>
-                    <div class="has-text-weight-semibold" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>Choose Train to Watch:</div>
-                    <div class="columns" style={{ marginTop: '0.75rem', marginBottom: '0' }}>
-                        <div class="column is-6" style={{ margin: '0', padding: '0' }}>
+                    <div className="has-text-weight-semibold" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>Choose Train to Watch:</div>
+                    <div className="columns" style={{ marginTop: '0.75rem', marginBottom: '0' }}>
+                        <div className="column is-6" style={{ margin: '0', padding: '0' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                 {firstHalfTrainElements}
                             </div>
                         </div>
-                        <div class="column is-6" style={{ margin: '0', padding: '0' }}>
+                        <div className="column is-6" style={{ margin: '0', padding: '0' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                 {secondHalfTrainElements}
                             </div>
@@ -280,15 +280,15 @@ const WatchCommute = (props) => {
     }
 
     return (
-        <div class="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
+        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
             <div>
-                <div class="is-size-5 has-text-weight-semibold">Watch Commute</div>
-                <div class="columns" style={{ marginTop: '0' }}>
-                    <div class="column is-3" style={{ display: 'flex', alignItems: 'center' }}>
+                <div className="is-size-5 has-text-weight-semibold">Watch Commute</div>
+                <div className="columns" style={{ marginTop: '0' }}>
+                    <div className="column is-3" style={{ display: 'flex', alignItems: 'center' }}>
                         <div>Current {commuteType} Train: </div>
                     </div>
-                    <div class="column" style={{ display: 'flex', justifyContent: 'center' }}>
-                        <button class={"button is-info is-light has-text-weight-bold"}>{selectedTrainText}</button>                        
+                    <div className="column" style={{ display: 'flex', justifyContent: 'center' }}>
+                        <button className={"button is-info is-light has-text-weight-bold"}>{selectedTrainText}</button>                        
                     </div>
                 </div>
             </div>
@@ -296,12 +296,12 @@ const WatchCommute = (props) => {
                 <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
             </div>
             <div style={{ marginTop: '1.5rem' }}>
-                <div class="is-size-5 has-text-weight-semibold">Update {commuteType} Commute</div>
-                <div class="columns" style={{ marginTop: '1.5rem' }}>
-                    <div class="column" style={{ display: 'flex', justifyContent: 'center' }}>
-                        <div class="field">
-                            <p class="control has-icons-left">
-                                <span class="select">
+                <div className="is-size-5 has-text-weight-semibold">Update {commuteType} Commute</div>
+                <div className="columns" style={{ marginTop: '1.5rem' }}>
+                    <div className="column" style={{ display: 'flex', justifyContent: 'center' }}>
+                        <div className="field">
+                            <p className="control has-icons-left">
+                                <span className="select">
                                     <select onChange={changeStationHandler} value={(station ? station : '')}>
                                         <option>Select Your Station</option>
 
@@ -357,32 +357,32 @@ const WatchCommute = (props) => {
 
                                     </select>
                                 </span>
-                                <span class="icon is-left" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <span className="icon is-left" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <FontAwesomeIcon icon={faTrain} style={{ fontSize: '20px'}} />                                
                                 </span>
                             </p>
                         </div>
                     </div>
-                    <div class="column" style={{ display: 'flex', justifyContent: 'center' }}>
-                        <div class="field has-addons">
-                            <p class="control">
+                    <div className="column" style={{ display: 'flex', justifyContent: 'center' }}>
+                        <div className="field has-addons">
+                            <p className="control">
                                 <button 
                                     onClick={()=> changeDirectionHandler('NB')}
-                                    class={"button is-success" + (direction !== "NB" ? ' is-outlined' : '')}
+                                    className={"button is-success" + (direction !== "NB" ? ' is-outlined' : '')}
                                 >
-                                    <span class="icon">
+                                    <span className="icon">
                                         <FontAwesomeIcon icon={faLongArrowAltUp} style={{ fontSize: '20px'}} />                                
                                     </span>
                                     <span>Northbound</span>
                                 </button>
                             </p>
-                            <p class="control">
+                            <p className="control">
                                 <button 
                                     onClick={()=> changeDirectionHandler('SB')}
-                                    class={"button is-warning" + (direction !== "SB" ? ' is-outlined' : '')}
+                                    className={"button is-warning" + (direction !== "SB" ? ' is-outlined' : '')}
                                 >
                                     <span>Southbound</span>
-                                    <span class="icon">
+                                    <span className="icon">
                                         <FontAwesomeIcon icon={faLongArrowAltDown} style={{ fontSize: '20px'}} />                                
                                     </span>
                                 </button>

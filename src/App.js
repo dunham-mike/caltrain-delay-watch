@@ -54,18 +54,18 @@ const App = () => {
                         } 
                     </div>
                     {state.token !== null 
-                        ?   <div class="navbar-item">
+                        ?   <div className="navbar-item">
                                 <RouterLink className="navbar-item has-text-white" to="/logout">
                                     Log out
                                 </RouterLink>
                             </div>
                         : <div>
-                            <div class="navbar-item">
-                                <div class="buttons">
-                                <RouterLink class="button is-primary is-hidden-mobile" to="/create-account">
+                            <div className="navbar-item">
+                                <div className="buttons">
+                                <RouterLink className="button is-primary is-hidden-mobile" to="/create-account">
                                     <strong>Sign up</strong>
                                 </RouterLink>
-                                <RouterLink class="button is-light" to="/login">
+                                <RouterLink className="button is-light" to="/login">
                                     Log in
                                 </RouterLink>
                                 </div>

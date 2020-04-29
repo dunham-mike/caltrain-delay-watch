@@ -26,10 +26,10 @@ const CurrentNotifications = (props) => {
 
     let notifications = (
         <React.Fragment>
-            <div class="is-size-5 has-text-weight-semibold">
+            <div className="is-size-5 has-text-weight-semibold">
                 No Current Notifications
             </div>
-            <div class="is-size-7 has-text-weight-light">
+            <div className="is-size-7 has-text-weight-light">
                 {lastAlertUpdateTimeText}
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.75rem' }}>
@@ -43,10 +43,10 @@ const CurrentNotifications = (props) => {
     if(currentNotificationsArray.length > 0) {
         notifications = (
             <React.Fragment>
-                <div class="is-size-5 has-text-weight-semibold has-text-primary">
+                <div className="is-size-5 has-text-weight-semibold has-text-primary">
                     Current {(currentNotificationsArray.length > 1) ? "Notifications" : "Notification"}
                 </div>
-                <div class="is-size-7 has-text-weight-light">
+                <div className="is-size-7 has-text-weight-light">
                     {lastAlertUpdateTimeText}
                 </div>
                 {currentNotificationsArray.map(notif => <Notification notification={notif} />)}

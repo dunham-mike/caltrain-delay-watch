@@ -18,11 +18,11 @@ const Notification = (props) => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.75rem' }} key={props.notification.station + ' ' + props.notification.trainNumber}>
-            <div class="box">
-                <div class="content is-size-6">
+            <div className="box">
+                <div className="content is-size-6">
                     <strong>Delayed:</strong> {props.notification.direction} {props.notification.trainNumber} at {props.notification.station} Station<br/>
                     <ul style={{ listStyle: 'disc', paddingLeft: '30px' }}>
-                        <li class="has-text-primary">Expected Departure: {moment.utc(props.notification.expectedDepartureTime).tz("America/Los_Angeles").format('h:mm a')}</li>
+                        <li className="has-text-primary">Expected Departure: {moment.utc(props.notification.expectedDepartureTime).tz("America/Los_Angeles").format('h:mm a')}</li>
                         <li>Originally Scheduled Departure: {moment.utc(props.notification.scheduledDepartureTime).tz("America/Los_Angeles").format('h:mm a')}</li>
                     </ul> 
                     <strong>More Info:</strong>

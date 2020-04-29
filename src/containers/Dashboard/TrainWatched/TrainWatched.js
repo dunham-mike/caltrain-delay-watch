@@ -8,14 +8,14 @@ const TrainWatched = (props) => {
         + props.trainWatched.trainNumber + ' at ' + props.trainWatched.time;
 
     return (
-        <div class={"field" + (props.hasAddons ? " has-addons" : "")} style={props.hasAddons ? {} : { display: 'flex', flexDirection: 'column', alignItems: 'center' } }>
-            <p class="control">
+        <div className={"field" + (props.hasAddons ? " has-addons" : "")} style={props.hasAddons ? {} : { display: 'flex', flexDirection: 'column', alignItems: 'center' } }>
+            <p className="control">
                 <RouterLink to={{ 
                     pathname: '/watch-commute',
                     state: { commuteType: props.commuteType }
                 }}>
                     <button 
-                        class={
+                        className={
                             "button is-light has-text-weight-bold " 
                             + (props.commuteType === "AM" ? "is-warning" : "is-info")
                             // + (trainWatchedText.length > 40 ? " is-small" : "")
@@ -24,14 +24,14 @@ const TrainWatched = (props) => {
                     </button>
                 </RouterLink>
             </p>
-            <p class="control">
+            <p className="control">
                 <RouterLink to={{ 
                     pathname: '/watch-commute',
                     state: {
                         commuteType: props.commuteType
                     }
                 }}>
-                    <button class={"button " + (props.commuteType === "AM" ? "is-warning" : "is-info")}
+                    <button className={"button " + (props.commuteType === "AM" ? "is-warning" : "is-info")}
                         style={(props.hasAddons ? {} : { marginTop: '0.75rem'} )}
                     >Edit</button>
                 </RouterLink>

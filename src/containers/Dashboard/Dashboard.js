@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import moment from 'moment-timezone';
+// import moment from 'moment-timezone';
 
 import TrainWatched from './TrainWatched/TrainWatched';
 import CurrentNotifications from './CurrentNotifications/CurrentNotifications';
@@ -21,7 +21,9 @@ const FieldNoAddons = styled.div`
     }
 `
 
-// TODO: Add section for most recent notifications and a recent one, if it exists.
+// TODO: Display current status for watched trains if it exists
+// TODO: Add section to display the historical notifications.
+// TODO: Refactor AM and PM Commute JSX into the component?
 
 const Dashboard = (props) => {
     const context = useContext(store);
@@ -85,7 +87,7 @@ const Dashboard = (props) => {
         }
     }, [state.loading, state.error, state.initialDataLoaded, dispatch, fetchUserData, fetchCurrentStatus]);
 
-    // AM Commute Data
+    // AM Commute JSX
 
     let amData = (
         <RouterLink to={{ 
@@ -94,7 +96,7 @@ const Dashboard = (props) => {
                 commuteType: 'AM'
             }
         }}>
-            <button class="button is-warning is-outlined">Select a morning train to watch!</button>
+            <button className="button is-warning is-outlined">Select a morning train to watch!</button>
         </RouterLink>
     );
 
@@ -119,7 +121,7 @@ const Dashboard = (props) => {
         );
     }
 
-    // PM Commute Data
+    // PM Commute JSX
 
     let pmData = (
         <RouterLink to={{ 
@@ -128,7 +130,7 @@ const Dashboard = (props) => {
                 commuteType: 'PM'
             }
         }}>
-            <button class="button is-info is-outlined">Select an evening train to watch!</button>
+            <button className="button is-info is-outlined">Select an evening train to watch!</button>
         </RouterLink>
     );
 
@@ -154,7 +156,7 @@ const Dashboard = (props) => {
     }
     
     return (
-        <div class="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
+        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
             {state.initialDataLoaded 
                 ?   <React.Fragment>
                         <CurrentNotifications 
@@ -164,8 +166,8 @@ const Dashboard = (props) => {
                         <div>
                             <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
                         </div>
-                        <div class={(state.loading || state.error ? "is-hidden" : "" )}>
-                            <div class="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
+                        <div className={(state.loading || state.error ? "is-hidden" : "" )}>
+                            <div className="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
                                 Your AM Train
                             </div>
                             <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
@@ -174,7 +176,7 @@ const Dashboard = (props) => {
                             <div>
                                 <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
                             </div>
-                            <div class="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
+                            <div className="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
                                 Your PM Train
                             </div>
                             <div style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
