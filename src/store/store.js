@@ -13,21 +13,13 @@ const initialState = {
         initialDataLoaded: false,
         amTrainWatched: null,
         pmTrainWatched: null,
+        amTrainStatus: null,
+        pmTrainStatus: null,
+        lastTrainStatusUpdate: null,
         // lastAlertUpdateTime: moment().subtract(1, 'day'), // TODO: replace with real data
         lastAlertUpdateTime: moment().subtract(7, 'minute'), // TODO: replace with real data
         mostRecentNotifications: [],
-        // currentAlert: null,
         currentStatus: null,
-        // currentAlert: {
-        //     calendarDate: moment().subtract(1, 'hour'),
-        //     train: {
-        //         station: 'Burlingame',
-        //         direction: 'NB',
-        //         time: '6:06 am',
-        //         trainNumber: '103'
-        //     },
-        //     expectedArrivalTime: '6:38 am'
-        // },
         historicalAlerts: [],
         timetables: {
             weekday: null,
@@ -94,13 +86,30 @@ const StateProvider = ( { children } ) => {
                     newState = {
                         ...state,
                         amTrainWatched: action.train,
+                        amTrainStatus: null,
                         loading: false,
                     }
                 } else if(action.trainType === 'PM') {
                     newState = {
                         ...state,
                         pmTrainWatched: action.train,
+                        pmTrainStatus: null,
                         loading: false,
+                    }
+                } else {
+                    throw new Error();
+                }
+                return newState;
+            case 'UPDATE_TRAIN_STATUS':
+                if(action.commuteType === 'AM') {
+                    newState = {
+                        ...state,
+                        amTrainStatus: action.status,
+                    }
+                } else if(action.commuteType === 'PM') {
+                    newState = {
+                        ...state,
+                        pmTrainStatus: action.status,
                     }
                 } else {
                     throw new Error();

@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
-// import moment from 'moment-timezone';
+import moment from 'moment-timezone';
 
 import TrainWatched from './TrainWatched/TrainWatched';
 import CurrentNotifications from './CurrentNotifications/CurrentNotifications';
@@ -87,6 +87,62 @@ const Dashboard = (props) => {
         }
     }, [state.loading, state.error, state.initialDataLoaded, dispatch, fetchUserData, fetchCurrentStatus]);
 
+    // Update train statuses if needed
+
+    if(state.currentStatus && moment.utc(state.currentStatus.createdAt).isAfter(moment.utc().subtract(30, 'minutes'))
+        && (state.lastTrainStatusUpdate === null 
+                || moment.utc(state.currentStatus.createdAt).isAfter(moment.utc(state.lastTrainStatusUpdate))
+            )
+    ) {
+        const currentStatuses = state.currentStatus.currentStatuses;
+        let amStatusFound = false;
+        let pmStatusFound = false;
+
+        for(let i=0; i<currentStatuses.length; i++) {
+            const thisCurrentStatus = currentStatuses[i];
+
+            if(state.amTrainWatched !== null 
+                && !amStatusFound 
+                && thisCurrentStatus.station === state.amTrainWatched.station
+                && thisCurrentStatus.direction === state.amTrainWatched.direction
+                && thisCurrentStatus.trainNumber === state.amTrainWatched.trainNumber
+            ) {
+                amStatusFound = true;
+
+                if(state.amTrainStatus === null 
+                    || thisCurrentStatus.expectedDepartureTime !== state.amTrainStatus.expectedDepartureTime 
+                ) {
+                    dispatch({ 
+                        type: 'UPDATE_TRAIN_STATUS', 
+                        commuteType: 'AM', 
+                        status: thisCurrentStatus,
+                        updateTime: state.currentStatus.createdAt
+                     })
+                }
+
+            } else if(state.pmTrainWatched !== null 
+                && !pmStatusFound 
+                && thisCurrentStatus.station === state.pmTrainWatched.station
+                && thisCurrentStatus.direction === state.pmTrainWatched.direction
+                && thisCurrentStatus.trainNumber === state.pmTrainWatched.trainNumber
+            ) {
+                pmStatusFound = true;
+
+                if(state.pmTrainStatus === null 
+                    || thisCurrentStatus.expectedDepartureTime !== state.pmTrainStatus.expectedDepartureTime 
+                ) {
+
+                    dispatch({ 
+                        type: 'UPDATE_TRAIN_STATUS', 
+                        commuteType: 'PM', 
+                        status: thisCurrentStatus,
+                        updateTime: state.currentStatus.createdAt
+                    })
+                }
+            }
+        }
+    }
+
     // AM Commute JSX
 
     let amData = (
@@ -108,6 +164,7 @@ const Dashboard = (props) => {
                         hasAddons={true}
                         commuteType="AM"
                         trainWatched={state.amTrainWatched}
+                        trainStatus={state.amTrainStatus}
                     />
                 </FieldHasAddons>
                 <FieldNoAddons>
@@ -115,6 +172,7 @@ const Dashboard = (props) => {
                         hasAddons={false}
                         commuteType="AM"
                         trainWatched={state.amTrainWatched}
+                        trainStatus={state.amTrainStatus}
                     />
                 </FieldNoAddons>
             </React.Fragment>
@@ -142,6 +200,7 @@ const Dashboard = (props) => {
                         hasAddons={true}
                         commuteType="PM"
                         trainWatched={state.pmTrainWatched}
+                        trainStatus={state.pmTrainStatus}
                     />
                 </FieldHasAddons>
                 <FieldNoAddons>
@@ -149,6 +208,7 @@ const Dashboard = (props) => {
                         hasAddons={false}
                         commuteType="PM"
                         trainWatched={state.pmTrainWatched}
+                        trainStatus={state.pmTrainStatus}
                     />
                 </FieldNoAddons>
             </React.Fragment>
