@@ -89,7 +89,7 @@ export const AuthorizationForm = (props) => {
     }
     
     return(
-        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
+        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
             {authRedirect}
             <AuthorizationErrorModal isAuthorizationErrorModalActive={error !== null} errorMessage={error} closeAuthorizationErrorModal={closeAuthorizationErrorModal} />
             <div className="is-size-5 has-text-weight-bold" style={{ display: 'flex', justifyContent: 'center' }}>

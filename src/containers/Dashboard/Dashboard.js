@@ -243,7 +243,7 @@ const Dashboard = (props) => {
     }
     
     return (
-        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
+        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
             {state.initialDataLoaded 
                 ?   <React.Fragment>
                         <CurrentNotifications 

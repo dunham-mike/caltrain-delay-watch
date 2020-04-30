@@ -13,7 +13,7 @@ const LandingPage = (props) => {
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 zIndex: '-1',
-                backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                backgroundColor: 'rgba(0, 0, 0, 0.45)',
                 backgroundBlendMode: 'darken',
              }}
             >
@@ -25,14 +25,14 @@ const LandingPage = (props) => {
                             marginRight: 'auto',
                             maxWidth: '700px' 
                         }}>
-                        Get a text or email whenever your Caltrain is more than a few minutes late
+                        Get a text or email whenever your usual Caltrain is more than a few minutes late
                     </div>
                     <div className="has-text-white is-size-5 has-text-centered has-text-weight-bold" 
                         style={{ 
                             marginTop: '1.5rem',
                             marginLeft: 'auto',
                             marginRight: 'auto',
-                            maxWidth: '375px' 
+                            maxWidth: '450px' 
                         }}
                     >
                         Sleep in, get a few more things done at the office, or just catch a different train.
