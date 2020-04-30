@@ -14,7 +14,12 @@ const TrainWatched = (props) => {
     if(props.trainStatus) {
         trainStatusDisplay = (
             <div className="has-text-white has-text-centered">
-                <span className={"has-text-weight-bold " + (props.trainStatus.status !== "On Time" ? "has-text-primary" : "has-text-white")}>{props.trainStatus.status}</span> - Expected Departure: {moment.utc(props.trainStatus.expectedDepartureTime).tz('America/Los_Angeles').format('h:mm a')}
+                <span className={
+                    "has-text-weight-bold " 
+                    + (props.trainStatus.status !== "On Time" ? (props.trainStatus.minutesLate >= 10 ? "has-text-primary" : "has-text-warning") : "has-text-white")}
+                >
+                    {props.trainStatus.status}
+                </span> - Expected Departure: {moment.utc(props.trainStatus.expectedDepartureTime).tz('America/Los_Angeles').format('h:mm a')}
             </div>
         );
     }
