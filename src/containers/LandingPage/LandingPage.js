@@ -25,17 +25,17 @@ const LandingPage = (props) => {
                             marginRight: 'auto',
                             maxWidth: '725px' 
                         }}>
-                        Get a text or email whenever your usual Caltrain will be more than a few minutes late
+                        Your commute just became a lot more reliable
                     </div>
                     <div className="has-text-white is-size-5 has-text-centered has-text-weight-bold" 
                         style={{ 
-                            marginTop: '1.5rem',
+                            marginTop: '2rem',
                             marginLeft: 'auto',
                             marginRight: 'auto',
                             maxWidth: '425px' 
                         }}
                     >
-                        Sleep in, get a couple more things done at the office, or just catch a different train.
+                        Get a text or email whenever your usual Caltrain will be more than a few minutes late.
                     </div>
                     <div style={{ marginTop: '6rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <RouterLink to="/create-account">
