@@ -143,7 +143,7 @@ const Dashboard = (props) => {
                         type: 'UPDATE_TRAIN_STATUS', 
                         commuteType: 'AM', 
                         status: thisCurrentStatus,
-                        updateTime: state.currentStatus.createdAt
+                        // updateTime: state.currentStatus.createdAt
                      })
                 }
 
@@ -163,10 +163,28 @@ const Dashboard = (props) => {
                         type: 'UPDATE_TRAIN_STATUS', 
                         commuteType: 'PM', 
                         status: thisCurrentStatus,
-                        updateTime: state.currentStatus.createdAt
+                        // updateTime: state.currentStatus.createdAt
                     })
                 }
             }
+        }
+
+        if(!amStatusFound && state.amTrainStatus !== null) {
+            dispatch({ 
+                type: 'UPDATE_TRAIN_STATUS', 
+                commuteType: 'AM', 
+                status: null,
+                // updateTime: state.currentStatus.createdAt
+             })
+        }
+
+        if(!pmStatusFound && state.pmTrainStatus !== null) {
+            dispatch({ 
+                type: 'UPDATE_TRAIN_STATUS', 
+                commuteType: 'PM', 
+                status: null,
+                // updateTime: state.currentStatus.createdAt
+             })
         }
     }
 
