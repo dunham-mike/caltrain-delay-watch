@@ -35,7 +35,7 @@ const LandingPage = (props) => {
                             maxWidth: '425px' 
                         }}
                     >
-                        Get a text or email whenever your usual Caltrain will be more than a few minutes late.
+                        Get a text whenever your usual Caltrain will be more than a few minutes late.
                     </div>
                     <div style={{ marginTop: '6rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <RouterLink to="/create-account">

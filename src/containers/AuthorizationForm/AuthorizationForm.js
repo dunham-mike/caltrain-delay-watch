@@ -65,14 +65,20 @@ export const AuthorizationForm = (props) => {
     const createAccountSubmitHandler = async (values, { setSubmitting }) => {
         console.log('createAccountSubmitHandler() fired!');
         console.log(values);
+        const accountCreationBody = {
+            "user": {
+                "email": values.email,
+                "password": values.password,
+                "preferredNotificationMethod": values.preferredNotificationMethod
+            }
+        };
+
+        if(values.preferredNotificationMethod === "sms") {
+            accountCreationBody.phoneNumber = values.phoneNumber;
+        }
+
         try {
-            const response = await axios.post('http://localhost:8082/api/auth/create-account',
-                {
-                    "user": {
-                        "email": values.email,
-                        "password": values.password
-                    }
-                })
+            const response = await axios.post('http://localhost:8082/api/auth/create-account', accountCreationBody);
             console.log('response:', response);
 
             if(response.data === 'Account successfully created.') {
@@ -110,13 +116,13 @@ export const AuthorizationForm = (props) => {
 
     if(componentVersion === 'CreateAccount') {
         initialValues.preferredNotificationMethod = 'sms';
-        initialValues.tel = '';
+        initialValues.phoneNumber = '';
 
         validationSchema.preferredNotificationMethod = Yup.string().required('Required');
 
         const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
-        validationSchema.tel = Yup.string()
+        validationSchema.phoneNumber = Yup.string()
             .when('preferredNotificationMethod', {
                 is: 'sms',
                 then: Yup.string()
@@ -172,8 +178,7 @@ export const AuthorizationForm = (props) => {
                                             {({ field }) => (
                                                 <>
                                                     <div className="control has-text-white"
-                                                        style={{ paddingLeft: '0.375rem' }}
-                                                        // style={{ display: 'flex', justifyContent: 'center' }}
+                                                        style={{ paddingLeft: '1.125rem', paddingRight: '1.125rem', display: 'flex', justifyContent: 'space-between' }}
                                                     >
                                                         <RadioLabel className="radio">
                                                             <input
@@ -191,7 +196,7 @@ export const AuthorizationForm = (props) => {
                                                             <input
                                                                 {...field}
                                                                 onChange={(value) => { 
-                                                                    values['tel'] = '';
+                                                                    values['phoneNumber'] = '';
                                                                     field.onChange(value); 
                                                                 }}
                                                                 id="web app"
@@ -212,7 +217,7 @@ export const AuthorizationForm = (props) => {
                                                     <label className="label has-text-white">
                                                         Cell Number:
                                                     </label>
-                                                    <Field type="input" name="tel" id="tel">
+                                                    <Field type="input" name="phoneNumber" id="phoneNumber">
                                                         {({ field }) => (                                
                                                             <PhoneInput
                                                                 className="input"
@@ -223,7 +228,7 @@ export const AuthorizationForm = (props) => {
                                                             />
                                                         )}
                                                     </Field>
-                                                    <ErrorMessage name="tel" component="div" className="has-text-primary" style={{ marginTop: '0.375rem', paddingLeft: '0.375rem' }} />
+                                                    <ErrorMessage name="phoneNumber" component="div" className="has-text-primary" style={{ marginTop: '0.375rem', paddingLeft: '0.375rem' }} />
                                                 </div>
                                             :   null )}
                                     </React.Fragment>
