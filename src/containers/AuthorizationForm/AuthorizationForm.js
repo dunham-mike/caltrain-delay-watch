@@ -5,8 +5,14 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import { store } from '../../store/store';
+import styled from 'styled-components';
+import PhoneInput from "react-phone-number-input/input";
 
 import AuthorizationErrorModal from '../../components/AuthorizationErrorModal/AuthorizationErrorModal';
+
+const RadioLabel = styled.label`
+    &:hover { color: white; };
+`
 
 export const AuthorizationForm = (props) => {
     const [error, setError] = useState(null);
@@ -87,6 +93,40 @@ export const AuthorizationForm = (props) => {
     const closeAuthorizationErrorModal = () => {
         setError(null);
     }
+
+    // let notificationFields = null;
+
+    let validationSchema = {
+        email: Yup.string()
+            .email('Invalid email address')
+            .required('Required'),
+        password: Yup.string()
+            .min(6, 'Must be 6 characters or more')
+            .max(20, 'Must be 20 characters or less')
+            .required('Required'),
+    };
+
+    let initialValues = { email: '', password: '' };
+
+    if(componentVersion === 'CreateAccount') {
+        initialValues.preferredNotificationMethod = 'sms';
+        initialValues.tel = '';
+
+        validationSchema.preferredNotificationMethod = Yup.string().required('Required');
+
+        const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
+        validationSchema.tel = Yup.string()
+            .when('preferredNotificationMethod', {
+                is: 'sms',
+                then: Yup.string()
+                    .min(12, 'Must be a valid US phone number')
+                    .max(12, 'Must be a valid US phone number')
+                    .required('Required')
+            });
+
+        console.log('validationSchema:', validationSchema);
+    }
     
     return(
         <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
@@ -97,23 +137,15 @@ export const AuthorizationForm = (props) => {
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Formik
-                    initialValues={{ email: '', password: '' }}
-                    validationSchema={Yup.object().shape({
-                        email: Yup.string()
-                            .email('Invalid email address')
-                            .required('Required'),
-                        password: Yup.string()
-                            .min(6, 'Must be 6 characters or more')
-                            .max(20, 'Must be 20 characters or less')
-                            .required('Required'),
-                    })}
+                    initialValues={initialValues}
+                    validationSchema={Yup.object().shape(validationSchema)}
                     onSubmit={
                         componentVersion === 'CreateAccount'
                         ? (values, { setSubmitting }) => { createAccountSubmitHandler(values, { setSubmitting })}
                         : (values, { setSubmitting }) => { loginSubmitHandler(values, { setSubmitting })}
                     }
                 >
-                    {({ isSubmitting, isValid, dirty, touched }) => (
+                    {({ isSubmitting, isValid, dirty, touched, handleChange, handleBlur, values }) => (
                         <Form>
                             <div className="field" style={{ marginTop: '0.75rem', minWidth: '300px' }}>
                                 <label className="label has-text-white">
@@ -129,10 +161,78 @@ export const AuthorizationForm = (props) => {
                                 <Field type="password" name="password" className="input" />
                                 <ErrorMessage name="password" component="div" className="has-text-primary" style={{ marginTop: '0.375rem', paddingLeft: '0.375rem' }} />
                             </div>
+                            
+                            {(  componentVersion === 'CreateAccount'
+                                ?
+                                    <React.Fragment>
+                                        <label className="label has-text-white">
+                                            Preferred Notification Method:
+                                        </label>
+                                        <Field name="preferredNotificationMethod" className="control">
+                                            {({ field }) => (
+                                                <>
+                                                    <div className="control has-text-white"
+                                                        style={{ paddingLeft: '0.375rem' }}
+                                                        // style={{ display: 'flex', justifyContent: 'center' }}
+                                                    >
+                                                        <RadioLabel className="radio">
+                                                            <input
+                                                                {...field}
+                                                                id="sms"
+                                                                value="sms"
+                                                                checked={field.value === 'sms'}
+                                                                name="preferredNotificationMethod"
+                                                                type="radio"
+                                                                style={{ marginRight: '0.375rem' }}
+                                                            />
+                                                            Text Message
+                                                        </RadioLabel>
+                                                        <RadioLabel className="radio">
+                                                            <input
+                                                                {...field}
+                                                                id="web app"
+                                                                value="web app"
+                                                                name="preferredNotificationMethod"
+                                                                checked={field.value === 'web app'}
+                                                                type="radio"
+                                                                style={{ marginRight: '0.375rem' }}
+                                                            />
+                                                            Web App Only
+                                                        </RadioLabel>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </Field>
+                                        {(  values['preferredNotificationMethod'] === "sms" 
+                                            ?   <div className="field" style={{ marginTop: '0.75rem', minWidth: '300px' }}>
+                                                    <label className="label has-text-white">
+                                                        Cell Number:
+                                                    </label>
+                                                    <Field type="input" name="tel" id="tel">
+                                                        {({ field }) => (                                
+                                                            <PhoneInput
+                                                                className="input"
+                                                                country="US"
+                                                                onChange={handleChange(field.name)}
+                                                                onBlur={handleBlur(field.name)}
+                                                                maxLength="16"
+                                                            />
+                                                        )}
+                                                    </Field>
+                                                    <ErrorMessage name="tel" component="div" className="has-text-primary" style={{ marginTop: '0.375rem', paddingLeft: '0.375rem' }} />
+                                                </div>
+                                            :   null )}
+                                    </React.Fragment>
+                                :   null
+                            )}
+
                             <div className="field" style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center' }}>
                                 <button 
                                     className={"button is-outlined " + 
-                                        ((!isValid || !dirty || isSubmitting || !touched['email']) 
+                                        ((
+                                            !isValid || !dirty || isSubmitting || !touched['email'] 
+                                            // || !touched['phoneNumber']
+                                        ) 
                                         ? "is-light" 
                                         : "is-success")
                                     }
@@ -141,6 +241,7 @@ export const AuthorizationForm = (props) => {
                                         || !dirty 
                                         || isSubmitting 
                                         || !touched['email']
+                                        // || !touched['phoneNumber']
                                         // || !touched['password'] // Don't check this, so that submit button will activate once minimum password length reached
                                     }
                                     type="submit"
