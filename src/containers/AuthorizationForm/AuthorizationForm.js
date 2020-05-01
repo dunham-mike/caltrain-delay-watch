@@ -74,7 +74,7 @@ export const AuthorizationForm = (props) => {
         };
 
         if(values.preferredNotificationMethod === "sms") {
-            accountCreationBody.phoneNumber = values.phoneNumber;
+            accountCreationBody.user.phoneNumber = values.phoneNumber;
         }
 
         try {
