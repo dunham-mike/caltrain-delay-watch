@@ -190,6 +190,10 @@ export const AuthorizationForm = (props) => {
                                                         <RadioLabel className="radio">
                                                             <input
                                                                 {...field}
+                                                                onChange={(value) => { 
+                                                                    values['tel'] = '';
+                                                                    field.onChange(value); 
+                                                                }}
                                                                 id="web app"
                                                                 value="web app"
                                                                 name="preferredNotificationMethod"
