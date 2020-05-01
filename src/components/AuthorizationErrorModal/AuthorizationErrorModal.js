@@ -10,11 +10,13 @@ export const AuthorizationErrorModal = (props) => {
             ></div>
             
             <div className="modal-content" style={{ minWidth: '300px', width: '0' }}>
-                <div className="box has-text-primary has-text-centered">
+                <div className="box has-text-primary has-text-centered" style={{ display: 'flex', flexDirection: 'column' }}>
                     {props.errorMessage}
-                    <button className="button is-primary" style={{ marginTop: '1rem'}} onClick={props.closeAuthorizationErrorModal}>
-                        Close
-                    </button>
+                    <div>
+                        <button className="button is-primary" style={{ marginTop: '1rem'}} onClick={props.closeAuthorizationErrorModal}>
+                            Close
+                        </button>
+                    </div>
                 </div>
             </div>
             <button className="modal-close is-large" aria-label="close" onClick={props.closeAuthorizationErrorModal}></button>
