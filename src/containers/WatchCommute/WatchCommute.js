@@ -72,7 +72,7 @@ const WatchCommute = (props) => {
         dispatch({ type: 'INITIATE_SERVER_REQUEST' });
  
         if(train === null) {            
-            axios.delete('http://localhost:8082/api/watched-trains',
+            axios.delete('http://localhost:8082/api/user-data',
                 { // Different format due to delete's parameters: https://github.com/axios/axios/issues/897#issuecomment-343715381
                     data: {
                         commuteType: commuteType
@@ -94,7 +94,7 @@ const WatchCommute = (props) => {
                 dispatch({ type: 'SET_ERROR', error: 'Deleting Watched Train for user failed.' });
             });
         } else {
-            axios.post('http://localhost:8082/api/watched-trains',
+            axios.post('http://localhost:8082/api/user-data',
                 {
                     commuteType: commuteType,
                     trainInfo: {

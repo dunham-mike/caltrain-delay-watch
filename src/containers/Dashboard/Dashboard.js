@@ -24,10 +24,10 @@ const Dashboard = (props) => {
     const context = useContext(store);
     const { dispatch, state } = context;
 
-    // Load Initial Data
+    // Load App Data
 
     const fetchUserData = useCallback(async () => {
-        const fetchResponse = await axios.get('http://localhost:8082/api/watched-trains',
+        const fetchResponse = await axios.get('http://localhost:8082/api/user-data',
                 { headers: { 'Authorization': `Bearer ${state.token}` } }
             )
             .catch(fetchError => {
