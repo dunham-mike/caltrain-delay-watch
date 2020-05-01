@@ -100,8 +100,6 @@ export const AuthorizationForm = (props) => {
         setError(null);
     }
 
-    // let notificationFields = null;
-
     let validationSchema = {
         email: Yup.string()
             .email('Invalid email address')
@@ -151,7 +149,7 @@ export const AuthorizationForm = (props) => {
                         : (values, { setSubmitting }) => { loginSubmitHandler(values, { setSubmitting })}
                     }
                 >
-                    {({ isSubmitting, isValid, dirty, touched, handleChange, handleBlur, values }) => (
+                    {({ isSubmitting, isValid, dirty, touched, handleChange, handleBlur, values, setFieldValue }) => (
                         <Form>
                             <div className="field" style={{ marginTop: '0.75rem', minWidth: '300px' }}>
                                 <label className="label has-text-white">
@@ -195,10 +193,6 @@ export const AuthorizationForm = (props) => {
                                                         <RadioLabel className="radio">
                                                             <input
                                                                 {...field}
-                                                                onChange={(value) => { 
-                                                                    values['phoneNumber'] = '';
-                                                                    field.onChange(value); 
-                                                                }}
                                                                 id="web app"
                                                                 value="web app"
                                                                 name="preferredNotificationMethod"
@@ -222,7 +216,8 @@ export const AuthorizationForm = (props) => {
                                                             <PhoneInput
                                                                 className="input"
                                                                 country="US"
-                                                                onChange={handleChange(field.name)}
+                                                                value={field.value}
+                                                                onChange={(value) => setFieldValue("phoneNumber", value)}
                                                                 onBlur={handleBlur(field.name)}
                                                                 maxLength="16"
                                                             />

@@ -10,6 +10,8 @@ const initialState = {
         token: null,
         loading: false,
         error: null,
+        preferredNotificationMethod: null,
+        phoneNumber: null,
         initialDataLoaded: false,
         amTrainWatched: null,
         pmTrainWatched: null,
@@ -55,11 +57,11 @@ const StateProvider = ( { children } ) => {
             case 'SET_USER_DATA':
                 newState = {
                     ...state,
-                    // loading: false,
-                    // initialDataLoaded: true,
                     mostRecentNotifications: action.mostRecentNotifications,
                     amTrainWatched: action.amTrainWatched,
                     pmTrainWatched: action.pmTrainWatched,
+                    preferredNotificationMethod: action.preferredNotificationMethod,
+                    phoneNumber: action.phoneNumber
                 }
                 return newState;
             case 'SET_CURRENT_STATUS':
@@ -84,6 +86,13 @@ const StateProvider = ( { children } ) => {
                 newState = {
                     ...state,
                     loading: false,
+                }
+                return newState;
+            case 'UPDATE_USER_PREFERENCES':
+                newState = {
+                    ...state,
+                    preferredNotificationMethod: action.preferredNotificationMethod,
+                    phoneNumber: action.phoneNumber
                 }
                 return newState;
             case 'UPDATE_TRAIN_WATCHED':

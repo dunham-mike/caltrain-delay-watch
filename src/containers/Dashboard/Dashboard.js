@@ -57,11 +57,15 @@ const Dashboard = (props) => {
         const currentStatusFetchResponse = await fetchCurrentStatus();
 
         if(userFetchResponse !== null && currentStatusFetchResponse !== null) {
+            console.log('userFetchResponse:', userFetchResponse);
+
             dispatch({ 
                 type: 'SET_USER_DATA', 
                 mostRecentNotifications: (userFetchResponse.data.mostRecentNotifications ? userFetchResponse.data.mostRecentNotifications : null),
                 amTrainWatched: (userFetchResponse.data.amWatchedTrain ? userFetchResponse.data.amWatchedTrain.trainInfo : null), 
-                pmTrainWatched: (userFetchResponse.data.pmWatchedTrain ? userFetchResponse.data.pmWatchedTrain.trainInfo : null) 
+                pmTrainWatched: (userFetchResponse.data.pmWatchedTrain ? userFetchResponse.data.pmWatchedTrain.trainInfo : null),
+                preferredNotificationMethod: userFetchResponse.data.preferredNotificationMethod,
+                phoneNumber: (userFetchResponse.data.phoneNumber ? userFetchResponse.data.phoneNumber : null)
             });
 
             dispatch({

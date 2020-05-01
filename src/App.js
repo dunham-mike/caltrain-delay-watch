@@ -6,6 +6,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import WatchCommute from './containers/WatchCommute/WatchCommute';
 import AuthorizationForm from './containers/AuthorizationForm/AuthorizationForm';
 import LandingPage from './containers/LandingPage/LandingPage';
+import Settings from './containers/Settings/Settings';
 import Logout from './containers/AuthorizationForm/Logout/Logout';
 
 import { store } from './store/store';
@@ -31,6 +32,7 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact component={Dashboard} />
                     <Route path="/watch-commute" component={WatchCommute} />
+                    <Route path="/settings" component={Settings} />
                     <Route path="/logout" component={Logout} />
                     <Redirect to="/" />
                 </Switch>
@@ -54,20 +56,27 @@ const App = () => {
                         } 
                     </div>
                     {state.token !== null 
-                        ?   <div className="navbar-item">
-                                <RouterLink className="navbar-item has-text-white" to="/logout">
-                                    Log out
-                                </RouterLink>
+                        ?   <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                <div className="navbar-item">
+                                    <RouterLink className="navbar-item has-text-white" to="/settings">
+                                        Settings
+                                    </RouterLink>
+                                </div>
+                                <div className="navbar-item">
+                                    <RouterLink className="navbar-item has-text-white" to="/logout">
+                                        Log out
+                                    </RouterLink>
+                                </div>
                             </div>
                         : <div>
                             <div className="navbar-item">
                                 <div className="buttons">
-                                <RouterLink className="button is-primary is-hidden-mobile" to="/create-account">
-                                    <strong>Sign up</strong>
-                                </RouterLink>
-                                <RouterLink className="button is-light" to="/login">
-                                    Log in
-                                </RouterLink>
+                                    <RouterLink className="button is-primary is-hidden-mobile" to="/create-account">
+                                        <strong>Sign up</strong>
+                                    </RouterLink>
+                                    <RouterLink className="button is-light" to="/login">
+                                        Log in
+                                    </RouterLink>
                                 </div>
                             </div>
                         </div>
