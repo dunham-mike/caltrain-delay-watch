@@ -109,10 +109,16 @@ const Dashboard = (props) => {
     const refreshStatuses = async () => {
         console.log('Refresh statuses here');
 
+        const dayOfWeek = moment.utc().tz('America/Los_Angeles').day();
+
         if(state.currentStatus && moment.utc().isBefore(moment.utc(state.currentStatus.createdAt).add(5, 'minutes'))) {
             setModalMessage(
                 'New status updates are available every 5 minutes on weekdays. Please try again after ' 
                 + moment.utc(state.currentStatus.createdAt).tz("America/Los_Angeles").add(5, 'minutes').format('h:mm a') + '.'
+            );
+        } else if(dayOfWeek === 0 || dayOfWeek === 6) {
+            setModalMessage(
+                'New status updates are available every 5 minutes on weekdays. Please try again on Monday.'
             );
         } else {
             setIsRefreshing(true);
