@@ -29,6 +29,7 @@ const WatchCommute = (props) => {
                 })
                 .catch(fetchError => {
                     console.log('[Error] Loading Caltrain weekday timetables failed:', fetchError);
+                    dispatch({ type: 'SET_ERROR', error: 'Loading Caltrain weekday timetables failed.' });
                 });
         }
     }, [state.timetables.weekday, state.token, dispatch]);

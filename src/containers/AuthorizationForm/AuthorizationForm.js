@@ -118,8 +118,6 @@ export const AuthorizationForm = (props) => {
 
         validationSchema.preferredNotificationMethod = Yup.string().required('Required');
 
-        const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-
         validationSchema.phoneNumber = Yup.string()
             .when('preferredNotificationMethod', {
                 is: 'sms',

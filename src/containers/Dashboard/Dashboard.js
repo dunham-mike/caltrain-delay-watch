@@ -32,11 +32,12 @@ const Dashboard = (props) => {
             )
             .catch(fetchError => {
                 console.log('[Error] Loading Watched Trains and Notifications for user failed:', fetchError);
+                dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
                 return null;
             });
 
         return fetchResponse;
-    }, [state.token]);
+    }, [state.token, dispatch]);
 
     const fetchCurrentStatus = useCallback(async () => {
         const fetchResponse = await axios.get('http://localhost:8082/api/current-status',
@@ -44,11 +45,12 @@ const Dashboard = (props) => {
             )
             .catch(fetchError => {
                 console.log('[Error] Loading Current Status failed:', fetchError);
+                dispatch({ type: 'SET_ERROR', error: 'Loading Current Status failed.' });
                 return null;
             });
 
         return fetchResponse;
-    }, [state.token]);
+    }, [state.token, dispatch]);
 
     const fetchAppData = useCallback(async () => {
         dispatch({ type: 'INITIATE_SERVER_REQUEST' });
@@ -265,7 +267,7 @@ const Dashboard = (props) => {
     }
     
     return (
-        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
+        <div className={"has-text-white" + (state.loading || state.error ? " is-hidden" : "" )} style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
             {state.initialDataLoaded 
                 ?   <React.Fragment>
                         <CurrentNotifications 
@@ -276,7 +278,7 @@ const Dashboard = (props) => {
                         <div>
                             <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />
                         </div>
-                        <div className={(state.loading || state.error ? "is-hidden" : "" )}>
+                        <div>
                             <div className="is-size-5 has-text-weight-semibold" style={{ marginTop: '1.5rem' }}>
                                 Your AM Train
                             </div>

@@ -9,6 +9,7 @@ import LandingPage from './containers/LandingPage/LandingPage';
 import Settings from './containers/Settings/Settings';
 import Logout from './containers/AuthorizationForm/Logout/Logout';
 import ErrorBoundary from './containers/ErrorBoundary/ErrorBoundary';
+import ForcedLogout from './components/ForcedLogout/ForcedLogout';
 
 import { store } from './store/store';
 
@@ -43,6 +44,7 @@ const App = () => {
 
     return (
         <ErrorBoundary>
+            {state.error !== null ? <ForcedLogout /> : null}
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
                 <nav className="navbar is-fixed-top has-background-grey-dark">
                     <div style={{ maxWidth: '850px', width: '100%', margin: 'auto', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}} >
