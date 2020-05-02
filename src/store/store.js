@@ -1,10 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 
-import moment from 'moment-timezone';
-// import tz from 'moment-timezone';
-
 // Pattern from: https://blog.logrocket.com/use-hooks-and-context-not-react-and-redux/
-
 const initialState = {
         user: null,
         token: null,
@@ -18,8 +14,6 @@ const initialState = {
         amTrainStatus: null,
         pmTrainStatus: null,
         lastTrainStatusUpdate: null,
-        // lastAlertUpdateTime: moment().subtract(1, 'day'), // TODO: replace with real data
-        lastAlertUpdateTime: moment().subtract(7, 'minute'), // TODO: replace with real data
         mostRecentNotifications: [],
         currentStatus: null,
         historicalAlerts: [],

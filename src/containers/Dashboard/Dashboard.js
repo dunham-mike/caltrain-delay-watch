@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback } from 'react';
+import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import moment from 'moment-timezone';
 import { store } from '../../store/store';
 import TrainWatched from './TrainWatched/TrainWatched';
 import CurrentNotifications from './CurrentNotifications/CurrentNotifications';
+import Modal from '../../components/Modal/Modal';
 
 const FieldHasAddons = styled.div`
     @media (max-width: 480px) {
@@ -23,6 +24,9 @@ const FieldNoAddons = styled.div`
 const Dashboard = (props) => {
     const context = useContext(store);
     const { dispatch, state } = context;
+
+    const [isRefreshing, setIsRefreshing] = useState(false);
+    const [modalMessage, setModalMessage] = useState(null);
 
     // Load App Data
 
@@ -106,18 +110,22 @@ const Dashboard = (props) => {
         console.log('Refresh statuses here');
 
         if(state.currentStatus && moment.utc().isBefore(moment.utc(state.currentStatus.createdAt).add(5, 'minutes'))) {
-            console.log('New status updates are available every 5 minutes on weekdays. Please try again after ' +
-                moment.utc(state.currentStatus.createdAt).tz("America/Los_Angeles").add(5, 'minutes').format('h:mm a')
+            setModalMessage(
+                'New status updates are available every 5 minutes on weekdays. Please try again after ' 
+                + moment.utc(state.currentStatus.createdAt).tz("America/Los_Angeles").add(5, 'minutes').format('h:mm a') + '.'
             );
         } else {
+            setIsRefreshing(true);
             const isRefreshSuccessful = await fetchAppData();
-            if(isRefreshSuccessful) {
-                console.log('Data successfully refreshed!');
-            } else {
-                console.log('Unable to refresh data. Please reload the page.');
+            setIsRefreshing(false);
+            if(!isRefreshSuccessful) {
+                dispatch({ type: 'SET_ERROR', error: 'Unable to refresh data.' });
             }
         }
+    }
 
+    const closeModal = () => {
+        setModalMessage(null);
     }
 
     // Update train statuses if needed
@@ -267,13 +275,15 @@ const Dashboard = (props) => {
     }
     
     return (
-        <div className={"has-text-white" + (state.loading || state.error ? " is-hidden" : "" )} style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
+        <div className={"has-text-white" + (!state.initialDataLoaded || state.error ? " is-hidden" : "" )} style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
+            <Modal modalMessage={modalMessage} closeModal={closeModal} isErrorModal={false} />
             {state.initialDataLoaded 
                 ?   <React.Fragment>
                         <CurrentNotifications 
                             statusLastUpdatedTime={(state.currentStatus ? state.currentStatus.createdAt : null)} 
                             mostRecentNotifications={state.mostRecentNotifications}  
                             refreshStatuses={refreshStatuses}
+                            isRefreshing={isRefreshing}
                         />
                         <div>
                             <hr style={{ width: '30%', margin: '1.5rem auto', height: '1px', backgroundColor: 'rgba(112, 112, 112, 1)' }} />

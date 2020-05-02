@@ -30,7 +30,7 @@ const CurrentNotifications = (props) => {
             <div className="is-size-5 has-text-weight-semibold" style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div>No Current Notifications</div>
                 <div>
-                    <button className="button is-white is-outlined is-small" onClick={props.refreshStatuses}>
+                    <button className={`button is-outlined is-small ${props.isRefreshing ? 'is-info' : 'is-white'}`} onClick={props.refreshStatuses}>
                         <span className="icon">
                             <FontAwesomeIcon icon={faSyncAlt} />                                
                         </span>
