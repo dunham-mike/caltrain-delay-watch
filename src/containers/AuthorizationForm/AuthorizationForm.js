@@ -10,6 +10,8 @@ import PhoneInput from "react-phone-number-input/input";
 
 import AuthorizationErrorModal from '../../components/AuthorizationErrorModal/AuthorizationErrorModal';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const RadioLabel = styled.label`
     &:hover { color: white; };
 `
@@ -34,7 +36,7 @@ export const AuthorizationForm = (props) => {
 
     const loginUser = async (email, password, { setSubmitting }) => {
         try {
-            const response = await axios.post('http://localhost:8082/api/auth/login',
+            const response = await axios.post(backendUrl + '/api/auth/login',
                 {
                     "user": {
                         "email": email,
@@ -78,7 +80,7 @@ export const AuthorizationForm = (props) => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8082/api/auth/create-account', accountCreationBody);
+            const response = await axios.post(backendUrl + '/api/auth/create-account', accountCreationBody);
             console.log('response:', response);
 
             if(response.data === 'Account successfully created.') {

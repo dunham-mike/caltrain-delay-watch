@@ -9,6 +9,8 @@ import TrainWatched from './TrainWatched/TrainWatched';
 import CurrentNotifications from './CurrentNotifications/CurrentNotifications';
 import Modal from '../../components/Modal/Modal';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const FieldHasAddons = styled.div`
     @media (max-width: 480px) {
         display: none;
@@ -31,7 +33,7 @@ const Dashboard = (props) => {
     // Load App Data
 
     const fetchUserData = useCallback(async () => {
-        const fetchResponse = await axios.get('http://localhost:8082/api/user-data',
+        const fetchResponse = await axios.get(backendUrl + '/api/user-data',
                 { headers: { 'Authorization': `Bearer ${state.token}` } }
             )
             .catch(fetchError => {
@@ -44,7 +46,7 @@ const Dashboard = (props) => {
     }, [state.token, dispatch]);
 
     const fetchCurrentStatus = useCallback(async () => {
-        const fetchResponse = await axios.get('http://localhost:8082/api/current-status',
+        const fetchResponse = await axios.get(backendUrl + '/api/current-status',
                 { headers: { 'Authorization': `Bearer ${state.token}` } }
             )
             .catch(fetchError => {

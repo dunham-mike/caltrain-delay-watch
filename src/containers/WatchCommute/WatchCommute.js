@@ -11,6 +11,8 @@ import { store } from '../../store/store';
 const operator = 'Caltrain';
 const scheduleType = 'Weekday';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const WatchCommute = (props) => {
     // Setting Up Data From Store
     const context = useContext(store);
@@ -20,7 +22,7 @@ const WatchCommute = (props) => {
     useEffect(() => {
         if(state.timetables.weekday === null) {
             dispatch({ type: 'INITIATE_SERVER_REQUEST' });
-            axios.get('http://localhost:8082/api/timetables/caltrain/weekday',
+            axios.get(backendUrl + '/api/timetables/caltrain/weekday',
                    { headers: { 'Authorization': `Bearer ${state.token}` } }
                 )
                 .then(fetchResponse => {
@@ -73,7 +75,7 @@ const WatchCommute = (props) => {
         dispatch({ type: 'INITIATE_SERVER_REQUEST' });
  
         if(train === null) {            
-            axios.delete('http://localhost:8082/api/user-data',
+            axios.delete(backendUrl + '/api/user-data',
                 { // Different format due to delete's parameters: https://github.com/axios/axios/issues/897#issuecomment-343715381
                     data: {
                         commuteType: commuteType
@@ -95,7 +97,7 @@ const WatchCommute = (props) => {
                 dispatch({ type: 'SET_ERROR', error: 'Deleting Watched Train for user failed.' });
             });
         } else {
-            axios.post('http://localhost:8082/api/user-data',
+            axios.post(backendUrl + '/api/user-data',
                 {
                     commuteType: commuteType,
                     trainInfo: {

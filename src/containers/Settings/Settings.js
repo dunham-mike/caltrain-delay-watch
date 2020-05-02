@@ -8,6 +8,8 @@ import styled from 'styled-components';
 
 import ErrorModal from '../../components/AuthorizationErrorModal/AuthorizationErrorModal';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const RadioLabel = styled.label`
     &:hover { color: white; };
 `
@@ -50,7 +52,7 @@ export const Settings = (props) => {
             
             try {
                 dispatch({ type: 'INITIATE_SERVER_REQUEST'});
-                const response = await axios.post('http://localhost:8082/api/user-data/preferences', userUpdateBody,
+                const response = await axios.post(backendUrl + '/api/user-data/preferences', userUpdateBody,
                         { headers: { 'Authorization': `Bearer ${state.token}` } }
                     );
                 dispatch({ type: 'SERVER_REQUEST_COMPLETE'});
