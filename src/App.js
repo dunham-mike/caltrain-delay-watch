@@ -45,7 +45,7 @@ const App = () => {
     return (
         <ErrorBoundary>
             {state.error !== null ? <ForcedLogout /> : null}
-            <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 52px)' }}>
                 <nav className="navbar is-fixed-top has-background-grey-dark">
                     <div style={{ maxWidth: '850px', width: '100%', margin: 'auto', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}} >
                         <div className="navbar-brand">
