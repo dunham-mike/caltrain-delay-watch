@@ -20,7 +20,7 @@ const LandingPage = (props) => {
                 <div style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '0.75rem 1.5rem' }}>
                     <div className="has-text-white is-size-3 has-text-centered has-text-weight-bold" 
                         style={{ 
-                            marginTop: '6rem',
+                            marginTop: '25vh',
                             marginLeft: 'auto',
                             marginRight: 'auto',
                             maxWidth: '725px' 
