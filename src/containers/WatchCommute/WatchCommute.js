@@ -156,8 +156,9 @@ const WatchCommute = (props) => {
         );
     }
 
-    const getActiveTrainsFromState = (activeStation, activeDirection, activeTimeframe) => {
-        let activeTrains = [];
+    const getActiveTrainsFromState = (activeStation, activeDirection, activeTimeframe, commuteType) => {
+        const amTrains = [];
+        const pmTrains = [];
 
         let shortActiveDirection = null;
         if(activeDirection === "NB") {
@@ -165,7 +166,7 @@ const WatchCommute = (props) => {
         } else if(activeDirection === "SB") {
             shortActiveDirection = "SB";
         } else {
-            return activeTrains;
+            return [];
         }
 
         const timetablesData = state.timetables[activeTimeframe];
@@ -204,19 +205,25 @@ const WatchCommute = (props) => {
                     trainNumber: stationTimetable[j].trainNumber,
                 };
 
-                activeTrains.push(trainObject);
+                if(moment('1970-01-01 ' + trainObject.time).isBefore(moment('1970-01-01 12:00 pm'))) {
+                    amTrains.push(trainObject);
+                } else {
+                    pmTrains.push(trainObject);
+                }
             }
         }
 
-        // TODO: shift activeTrains based on AM / PM prop, as well as trains before 3 am going to the end of the list
-
-        return activeTrains;
+        if(commuteType === "AM") {
+            return amTrains.concat(pmTrains);
+        } else {
+            return pmTrains.concat(amTrains);
+        }
     }
 
     let trainSchedule = null;
 
     if(station !== null && direction !== null) {
-        let activeTrains = getActiveTrainsFromState(station, direction, 'weekday');
+        let activeTrains = getActiveTrainsFromState(station, direction, 'weekday', commuteType);
         // let activeTrains = trains.filter((train => train.station === station && train.direction === direction))
 
         if(activeTrains.length === 0) {
