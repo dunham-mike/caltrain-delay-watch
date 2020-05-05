@@ -57,16 +57,11 @@ export const AuthorizationForm = (props) => {
         }
     }
 
-    const loginSubmitHandler = async (values, { setSubmitting }) => {
-        console.log('loginSubmitHandler() fired!');
-        console.log(values);
-        
+    const loginSubmitHandler = async (values, { setSubmitting }) => {        
         await loginUser(values.email, values.password, { setSubmitting });
     }
 
     const createAccountSubmitHandler = async (values, { setSubmitting }) => {
-        console.log('createAccountSubmitHandler() fired!');
-        console.log(values);
         const accountCreationBody = {
             "user": {
                 "email": values.email,

@@ -92,8 +92,7 @@ const Dashboard = (props) => {
     }, [dispatch, fetchUserData, fetchCurrentStatus]);
 
     useEffect(() => {
-        if(state.loading === false && state.error === null & state.initialDataLoaded === false) {
-
+        if(state.initialDataLoaded === false) {
             const fetchInitialData = async () => {
 
                 const isInitialLoadSuccessful = await fetchAppData();
@@ -104,7 +103,7 @@ const Dashboard = (props) => {
 
             fetchInitialData();
         }
-    }, [state.loading, state.error, state.initialDataLoaded, dispatch, fetchAppData]);
+    }, [dispatch, fetchAppData, state.initialDataLoaded]);
 
     // Refresh statuses
 
