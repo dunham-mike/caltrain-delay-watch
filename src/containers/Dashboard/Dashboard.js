@@ -81,6 +81,11 @@ const Dashboard = (props) => {
 
             dispatch({ type: 'SERVER_REQUEST_COMPLETE' });
 
+            if(userFetchResponse.data.amWatchedTrain === null && userFetchResponse.data.pmWatchedTrain === null) {
+                setModalMessage('Set up your commute to receive a notification any time your usual train is running 10 mins or more late.' 
+                + ' You can also update your preferred notification method under Settings. Happy commuting!');
+            }
+
             return true;
         } else {
             dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
@@ -160,7 +165,6 @@ const Dashboard = (props) => {
                         type: 'UPDATE_TRAIN_STATUS', 
                         commuteType: 'AM', 
                         status: thisCurrentStatus,
-                        // updateTime: state.currentStatus.createdAt
                      })
                 }
 
@@ -180,7 +184,6 @@ const Dashboard = (props) => {
                         type: 'UPDATE_TRAIN_STATUS', 
                         commuteType: 'PM', 
                         status: thisCurrentStatus,
-                        // updateTime: state.currentStatus.createdAt
                     })
                 }
             }
@@ -191,7 +194,6 @@ const Dashboard = (props) => {
                 type: 'UPDATE_TRAIN_STATUS', 
                 commuteType: 'AM', 
                 status: null,
-                // updateTime: state.currentStatus.createdAt
              })
         }
 
@@ -200,7 +202,6 @@ const Dashboard = (props) => {
                 type: 'UPDATE_TRAIN_STATUS', 
                 commuteType: 'PM', 
                 status: null,
-                // updateTime: state.currentStatus.createdAt
              })
         }
     }
