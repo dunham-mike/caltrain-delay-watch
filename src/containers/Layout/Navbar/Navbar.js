@@ -44,20 +44,19 @@ const Navbar = (props) => {
                         >
                             <div className="navbar-start">
                                 <div className="navbar-item">
-                                    <RouterLink className="navbar-item has-text-white" to="/">
+                                    <RouterLink className="navbar-item has-text-white" to="/" onClick={isHamburgerActive ? toggleHamburger : null}>
                                         Home
                                     </RouterLink>
                                 </div>
                             </div>
                             <div className="navbar-end">
-                                
                                 <div className="navbar-item">
-                                    <RouterLink className="navbar-item has-text-white" to="/settings">
+                                    <RouterLink className="navbar-item has-text-white" to="/settings" onClick={isHamburgerActive ? toggleHamburger : null}>
                                         Settings
                                     </RouterLink>
                                 </div>
                                 <div className="navbar-item">
-                                    <RouterLink className="navbar-item has-text-white" to="/logout">
+                                    <RouterLink className="navbar-item has-text-white" to="/logout" onClick={isHamburgerActive ? toggleHamburger : null}>
                                         Log out
                                     </RouterLink>
                                 </div>
