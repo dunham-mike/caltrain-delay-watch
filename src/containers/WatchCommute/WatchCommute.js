@@ -255,12 +255,12 @@ const WatchCommute = (props) => {
             const firstHalfTrainElements = trainElements.slice(0, maxTrainsToShowPerColumn);
             const secondHalfTrainElements = trainElements.slice(maxTrainsToShowPerColumn, maxTrainsToShow);
 
-            let showLaterTimesButton = null;
+            let showMoreTimesButton = null;
 
             if(activeTrains.length > maxTrainsToShow) {
-                showLaterTimesButton = (
+                showMoreTimesButton = (
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <button className="button is-warning is-outlined" style={{ width: '200px', margin: '0.1875rem' }} onClick={showMoreTrainsHandler}>Show Later Times</button>
+                        <button className="button is-warning is-outlined" style={{ width: '200px', margin: '0.1875rem' }} onClick={showMoreTrainsHandler}>Show More Times</button>
                     </div>
                 );
             }
@@ -280,7 +280,7 @@ const WatchCommute = (props) => {
                             </div>
                         </div>
                     </div>
-                    {showLaterTimesButton}
+                    {showMoreTimesButton}
                 </React.Fragment>
             );
         }
