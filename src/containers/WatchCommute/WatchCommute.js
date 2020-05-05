@@ -26,7 +26,6 @@ const WatchCommute = (props) => {
                    { headers: { 'Authorization': `Bearer ${state.token}` } }
                 )
                 .then(fetchResponse => {
-                    console.log('fetchResponse:', fetchResponse);
                     dispatch({ type: 'LOAD_WEEKDAY_TIMETABLES', timetables: fetchResponse.data.timetables });
                 })
                 .catch(fetchError => {
@@ -85,7 +84,6 @@ const WatchCommute = (props) => {
                 }
             )
             .then(fetchResponse => {
-                console.log('fetchResponse:', fetchResponse);
                 // 'Watched Train successfully cleared.';
                 // TODO: Confirm that got correct response status code from server.
 
@@ -121,7 +119,6 @@ const WatchCommute = (props) => {
                 */
             )
             .then(fetchResponse => {
-                console.log('fetchResponse:', fetchResponse);
                 // TODO: Confirm that got correct response status code from server.
 
                 dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });

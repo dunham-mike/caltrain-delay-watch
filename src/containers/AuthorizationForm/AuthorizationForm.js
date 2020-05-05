@@ -76,7 +76,6 @@ export const AuthorizationForm = (props) => {
 
         try {
             const response = await axios.post(backendUrl + '/api/auth/create-account', accountCreationBody);
-            console.log('response:', response);
 
             if(response.data === 'Account successfully created.') {
                 // Small delay necessary for login request to resolve successfully
@@ -123,8 +122,6 @@ export const AuthorizationForm = (props) => {
                     .max(12, 'Must be a valid US phone number')
                     .required('Required')
             });
-
-        console.log('validationSchema:', validationSchema);
     }
     
     return(

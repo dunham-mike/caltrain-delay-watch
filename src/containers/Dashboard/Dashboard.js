@@ -65,8 +65,6 @@ const Dashboard = (props) => {
         const currentStatusFetchResponse = await fetchCurrentStatus();
 
         if(userFetchResponse !== null && currentStatusFetchResponse !== null) {
-            console.log('userFetchResponse:', userFetchResponse);
-
             dispatch({ 
                 type: 'SET_USER_DATA', 
                 mostRecentNotifications: (userFetchResponse.data.mostRecentNotifications ? userFetchResponse.data.mostRecentNotifications : null),
@@ -108,8 +106,6 @@ const Dashboard = (props) => {
     // Refresh statuses
 
     const refreshStatuses = async () => {
-        console.log('Refresh statuses here');
-
         const dayOfWeek = moment.utc().tz('America/Los_Angeles').day();
 
         if(state.currentStatus && moment.utc().isBefore(moment.utc(state.currentStatus.createdAt).add(5, 'minutes'))) {

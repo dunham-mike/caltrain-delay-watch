@@ -38,9 +38,6 @@ export const Settings = (props) => {
     };
 
     const updateUserDataSubmitHandler = async (values, { setSubmitting }) => {
-        console.log('updateUserDataSubmitHandler() firing!');
-        console.log('values:', values);
-
         if(values.preferredNotificationMethod !== state.preferredNotificationMethod 
             || (values.preferredNotificationMethod === "web app" && state.phoneNumber !== null)  
             || (values.preferredNotificationMethod === "sms" && values.phoneNumber !== state.phoneNumber)
@@ -56,8 +53,6 @@ export const Settings = (props) => {
                         { headers: { 'Authorization': `Bearer ${state.token}` } }
                     );
                 dispatch({ type: 'SERVER_REQUEST_COMPLETE'});
-
-                console.log('response:', response);
     
                 if(response.data === 'User preferences successfully updated.') {
                     dispatch({ 
@@ -65,7 +60,6 @@ export const Settings = (props) => {
                         preferredNotificationMethod: values.preferredNotificationMethod,
                         phoneNumber: (values.preferredNotificationMethod === "sms" ? values.phoneNumber : null)
                     });
-                    console.log('User update successful - redirecting');
                     props.history.push("/");
                 } else {
                     setError(response.data);
@@ -76,7 +70,6 @@ export const Settings = (props) => {
                 setSubmitting(false);
             }
         } else {
-            console.log('No data changed - redirecting');
             props.history.push("/");
         }
     }
