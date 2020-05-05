@@ -32,6 +32,7 @@ const StateProvider = ( { children } ) => {
 
         switch(action.type) {
             case 'LOG_IN_USER':
+                localStorage.setItem('token', action.token);
                 newState = {
                     ...state,
                     user: action.user,
@@ -39,6 +40,7 @@ const StateProvider = ( { children } ) => {
                 }
                 return newState;
             case 'LOG_OUT_USER':
+                localStorage.removeItem('token');
                 newState = initialState;
                 return newState;
             case 'SET_ERROR':

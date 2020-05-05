@@ -45,7 +45,9 @@ export const AuthorizationForm = (props) => {
                 })
 
             if(response.data.email && response.data.token) {
-                dispatch({ type: 'LOG_IN_USER', user: response.data.email, token: response.data.token });
+                const user = response.data.email;
+                const token = response.data.token;
+                dispatch({ type: 'LOG_IN_USER', user: user, token: token });
             } else {
                 setError(response.data);
                 setSubmitting(false);

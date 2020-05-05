@@ -1,5 +1,6 @@
-import React, { Suspense, useContext } from 'react';
+import React, { Suspense, useContext, useEffect } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
+import jwt from 'jwt-decode';
 
 import Layout from './containers/Layout/Layout';
 import Dashboard from './containers/Dashboard/Dashboard';
@@ -15,7 +16,20 @@ import { store } from './store/store';
 
 const App = () => {
     const context = useContext(store);
-    const { state } = context;
+    const { dispatch, state } = context;
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if(token) {
+            const decodedToken = jwt(token);
+            if(decodedToken.exp > (Date.now()/1000)) {
+                const user = decodedToken.email;
+                dispatch({ type: 'LOG_IN_USER', user: user, token: token });
+            } else {
+                dispatch({ type: 'LOG_OUT_USER' });
+            }
+        } 
+    }, [dispatch]);
 
     let routes = (
         <Suspense fallback={<div>Loading...</div>}>
