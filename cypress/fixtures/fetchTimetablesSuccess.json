@@ -1,0 +1,4209 @@
+{
+    "_id": "5e9e0642493d1d49d0ad6985",
+    "operator": "Caltrain",
+    "scheduleType": "Weekday",
+    "timetables": {
+        "70011": {
+            "stationName": "San Francisco",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "00:05:00"
+                },
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "06:03:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "06:38:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:42:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:42:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "09:03:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "10:07:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:52:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:48:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:48:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:48:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:48:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:52:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:53:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "17:18:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "18:22:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "19:22:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "20:20:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "21:20:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "22:20:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "23:20:00"
+                }
+            ]
+        },
+        "70012": {
+            "stationName": "San Francisco",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:05:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "04:55:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "05:25:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:15:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:15:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:15:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:00:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:00:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:00:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:00:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:00:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:00:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:00:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "15:34:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "16:32:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "17:32:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "18:32:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "19:30:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "20:30:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "21:30:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "22:30:00"
+                }
+            ]
+        },
+        "70021": {
+            "stationName": "22nd Street",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:57:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "06:32:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:34:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:34:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:56:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:59:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:44:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:41:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:41:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:41:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:41:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:43:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:46:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "17:11:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "18:15:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "19:15:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "20:13:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "21:13:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "22:13:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "23:13:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:58:00"
+                }
+            ]
+        },
+        "70022": {
+            "stationName": "22nd Street",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:10:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "04:59:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "05:29:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:20:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:20:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:20:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:05:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:04:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:04:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:04:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:04:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:04:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:04:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "15:39:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "16:37:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "17:37:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "18:37:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "19:34:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "20:34:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "21:34:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "22:34:00"
+                }
+            ]
+        },
+        "70031": {
+            "stationName": "Bayshore",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:51:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "06:26:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:28:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:28:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:50:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:53:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:38:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:35:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:35:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:35:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:35:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:37:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:40:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "17:05:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "18:09:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "19:09:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "20:07:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "21:07:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "22:07:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "23:07:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:52:00"
+                }
+            ]
+        },
+        "70032": {
+            "stationName": "Bayshore",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:15:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:04:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "05:34:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:25:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:25:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:25:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:10:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:09:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:09:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:09:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:09:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:09:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:09:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "15:44:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "16:42:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "17:42:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "18:42:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "19:39:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "20:39:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "21:39:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "22:39:00"
+                }
+            ]
+        },
+        "70041": {
+            "stationName": "South San Francisco",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:45:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "06:20:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:22:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:22:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:44:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:47:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:32:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:29:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:29:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:29:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:29:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:31:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:34:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:59:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "18:03:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "19:03:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "20:01:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "21:01:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "22:01:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "23:01:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:46:00"
+                }
+            ]
+        },
+        "70042": {
+            "stationName": "South San Francisco",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:21:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:10:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "05:40:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:32:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:32:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:32:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:17:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:16:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:16:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:16:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:16:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:16:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:16:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "15:51:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "16:49:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "17:49:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "18:49:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "19:46:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "20:46:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "21:46:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "22:46:00"
+                }
+            ]
+        },
+        "70051": {
+            "stationName": "San Bruno",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:41:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "06:16:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:18:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:18:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:40:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:43:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:28:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:25:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:25:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:25:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:25:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:27:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:30:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:55:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:59:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:59:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:57:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:57:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:57:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:57:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:42:00"
+                }
+            ]
+        },
+        "70052": {
+            "stationName": "San Bruno",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:25:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:14:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "05:44:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:36:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:36:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:36:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:21:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:20:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:20:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:20:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:20:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:20:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:20:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "15:55:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "16:53:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "17:53:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "18:53:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "19:50:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "20:50:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "21:50:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "22:50:00"
+                }
+            ]
+        },
+        "70061": {
+            "stationName": "Millbrae",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:36:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "06:11:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:13:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:13:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:35:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:38:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:23:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:20:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:20:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:20:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:20:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:22:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:25:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:50:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:54:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:54:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:52:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:52:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:52:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:52:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:38:00"
+                }
+            ]
+        },
+        "70062": {
+            "stationName": "Millbrae",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:33:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:18:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "05:48:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:40:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:40:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:40:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:25:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:25:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:25:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:25:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:25:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:25:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:27:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "15:59:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "16:57:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "17:57:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "18:57:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "19:56:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "20:56:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "21:56:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "22:56:00"
+                }
+            ]
+        },
+        "70081": {
+            "stationName": "Burlingame",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:32:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "06:06:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:08:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:08:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:30:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:33:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:18:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:15:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:15:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:15:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:15:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:17:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:20:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:45:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:49:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:49:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:48:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:48:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:48:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:48:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:34:00"
+                }
+            ]
+        },
+        "70082": {
+            "stationName": "Burlingame",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:37:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:22:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "05:53:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:44:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:44:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:44:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:29:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:29:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:29:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:29:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:29:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:29:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:32:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:03:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:01:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:01:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:01:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:01:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:01:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:01:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:01:00"
+                }
+            ]
+        },
+        "70091": {
+            "stationName": "San Mateo",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:28:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "06:03:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:05:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:05:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:27:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:30:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:15:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:12:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:12:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:12:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:12:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:14:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:17:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:42:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:46:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:46:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:44:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:44:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:44:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:44:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:30:00"
+                }
+            ]
+        },
+        "70092": {
+            "stationName": "San Mateo",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:40:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:25:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "05:57:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:47:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:47:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:47:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:32:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:32:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:32:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:32:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:32:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:32:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:35:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:06:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:04:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:04:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:04:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:04:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:04:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:04:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:04:00"
+                }
+            ]
+        },
+        "70101": {
+            "stationName": "Hayward Park",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:25:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:59:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "07:01:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "08:01:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:24:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:26:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:11:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:09:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:09:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:09:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:09:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:09:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:13:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:39:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:43:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:43:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:41:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:41:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:41:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:41:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:27:00"
+                }
+            ]
+        },
+        "70102": {
+            "stationName": "Hayward Park",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:44:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:28:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:00:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:51:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:51:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:51:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:36:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:36:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:36:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:36:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:36:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:36:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:39:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:10:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:08:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:08:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:08:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:08:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:08:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:08:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:08:00"
+                }
+            ]
+        },
+        "70111": {
+            "stationName": "Hillsdale",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:22:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:56:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:58:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:58:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:21:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:23:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:08:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:06:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:06:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:06:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:06:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:06:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:10:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:36:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:40:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:40:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:38:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:38:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:38:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:38:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:24:00"
+                }
+            ]
+        },
+        "70112": {
+            "stationName": "Hillsdale",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:47:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:32:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:03:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:54:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:54:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:54:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:39:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:39:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:39:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:39:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:39:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:39:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:42:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:13:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:11:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:11:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:11:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:11:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:11:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:11:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:11:00"
+                }
+            ]
+        },
+        "70121": {
+            "stationName": "Belmont",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:18:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:52:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:55:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:55:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:18:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:20:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:05:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "11:03:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "12:03:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "13:03:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "14:03:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "15:03:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:06:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:33:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:37:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:37:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:35:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:35:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:35:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:35:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:21:00"
+                }
+            ]
+        },
+        "70122": {
+            "stationName": "Belmont",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:51:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:35:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:07:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "06:58:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "07:58:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "08:58:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:43:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:43:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:43:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:43:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:43:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:43:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:46:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:17:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:15:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:15:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:15:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:15:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:15:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:15:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:15:00"
+                }
+            ]
+        },
+        "70131": {
+            "stationName": "San Carlos",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:15:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:49:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:51:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:51:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:14:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:16:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "10:01:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:59:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:59:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:59:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:59:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:59:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "16:03:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:29:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:33:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:33:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:31:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:31:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:31:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:31:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:17:00"
+                }
+            ]
+        },
+        "70132": {
+            "stationName": "San Carlos",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:54:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:38:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:10:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:01:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:01:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:01:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:46:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:46:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:46:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:46:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:46:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:46:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:49:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:20:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:18:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:18:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:18:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:18:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:18:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:18:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:18:00"
+                }
+            ]
+        },
+        "70141": {
+            "stationName": "Redwood City",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:10:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:44:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:47:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:47:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:10:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:12:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:57:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:55:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:55:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:55:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:55:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:55:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:58:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:24:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:29:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:29:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:27:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:27:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:27:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:27:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:13:00"
+                }
+            ]
+        },
+        "70142": {
+            "stationName": "Redwood City",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "00:59:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:41:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:15:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:06:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:06:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:06:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:51:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:51:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:51:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:51:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:51:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:51:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:54:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:25:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:23:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:23:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:23:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:23:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:23:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:23:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:23:00"
+                }
+            ]
+        },
+        "70161": {
+            "stationName": "Menlo Park",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:04:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:39:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:41:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:41:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:04:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:05:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:50:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:50:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:49:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:49:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:49:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:49:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:51:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:19:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:23:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:23:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:20:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:20:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:20:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:20:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:07:00"
+                }
+            ]
+        },
+        "70162": {
+            "stationName": "Menlo Park",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:04:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:47:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:20:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:11:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:11:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:11:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "09:56:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "10:56:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "11:56:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "12:56:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "13:56:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "14:56:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "15:59:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:30:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:28:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:28:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:28:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:28:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:28:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:28:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:28:00"
+                }
+            ]
+        },
+        "70171": {
+            "stationName": "Palo Alto",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "05:01:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:36:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:38:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:38:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "08:01:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "09:02:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:47:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:47:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:46:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:46:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:46:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:46:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:47:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:15:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:20:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:20:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:17:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:17:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:17:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:17:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "23:04:00"
+                }
+            ]
+        },
+        "70172": {
+            "stationName": "Palo Alto",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:08:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:51:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:24:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:15:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:15:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:15:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "10:00:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "11:00:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "12:00:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "13:00:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "14:00:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "15:00:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:04:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:34:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:32:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:32:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:32:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:32:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:32:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:32:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:32:00"
+                }
+            ]
+        },
+        "70191": {
+            "stationName": "California Ave",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "04:57:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:31:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:34:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:34:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:56:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "08:57:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:42:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:42:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:41:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:41:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:41:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:41:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:43:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:11:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:14:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:14:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:13:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:13:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:13:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:13:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "22:59:00"
+                }
+            ]
+        },
+        "70192": {
+            "stationName": "California Ave",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:11:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:55:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:28:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:19:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:19:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:19:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "10:04:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "11:04:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "12:04:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "13:04:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "14:04:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "15:04:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:08:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:38:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:36:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:36:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:36:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:35:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:35:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:35:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:35:00"
+                }
+            ]
+        },
+        "70201": {
+            "stationName": "San Antonio",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "04:52:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:27:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:29:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:29:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:52:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "08:53:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:38:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:37:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:37:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:37:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:37:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:37:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:39:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:06:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:09:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:09:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:08:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:08:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:08:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:08:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "22:54:00"
+                }
+            ]
+        },
+        "70202": {
+            "stationName": "San Antonio",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:15:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "05:59:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:32:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:23:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:23:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:23:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "10:08:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "11:08:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "12:08:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "13:08:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "14:08:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "15:08:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:12:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:42:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:40:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:40:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:40:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:39:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:39:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:39:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:39:00"
+                }
+            ]
+        },
+        "70211": {
+            "stationName": "Mountain View",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "04:48:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:23:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:25:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:25:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:48:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "08:49:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:34:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:33:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:33:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:33:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:33:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:33:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:35:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "16:02:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:05:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:05:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:05:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:05:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:05:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:05:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "22:50:00"
+                }
+            ]
+        },
+        "70212": {
+            "stationName": "Mountain View",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:20:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "06:04:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:37:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:28:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:28:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:28:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "10:13:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "11:13:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "12:13:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "13:13:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "14:13:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "15:13:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:17:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:47:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:45:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:45:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:45:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:44:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:44:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:44:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:44:00"
+                }
+            ]
+        },
+        "70221": {
+            "stationName": "Sunnyvale",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "04:43:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:18:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:20:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:20:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:43:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "08:44:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:29:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:28:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:28:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:28:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:28:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:28:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:30:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "15:57:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "17:00:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "18:00:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "19:00:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "20:00:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "21:00:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "22:00:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "22:45:00"
+                }
+            ]
+        },
+        "70222": {
+            "stationName": "Sunnyvale",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:25:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "06:10:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:42:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:33:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:33:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:33:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "10:18:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "11:18:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "12:18:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "13:18:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "14:18:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "15:18:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:22:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:52:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:50:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:50:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:50:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:49:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:49:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:49:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:49:00"
+                }
+            ]
+        },
+        "70231": {
+            "stationName": "Lawrence",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "04:39:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:13:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:12:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:12:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:39:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "08:39:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:24:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:24:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:24:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:24:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:24:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:24:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:25:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "15:50:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "16:54:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "17:54:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "18:55:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "19:55:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "20:55:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "21:55:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "22:40:00"
+                }
+            ]
+        },
+        "70232": {
+            "stationName": "Lawrence",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:29:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "06:15:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:46:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:37:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:37:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:37:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "10:22:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "11:22:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "12:22:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "13:22:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "14:22:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "15:22:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:27:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "16:56:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:54:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:54:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:54:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:53:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:53:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:53:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:53:00"
+                }
+            ]
+        },
+        "70241": {
+            "stationName": "Santa Clara",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "04:33:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:08:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "06:06:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "07:06:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:33:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "08:33:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:18:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:18:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:18:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:18:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:18:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:18:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:20:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "15:45:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "16:46:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "17:46:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "18:50:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "19:50:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "20:50:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "21:50:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "22:35:00"
+                }
+            ]
+        },
+        "70242": {
+            "stationName": "Santa Clara",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:34:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "06:22:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "06:51:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:42:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:42:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:42:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "10:27:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "11:28:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "12:28:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "13:28:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "14:28:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "15:28:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:32:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "17:01:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "17:59:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "18:59:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "19:59:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "20:58:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "21:58:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "22:58:00"
+                },
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "23:58:00"
+                }
+            ]
+        },
+        "70251": {
+            "stationName": "College Park",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:16:00"
+                }
+            ]
+        },
+        "70252": {
+            "stationName": "College Park",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:35:00"
+                }
+            ]
+        },
+        "70261": {
+            "stationName": "San Jose Diridon",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "101",
+                    "arrivalTime": "04:28:00"
+                },
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "05:03:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "05:59:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "06:59:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:28:00"
+                },
+                {
+                    "trainNumber": "231",
+                    "arrivalTime": "08:28:00"
+                },
+                {
+                    "trainNumber": "135",
+                    "arrivalTime": "09:13:00"
+                },
+                {
+                    "trainNumber": "139",
+                    "arrivalTime": "10:13:00"
+                },
+                {
+                    "trainNumber": "143",
+                    "arrivalTime": "11:13:00"
+                },
+                {
+                    "trainNumber": "147",
+                    "arrivalTime": "12:13:00"
+                },
+                {
+                    "trainNumber": "151",
+                    "arrivalTime": "13:13:00"
+                },
+                {
+                    "trainNumber": "155",
+                    "arrivalTime": "14:13:00"
+                },
+                {
+                    "trainNumber": "159",
+                    "arrivalTime": "15:13:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "15:40:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "16:40:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "17:40:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "18:45:00"
+                },
+                {
+                    "trainNumber": "193",
+                    "arrivalTime": "19:45:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "20:45:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "21:45:00"
+                },
+                {
+                    "trainNumber": "199",
+                    "arrivalTime": "22:30:00"
+                }
+            ]
+        },
+        "70262": {
+            "stationName": "San Jose Diridon",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "196",
+                    "arrivalTime": "00:06:00"
+                },
+                {
+                    "trainNumber": "198",
+                    "arrivalTime": "01:42:00"
+                },
+                {
+                    "trainNumber": "102",
+                    "arrivalTime": "06:31:00"
+                },
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "07:05:00"
+                },
+                {
+                    "trainNumber": "208",
+                    "arrivalTime": "07:50:00"
+                },
+                {
+                    "trainNumber": "218",
+                    "arrivalTime": "08:50:00"
+                },
+                {
+                    "trainNumber": "228",
+                    "arrivalTime": "09:50:00"
+                },
+                {
+                    "trainNumber": "134",
+                    "arrivalTime": "10:35:00"
+                },
+                {
+                    "trainNumber": "138",
+                    "arrivalTime": "11:35:00"
+                },
+                {
+                    "trainNumber": "142",
+                    "arrivalTime": "12:35:00"
+                },
+                {
+                    "trainNumber": "146",
+                    "arrivalTime": "13:35:00"
+                },
+                {
+                    "trainNumber": "150",
+                    "arrivalTime": "14:35:00"
+                },
+                {
+                    "trainNumber": "152",
+                    "arrivalTime": "15:35:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:44:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "17:09:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "18:07:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "19:07:00"
+                },
+                {
+                    "trainNumber": "284",
+                    "arrivalTime": "20:07:00"
+                },
+                {
+                    "trainNumber": "190",
+                    "arrivalTime": "21:06:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "22:06:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "23:06:00"
+                }
+            ]
+        },
+        "70271": {
+            "stationName": "Tamien",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "103",
+                    "arrivalTime": "04:55:00"
+                },
+                {
+                    "trainNumber": "207",
+                    "arrivalTime": "05:51:00"
+                },
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "06:50:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:19:00"
+                },
+                {
+                    "trainNumber": "261",
+                    "arrivalTime": "15:32:00"
+                },
+                {
+                    "trainNumber": "269",
+                    "arrivalTime": "16:33:00"
+                },
+                {
+                    "trainNumber": "279",
+                    "arrivalTime": "17:32:00"
+                },
+                {
+                    "trainNumber": "289",
+                    "arrivalTime": "18:38:00"
+                },
+                {
+                    "trainNumber": "195",
+                    "arrivalTime": "20:37:00"
+                },
+                {
+                    "trainNumber": "197",
+                    "arrivalTime": "21:37:00"
+                }
+            ]
+        },
+        "70272": {
+            "stationName": "Tamien",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "104",
+                    "arrivalTime": "07:10:00"
+                },
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:50:00"
+                },
+                {
+                    "trainNumber": "258",
+                    "arrivalTime": "17:14:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "18:13:00"
+                },
+                {
+                    "trainNumber": "274",
+                    "arrivalTime": "19:12:00"
+                },
+                {
+                    "trainNumber": "192",
+                    "arrivalTime": "22:11:00"
+                },
+                {
+                    "trainNumber": "194",
+                    "arrivalTime": "23:11:00"
+                }
+            ]
+        },
+        "70281": {
+            "stationName": "Capitol",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "06:42:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:11:00"
+                }
+            ]
+        },
+        "70282": {
+            "stationName": "Capitol",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "16:57:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "18:20:00"
+                }
+            ]
+        },
+        "70291": {
+            "stationName": "Blossom Hill",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "06:36:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "07:05:00"
+                }
+            ]
+        },
+        "70292": {
+            "stationName": "Blossom Hill",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "17:03:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "18:26:00"
+                }
+            ]
+        },
+        "70301": {
+            "stationName": "Morgan Hill",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "06:21:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "06:50:00"
+                }
+            ]
+        },
+        "70302": {
+            "stationName": "Morgan Hill",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "17:16:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "18:39:00"
+                }
+            ]
+        },
+        "70311": {
+            "stationName": "San Martin",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "06:15:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "06:44:00"
+                }
+            ]
+        },
+        "70312": {
+            "stationName": "San Martin",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "17:22:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "18:45:00"
+                }
+            ]
+        },
+        "70321": {
+            "stationName": "Gilroy",
+            "direction": "NB",
+            "timetable": [
+                {
+                    "trainNumber": "217",
+                    "arrivalTime": "06:06:00"
+                },
+                {
+                    "trainNumber": "221",
+                    "arrivalTime": "06:35:00"
+                }
+            ]
+        },
+        "70322": {
+            "stationName": "Gilroy",
+            "direction": "SB",
+            "timetable": [
+                {
+                    "trainNumber": "156",
+                    "arrivalTime": "17:37:00"
+                },
+                {
+                    "trainNumber": "264",
+                    "arrivalTime": "19:01:00"
+                }
+            ]
+        }
+    },
+    "updated_date": "2020-04-20T20:29:54.766Z",
+    "__v": 0
+}

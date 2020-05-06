@@ -1,7 +1,23 @@
 {
     "amWatchedTrain": null,
     "pmWatchedTrain": null,
-    "mostRecentNotifications": [],
+    "mostRecentNotifications": [
+        {
+            "_id": "notification_id",
+            "stopId": "70081",
+            "station": "Burlingame",
+            "direction": "NB",
+            "trainNumber": "221",
+            "scheduledDepartureTime": "2020-04-28T15:30:00.000+00:00",
+            "expectedDepartureTime": "2020-04-28T15:45:00.000+00:00",
+            "minutesLate": "15",
+            "status": "Late",
+            "notificationMethod": "sms",
+            "notificationDestination": "+12223334444",
+            "createdAt": "2020-05-04T15:05:00.833+00:00",
+            "updatedAt": "2020-05-04T15:05:00.833+00:00"
+        }
+    ],
     "preferredNotificationMethod": "sms",
     "phoneNumber": "+12223334444"
 }

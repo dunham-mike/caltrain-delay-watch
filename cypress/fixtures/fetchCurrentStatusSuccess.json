@@ -4,13 +4,13 @@
         {
             "_id": "status_id",
             "stopId": "70081",
-            "station": "Burlingame Caltrain",
+            "station": "Burlingame",
             "direction": "NB",
-            "trainNumber": "135",
-            "scheduledDepartureTime": "2020-04-28T17:18:00.000+00:00",
-            "expectedDepartureTime": "2020-04-28T17:18:00.000+00:00",
-            "minutesLate": "0",
-            "status": "On Time"
+            "trainNumber": "221",
+            "scheduledDepartureTime": "2020-04-28T15:30:00.000+00:00",
+            "expectedDepartureTime": "2020-04-28T15:45:00.000+00:00",
+            "minutesLate": "15",
+            "status": "Late"
         }
     ],
     "createdAt": "2020-04-28T16:45:00.140+00:00",
