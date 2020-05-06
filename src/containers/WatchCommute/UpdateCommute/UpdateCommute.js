@@ -1,17 +1,124 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrain, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
+import { faTrain, faLongArrowAltUp, faLongArrowAltDown, faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 const UpdateCommute = (props) => {
+
+    // Managing Local State
+    const [station, setStation] = useState(null);
+    const [direction, setDirection] = useState(null);
+    const [maxTrainsToShow, setMaxTrainsToShow] = useState(10);
+
+    const changeStationHandler = (event) => {
+        if (event.target.value === "Select Your Station") {
+            setStation(null);
+        } else {
+            setStation(event.target.value);
+        }
+    }
+
+    const changeDirectionHandler = (newDirection) => {
+        if (direction !== newDirection) {
+            setDirection(newDirection);
+        }
+    }
+
+    const showMoreTrainsHandler = () => {
+        setMaxTrainsToShow(prevState => prevState + 10);
+    }
+
+    let activeTrains = [];
+    if(station !== null && direction !== null) {
+        activeTrains = props.getActiveTrainsFromState(station, direction, 'weekday', props.commuteType);
+    }
+
+    // Conditional JSX Elements
+    let deleteTrainButton = null;
+    if(props.selectedTrain !== null) {
+        deleteTrainButton = (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4.5rem' }}>
+                <button className={"button is-primary is-outlined" + (props.loading ? " is-loading" : "")} onClick={() => props.selectTrainHandler(null)}>
+                    <span className="icon">
+                        <FontAwesomeIcon icon={faWindowClose} />                                
+                    </span>
+                    <span>Or Delete Current Train</span>
+                </button>
+            </div>
+        );
+    }
+
+    let trainSchedule = null;
+
+    if(station !== null && direction !== null) {
+        if(activeTrains.length === 0) {
+            trainSchedule = (
+                <React.Fragment>
+                    <div className="has-text-weight-semibold has-text-centered" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>
+                        Cannot find any trains for that station and direction of travel. Please try another.
+                    </div>
+                </React.Fragment>
+            )
+        } else {
+            const maxTrainsToShowPerColumn = Math.ceil(Math.min(maxTrainsToShow, activeTrains.length) / 2);
+
+            const trainElements = activeTrains.map(train => {
+                return (
+                    <button 
+                        className={"button is-info" 
+                            + (props.selectedTrain !== null && train.trainNumber === props.selectedTrain.trainNumber && train.time === props.selectedTrain.time ? '' : " is-outlined")
+                        } 
+                        style={{ width: '200px', margin: '0.1875rem' }} 
+                        key={train.trainNumber}
+                        onClick={() => props.selectTrainHandler(train)}
+                    >
+                        {train.time} - {train.direction === "NB" ? 'NB' : 'SB'} {train.trainNumber}
+                    </button>
+                );
+            })
+
+            const firstHalfTrainElements = trainElements.slice(0, maxTrainsToShowPerColumn);
+            const secondHalfTrainElements = trainElements.slice(maxTrainsToShowPerColumn, maxTrainsToShow);
+
+            let showMoreTimesButton = null;
+
+            if(activeTrains.length > maxTrainsToShow) {
+                showMoreTimesButton = (
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <button className="button is-warning is-outlined" style={{ width: '200px', margin: '0.1875rem' }} onClick={showMoreTrainsHandler}>Show More Times</button>
+                    </div>
+                );
+            }
+
+            trainSchedule = (
+                <React.Fragment>
+                    <div className="has-text-weight-semibold" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>Choose Train to Watch:</div>
+                    <div className="columns" style={{ marginTop: '0.75rem', marginBottom: '0' }}>
+                        <div className="column is-6" style={{ margin: '0', padding: '0' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                {firstHalfTrainElements}
+                            </div>
+                        </div>
+                        <div className="column is-6" style={{ margin: '0', padding: '0' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                {secondHalfTrainElements}
+                            </div>
+                        </div>
+                    </div>
+                    {showMoreTimesButton}
+                </React.Fragment>
+            );
+        }
+    }
+
     return(
-        <div style={{ marginTop: '1.5rem' }}>
+        <div className="has-text-white" style={{ marginTop: '1.5rem' }}>
             <div className="is-size-5 has-text-weight-semibold">Update {props.commuteType} Commute</div>
             <div className="columns" style={{ marginTop: '1.5rem' }}>
                 <div className="column" style={{ display: 'flex', justifyContent: 'center' }}>
                     <div className="field">
                         <p className="control has-icons-left">
                             <span className="select">
-                                <select onChange={props.changeStationHandler} value={(props.station ? props.station : '')}>
+                                <select onChange={changeStationHandler} value={(station ? station : '')}>
                                     <option>Select Your Boarding Station</option>
 
                                     <optgroup label="Zone 1">
@@ -76,8 +183,8 @@ const UpdateCommute = (props) => {
                     <div className="field has-addons">
                         <p className="control">
                             <button 
-                                onClick={()=> props.changeDirectionHandler('NB')}
-                                className={"button is-success" + (props.direction !== "NB" ? ' is-outlined' : '')}
+                                onClick={()=> changeDirectionHandler('NB')}
+                                className={"button is-success" + (direction !== "NB" ? ' is-outlined' : '')}
                             >
                                 <span className="icon">
                                     <FontAwesomeIcon icon={faLongArrowAltUp} style={{ fontSize: '20px'}} />                                
@@ -87,8 +194,8 @@ const UpdateCommute = (props) => {
                         </p>
                         <p className="control">
                             <button 
-                                onClick={()=> props.changeDirectionHandler('SB')}
-                                className={"button is-warning" + (props.direction !== "SB" ? ' is-outlined' : '')}
+                                onClick={()=> changeDirectionHandler('SB')}
+                                className={"button is-warning" + (direction !== "SB" ? ' is-outlined' : '')}
                             >
                                 <span>Southbound</span>
                                 <span className="icon">
@@ -101,8 +208,8 @@ const UpdateCommute = (props) => {
                     
                 </div>
             </div>
-            {props.trainSchedule}
-            {props.deleteTrainButton}
+            {trainSchedule}
+            {deleteTrainButton}
         </div>
     );
 }

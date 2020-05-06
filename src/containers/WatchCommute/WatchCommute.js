@@ -1,10 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 import { store } from '../../store/store';
 import CurrentTrain from './CurrentTrain/CurrentTrain';
@@ -47,29 +44,6 @@ const WatchCommute = (props) => {
     let selectedTrain = state.amTrainWatched;
     if(commuteType === 'PM') {
         selectedTrain = state.pmTrainWatched;
-    }
-
-    // Managing Local State
-    const [station, setStation] = useState(null);
-    const [direction, setDirection] = useState(null);
-    const [maxTrainsToShow, setMaxTrainsToShow] = useState(10);
-
-    const changeStationHandler = (event) => {
-        if (event.target.value === "Select Your Station") {
-            setStation(null);
-        } else {
-            setStation(event.target.value);
-        }
-    }
-
-    const changeDirectionHandler = (newDirection) => {
-        if (direction !== newDirection) {
-            setDirection(newDirection);
-        }
-    }
-
-    const showMoreTrainsHandler = () => {
-        setMaxTrainsToShow(prevState => prevState + 10);
     }
 
     let history = useHistory();
@@ -137,28 +111,6 @@ const WatchCommute = (props) => {
         history.push('/');
     }
 
-    // Conditional Page Elements
-    let selectedTrainText = '(none)';
-    let deleteTrainButton = null;
-
-    if(selectedTrain !== null) {
-        selectedTrainText = selectedTrain.station 
-            + ' Station: ' 
-            + (selectedTrain.direction === "NB" ? "NB" : "SB") + ' ' 
-            + selectedTrain.trainNumber + ' at ' + selectedTrain.time;
-        
-        deleteTrainButton = (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4.5rem' }}>
-                <button className={"button is-primary is-outlined" + (state.loading ? " is-loading" : "")} onClick={() => selectTrainHandler(null)}>
-                    <span className="icon">
-                        <FontAwesomeIcon icon={faWindowClose} />                                
-                    </span>
-                    <span>Or Delete Current Train</span>
-                </button>
-            </div>
-        );
-    }
-
     const getActiveTrainsFromState = (activeStation, activeDirection, activeTimeframe, commuteType) => {
         const amTrains = [];
         const pmTrains = [];
@@ -223,87 +175,19 @@ const WatchCommute = (props) => {
         }
     }
 
-    let trainSchedule = null;
-
-    if(station !== null && direction !== null) {
-        let activeTrains = getActiveTrainsFromState(station, direction, 'weekday', commuteType);
-        // let activeTrains = trains.filter((train => train.station === station && train.direction === direction))
-
-        if(activeTrains.length === 0) {
-            trainSchedule = (
-                <React.Fragment>
-                    <div className="has-text-weight-semibold has-text-centered" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>
-                        Cannot find any trains for that station and direction of travel. Please try another.
-                    </div>
-                </React.Fragment>
-            )
-        } else {
-            const maxTrainsToShowPerColumn = Math.ceil(Math.min(maxTrainsToShow, activeTrains.length) / 2);
-
-            const trainElements = activeTrains.map(train => {
-                return (
-                    <button 
-                        className={"button is-info" 
-                            + (selectedTrain !== null && train.trainNumber === selectedTrain.trainNumber && train.time === selectedTrain.time ? '' : " is-outlined")
-                        } 
-                        style={{ width: '200px', margin: '0.1875rem' }} 
-                        key={train.trainNumber}
-                        onClick={() => selectTrainHandler(train)}
-                    >
-                        {train.time} - {train.direction === "NB" ? 'NB' : 'SB'} {train.trainNumber}
-                    </button>
-                );
-            })
-
-            const firstHalfTrainElements = trainElements.slice(0, maxTrainsToShowPerColumn);
-            const secondHalfTrainElements = trainElements.slice(maxTrainsToShowPerColumn, maxTrainsToShow);
-
-            let showMoreTimesButton = null;
-
-            if(activeTrains.length > maxTrainsToShow) {
-                showMoreTimesButton = (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <button className="button is-warning is-outlined" style={{ width: '200px', margin: '0.1875rem' }} onClick={showMoreTrainsHandler}>Show More Times</button>
-                    </div>
-                );
-            }
-
-            trainSchedule = (
-                <React.Fragment>
-                    <div className="has-text-weight-semibold" style={{ marginTop: '1.5rem', marginBottom: '0.75rem' }}>Choose Train to Watch:</div>
-                    <div className="columns" style={{ marginTop: '0.75rem', marginBottom: '0' }}>
-                        <div className="column is-6" style={{ margin: '0', padding: '0' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                {firstHalfTrainElements}
-                            </div>
-                        </div>
-                        <div className="column is-6" style={{ margin: '0', padding: '0' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                {secondHalfTrainElements}
-                            </div>
-                        </div>
-                    </div>
-                    {showMoreTimesButton}
-                </React.Fragment>
-            );
-        }
-    }
-
     return (
-        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
+        <div style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
             <CurrentTrain 
                 commuteType={commuteType}
-                selectedTrainText={selectedTrainText}
+                selectedTrain={selectedTrain}
             />
             <HorizontalRule />
             <UpdateCommute 
                 commuteType={commuteType}
-                changeStationHandler={changeStationHandler}
-                station={station}
-                changeDirectionHandler={changeDirectionHandler}
-                direction={direction}
-                trainSchedule={trainSchedule}
-                deleteTrainButton={deleteTrainButton}
+                loading={state.loading}
+                selectedTrain={selectedTrain}
+                selectTrainHandler={selectTrainHandler}
+                getActiveTrainsFromState={getActiveTrainsFromState}
             />
         </div>
     );
