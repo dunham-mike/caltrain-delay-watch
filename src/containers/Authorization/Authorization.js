@@ -76,46 +76,16 @@ export const Authorization = (props) => {
                 await loginUser(email, password);
             } else {
                 setError(response.data);
-                // setSubmitting(false);
             }
         } catch(err) {
             console.log(err);
             setError(err);
-            // setSubmitting(false);
         }
     }
 
     const createAccountSubmitHandler = async (values, { setSubmitting }) => {
         await createAccount(values.email, values.password, values.preferredNotificationMethod, values.phoneNumber);
         setSubmitting(false);
-        // const accountCreationBody = {
-        //     "user": {
-        //         "email": values.email,
-        //         "password": values.password,
-        //         "preferredNotificationMethod": values.preferredNotificationMethod
-        //     }
-        // };
-
-        // if(values.preferredNotificationMethod === "sms") {
-        //     accountCreationBody.user.phoneNumber = values.phoneNumber;
-        // }
-
-        // try {
-        //     const response = await axios.post(backendUrl + '/api/auth/create-account', accountCreationBody);
-
-        //     if(response.data === 'Account successfully created.') {
-        //         // Small delay necessary for login request to resolve successfully
-        //         await new Promise(resolve => setTimeout(resolve, 200));
-        //         await loginUser(values.email, values.password, { setSubmitting });
-        //     } else {
-        //         setError(response.data);
-        //         setSubmitting(false);
-        //     }
-        // } catch(err) {
-        //     console.log(err);
-        //     setError(err);
-        //     setSubmitting(false);
-        // }
     }
 
     const closeErrorModal = () => {
