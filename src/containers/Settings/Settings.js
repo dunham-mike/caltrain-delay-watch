@@ -6,7 +6,7 @@ import { store } from '../../store/store';
 import PhoneInput from "react-phone-number-input/input";
 import styled from 'styled-components';
 
-import ErrorModal from '../../components/AuthorizationErrorModal/AuthorizationErrorModal';
+import ErrorModal from '../../components/ErrorModal/ErrorModal';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -80,7 +80,7 @@ export const Settings = (props) => {
 
     return(
         <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
-            <ErrorModal isAuthorizationErrorModalActive={error !== null} errorMessage={error} closeAuthorizationErrorModal={closeErrorModal} />
+            <ErrorModal isErrorModalActive={error !== null} errorMessage={error} closeErrorModal={closeErrorModal} />
             <div className="is-size-5 has-text-weight-bold" style={{ display: 'flex', justifyContent: 'center' }}>
                 <div>Settings</div>
             </div>

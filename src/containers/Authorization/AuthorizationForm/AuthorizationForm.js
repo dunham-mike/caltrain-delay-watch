@@ -1,102 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
-import { store } from '../../store/store';
-import styled from 'styled-components';
 import PhoneInput from "react-phone-number-input/input";
-
-import AuthorizationErrorModal from '../../components/AuthorizationErrorModal/AuthorizationErrorModal';
-
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+import styled from 'styled-components';
 
 const RadioLabel = styled.label`
     &:hover { color: white; };
 `
 
-export const AuthorizationForm = (props) => {
-    const [error, setError] = useState(null);
-
-    const context = useContext(store);
-    const { dispatch, state } = context;
-
-    let componentVersion = null;
-    if(props.location.pathname === "/create-account") {
-        componentVersion = "CreateAccount";
-    } else if(props.location.pathname === "/login") {
-        componentVersion = "Login";
-    }
-
-    let authRedirect = null;
-    if(state.user) {
-        authRedirect = <Redirect to={'/'} />
-    }
-
-    const loginUser = async (email, password, { setSubmitting }) => {
-        try {
-            const response = await axios.post(backendUrl + '/api/auth/login',
-                {
-                    "user": {
-                        "email": email,
-                        "password": password
-                    }
-                })
-
-            if(response.data.email && response.data.token) {
-                const user = response.data.email;
-                const token = response.data.token;
-                dispatch({ type: 'LOG_IN_USER', user: user, token: token });
-            } else {
-                setError(response.data);
-                setSubmitting(false);
-            }
-        } catch(err) {
-            console.log(err);
-            setError(err);
-            setSubmitting(false);
-        }
-    }
-
-    const loginSubmitHandler = async (values, { setSubmitting }) => {        
-        await loginUser(values.email, values.password, { setSubmitting });
-    }
-
-    const createAccountSubmitHandler = async (values, { setSubmitting }) => {
-        const accountCreationBody = {
-            "user": {
-                "email": values.email,
-                "password": values.password,
-                "preferredNotificationMethod": values.preferredNotificationMethod
-            }
-        };
-
-        if(values.preferredNotificationMethod === "sms") {
-            accountCreationBody.user.phoneNumber = values.phoneNumber;
-        }
-
-        try {
-            const response = await axios.post(backendUrl + '/api/auth/create-account', accountCreationBody);
-
-            if(response.data === 'Account successfully created.') {
-                // Small delay necessary for login request to resolve successfully
-                await new Promise(resolve => setTimeout(resolve, 200));
-                await loginUser(values.email, values.password, { setSubmitting });
-            } else {
-                setError(response.data);
-                setSubmitting(false);
-            }
-        } catch(err) {
-            console.log(err);
-            setError(err);
-            setSubmitting(false);
-        }
-    }
-
-    const closeAuthorizationErrorModal = () => {
-        setError(null);
-    }
+const AuthorizationForm = (props) => {
 
     let validationSchema = {
         email: Yup.string()
@@ -110,7 +23,7 @@ export const AuthorizationForm = (props) => {
 
     let initialValues = { email: '', password: '' };
 
-    if(componentVersion === 'CreateAccount') {
+    if(props.formVersion === 'CreateAccount') {
         initialValues.preferredNotificationMethod = 'sms';
         initialValues.phoneNumber = '';
 
@@ -125,22 +38,20 @@ export const AuthorizationForm = (props) => {
                     .required('Required')
             });
     }
-    
+
     return(
-        <div className="has-text-white" style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
-            {authRedirect}
-            <AuthorizationErrorModal isAuthorizationErrorModalActive={error !== null} errorMessage={error} closeAuthorizationErrorModal={closeAuthorizationErrorModal} />
-            <div className="is-size-5 has-text-weight-bold" style={{ display: 'flex', justifyContent: 'center' }}>
-                <div>{componentVersion === 'CreateAccount' ? 'Create Account' : 'Log In'}</div>
+        <React.Fragment>
+            <div className="is-size-5 has-text-weight-bold has-text-white" style={{ display: 'flex', justifyContent: 'center' }}>
+                <div>{props.formVersion === 'CreateAccount' ? 'Create Account' : 'Log In'}</div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Formik
                     initialValues={initialValues}
                     validationSchema={Yup.object().shape(validationSchema)}
                     onSubmit={
-                        componentVersion === 'CreateAccount'
-                        ? (values, { setSubmitting }) => { createAccountSubmitHandler(values, { setSubmitting })}
-                        : (values, { setSubmitting }) => { loginSubmitHandler(values, { setSubmitting })}
+                        props.formVersion === 'CreateAccount'
+                        ? (values, { setSubmitting }) => { props.createAccountSubmitHandler(values, { setSubmitting })}
+                        : (values, { setSubmitting }) => { props.loginSubmitHandler(values, { setSubmitting })}
                     }
                 >
                     {({ isSubmitting, isValid, dirty, touched, handleChange, handleBlur, values, setFieldValue }) => (
@@ -160,7 +71,7 @@ export const AuthorizationForm = (props) => {
                                 <ErrorMessage name="password" component="div" className="has-text-primary" style={{ marginTop: '0.375rem', paddingLeft: '0.375rem' }} />
                             </div>
                             
-                            {(  componentVersion === 'CreateAccount'
+                            {(  props.formVersion === 'CreateAccount'
                                 ?
                                     <React.Fragment>
                                         <label className="label has-text-white">
@@ -229,7 +140,6 @@ export const AuthorizationForm = (props) => {
                                     className={"button is-outlined " + 
                                         ((
                                             !isValid || !dirty || isSubmitting || !touched['email'] 
-                                            // || !touched['phoneNumber']
                                         ) 
                                         ? "is-light" 
                                         : "is-success")
@@ -239,16 +149,15 @@ export const AuthorizationForm = (props) => {
                                         || !dirty 
                                         || isSubmitting 
                                         || !touched['email']
-                                        // || !touched['phoneNumber']
                                         // || !touched['password'] // Don't check this, so that submit button will activate once minimum password length reached
                                     }
                                     type="submit"
                                 >
-                                    {componentVersion === 'CreateAccount' ? 'Create Account' : 'Log In'}
+                                    {props.formVersion === 'CreateAccount' ? 'Create Account' : 'Log In'}
                                 </button>
                             </div>
                             <div className="field" style={{ marginTop: '0.75rem', display: 'flex', justifyContent: 'center' }}>
-                                {componentVersion === 'CreateAccount' 
+                                {props.formVersion === 'CreateAccount' 
                                     ? <RouterLink to="/login" className="has-text-info">Need to log in instead?</RouterLink> 
                                     : <RouterLink to="/create-account" className="has-text-info">Need to create an account instead?</RouterLink>
                                 }
@@ -257,7 +166,7 @@ export const AuthorizationForm = (props) => {
                     )}
                 </Formik>
             </div>
-        </div>
+        </React.Fragment>
     );
 }
 

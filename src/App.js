@@ -5,10 +5,10 @@ import jwt from 'jwt-decode';
 import Layout from './containers/Layout/Layout';
 import Dashboard from './containers/Dashboard/Dashboard';
 import WatchCommute from './containers/WatchCommute/WatchCommute';
-import AuthorizationForm from './containers/AuthorizationForm/AuthorizationForm';
+import Authorization from './containers/Authorization/Authorization';
 import LandingPage from './containers/LandingPage/LandingPage';
 import Settings from './containers/Settings/Settings';
-import Logout from './containers/AuthorizationForm/Logout/Logout';
+import Logout from './containers/Authorization/Logout/Logout';
 import ErrorBoundary from './containers/ErrorBoundary/ErrorBoundary';
 import ForcedLogout from './components/ForcedLogout/ForcedLogout';
 
@@ -35,8 +35,8 @@ const App = () => {
         <Suspense fallback={<div>Loading...</div>}>
             <Switch>
                 <Route path="/" exact component={LandingPage} />
-                <Route path="/create-account" component={AuthorizationForm} />
-                <Route path="/login" component={AuthorizationForm} />
+                <Route path="/create-account" component={Authorization} />
+                <Route path="/login" component={Authorization} />
                 <Redirect to="/" />
             </Switch>
         </Suspense>
