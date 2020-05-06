@@ -54,7 +54,7 @@ const AuthorizationForm = (props) => {
                         : (values, { setSubmitting }) => { props.loginSubmitHandler(values, { setSubmitting })}
                     }
                 >
-                    {({ isSubmitting, isValid, dirty, touched, handleChange, handleBlur, values, setFieldValue }) => (
+                    {({ isSubmitting, isValid, dirty, touched, handleBlur, values, setFieldValue }) => (
                         <Form>
                             <div className="field" style={{ marginTop: '0.75rem', minWidth: '300px' }}>
                                 <label className="label has-text-white">
