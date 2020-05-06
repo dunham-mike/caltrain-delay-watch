@@ -13,6 +13,9 @@ const Navbar = (props) => {
             {props.isAuthenticated 
             ?
                 <React.Fragment>
+                    {/* The two extra nav elements are necessary to keep the navbar background running across the full screen,
+                        since the main navbar is restricted to a maxWidth of 850px.                   
+                    */}
                     <nav className="navbar is-fixed-top has-background-grey-dark is-hidden-touch" style={{ minHeight: '56px' }}></nav>
                     <nav className="navbar is-fixed-top has-background-grey-dark is-hidden-desktop" style={{ minHeight: '52px' }}></nav>
                     <nav className="navbar is-fixed-top has-background-grey-dark" role="navigation" aria-label="main navigation" 
@@ -22,7 +25,6 @@ const Navbar = (props) => {
                             <RouterLink className="navbar-item has-text-primary is-size-4 has-text-weight-bold" to="/">
                                 Caltrain Delay Watch
                             </RouterLink>
-                            
                             <div 
                                 role="button" 
                                 className={"navbar-burger burger" + (isHamburgerActive ? " is-active" : "")}
@@ -39,8 +41,7 @@ const Navbar = (props) => {
                             </div>
                         </div>
                         <div className={"navbar-menu has-background-grey-dark" + (isHamburgerActive ? " is-active" : "")}
-                        id="navbarBasicExample" 
-                            // className={"navbar-menu" + (isHamburgerActive ? " is-hidden" : "")}
+                            id="navbarBasicExample" 
                         >
                             <div className="navbar-start">
                                 <div className="navbar-item">
