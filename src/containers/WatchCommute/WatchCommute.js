@@ -310,7 +310,7 @@ const WatchCommute = (props) => {
                             <p className="control has-icons-left">
                                 <span className="select">
                                     <select onChange={changeStationHandler} value={(station ? station : '')}>
-                                        <option>Select Your Station</option>
+                                        <option>Select Your Boarding Station</option>
 
                                         <optgroup label="Zone 1">
                                             <option value="San Francisco">San Francisco</option>
