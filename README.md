@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <a href="https://caltrain-delay-watch.web.app/">
+    <img alt="Caltrain Delay Watch" src="public/android-chrome-192x192.png" width="24" />
+  </a> | Caltrain Delay Watch
+</h1>
 
-## Available Scripts
+<h3 align="center" style="font-weight: bold">
+  <a href="https://caltrain-delay-watch.web.app/" style="text-decoration: none">Live Site</a>
+</h3>
+<div align="center">
+  <a href="https://caltrain-delay-watch.web.app/">
+    <img alt="Caltrain Delay Watch Screenshot" src="public/caltrain-delay-watch.png" style="max-height: 300px" />
+  </a>
+</div>
 
-In the project directory, you can run:
+\
+Caltrain Delay Watch is a full-stack web app (React/Node.js) that allows users to monitor their daily commute and receive a text message whenever their usual Caltrain is running more than a few minutes late.
 
-### `yarn start`
+The frontend is a progressive web app with a mobile-first design. The backend pings [511 SF Bay's Open Transit Data API](https://511.org/open-data/transit) every 5 minutes looking for delays in users' monitored trains and sends them a text message via Twilio as soon as a train is reported 10 minutes or more late.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Most days, most users won't get any notifications. But when they do, it can be a huge time- and frustration-saver.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Technologies
 
-### `yarn test`
+### Core: MERN Stack
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+  * [Express](https://expressjs.com/)
+  * [React/JavaScript](https://reactjs.org/)
+  * [Node.js](https://nodejs.org/)
 
-### `yarn build`
+### API / Database / Security
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  * [Axios](https://github.com/axios/axios)
+  * [Mongoose](https://mongoosejs.com/)
+  * [Passport](http://www.passportjs.org/)
+  * [JSONWebToken](https://www.npmjs.com/package/jsonwebtoken)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Notifications
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  * [Twilio](https://www.twilio.com/)
 
-### `yarn eject`
+### Hosting
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  * [Frontend - Firebase](https://firebase.google.com/)
+  * [Backend - Heroku](https://heroku.com/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User Interface
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  * [Bulma](https://bulma.io/)
+  * [Styled Components](https://styled-components.com/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Testing
 
-## Learn More
+  * [Cypress](https://www.cypress.io/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Misc. Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  * [Node Schedule](https://www.npmjs.com/package/node-schedule)
+  * [Formik](https://jaredpalmer.com/formik/)
+  * [Yup](https://github.com/jquense/yup)
+  * [Moment.js](https://momentjs.com/)
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Questions?
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Feel free to contact Mike at mldunham@gmail.com or visit https://www.mikedunham.org.
