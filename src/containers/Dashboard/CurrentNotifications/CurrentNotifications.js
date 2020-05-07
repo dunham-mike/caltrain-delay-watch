@@ -26,7 +26,7 @@ const CurrentNotifications = (props) => {
     }
 
     let notifications = (
-        <React.Fragment>
+        <div className="has-text-white">
             <div className="is-size-5 has-text-weight-semibold" style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div>No Current Notifications</div>
                 <div>
@@ -45,12 +45,12 @@ const CurrentNotifications = (props) => {
                 <span style={{fontSize: '35px', color: 'black' }} role="img" aria-label="Rock on emoji">&#129304;</span>
                 <span style={{fontSize: '35px', color: 'black' }} role="img" aria-label="Train emoji">&#128649;</span>
             </div>
-        </React.Fragment>
+        </div>
     );
 
     if(currentNotificationsArray.length > 0) {
         notifications = (
-            <React.Fragment>
+            <div className="has-text-white">
                 <div className="is-size-5 has-text-weight-semibold has-text-primary" style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div>
                         Current {(currentNotificationsArray.length > 1) ? "Notifications" : "Notification"}
@@ -67,7 +67,7 @@ const CurrentNotifications = (props) => {
                     {lastAlertUpdateTimeText}
                 </div>
                 {currentNotificationsArray.map(notif => <Notification notification={notif} />)}
-            </React.Fragment>
+            </div>
         );
     }
 
