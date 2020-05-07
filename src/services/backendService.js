@@ -207,11 +207,11 @@ export const getUserDataAndCurrentStatus = async (dispatch, token) => {
 
         dispatch({ type: 'SERVER_REQUEST_COMPLETE' });
 
-        return true;
+        return [true, { amTrainWatched: userFetchResponse.data.amWatchedTrain, pmTrainWatched: userFetchResponse.data.pmWatchedTrain }];
     } else {
         dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
 
-        return false;
+        return [false, {}];
     }
 
 };

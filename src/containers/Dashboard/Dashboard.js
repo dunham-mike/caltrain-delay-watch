@@ -22,11 +22,11 @@ const Dashboard = () => {
         if(state.initialDataLoaded === false) {
             const fetchInitialData = async () => {
 
-                const isInitialLoadSuccessful = await getUserDataAndCurrentStatus(dispatch, state.token);
+                const [isInitialLoadSuccessful, resultObject] = await getUserDataAndCurrentStatus(dispatch, state.token);
                 if (isInitialLoadSuccessful) {
                     dispatch({ type: 'INITIAL_DATA_LOADED' });
 
-                    if(state.amTrainWatched === null && state.pmTrainWatched === null) {
+                    if(resultObject.amTrainWatched === null && resultObject.pmTrainWatched === null) {
                         setModalMessage('Set up your commute to receive a notification any time your train is running more than 10 minutes late.\n\n' 
                         + 'You can also update your preferred notification method under Settings. Happy commuting!');
                     }
