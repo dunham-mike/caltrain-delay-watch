@@ -1,11 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const RegularCurrentTrain = styled.button`
+    @media (max-width: 480px) {
+        display: none;
+    }
+`
+
+const ShortenedCurrentTrain = styled.button`
+    @media (min-width: 481px) {
+        display: none;
+    }
+`
 
 const CurrentTrain = (props) => {
     let selectedTrainText = '(none)';
+    let shortenedSelectedTrainText = '(none)';
 
     if(props.selectedTrain !== null) {
         selectedTrainText = props.selectedTrain.station 
             + ' Station: ' 
+            + (props.selectedTrain.direction === "NB" ? "NB" : "SB") + ' ' 
+            + props.selectedTrain.trainNumber + ' at ' + props.selectedTrain.time;
+        
+        shortenedSelectedTrainText = props.selectedTrain.station + ': '
             + (props.selectedTrain.direction === "NB" ? "NB" : "SB") + ' ' 
             + props.selectedTrain.trainNumber + ' at ' + props.selectedTrain.time;
     }
@@ -18,7 +36,12 @@ const CurrentTrain = (props) => {
                     <div>Current {props.commuteType} Train: </div>
                 </div>
                 <div className="column" style={{ display: 'flex', justifyContent: 'center' }}>
-                    <button className={"button is-info is-light has-text-weight-bold"}>{selectedTrainText}</button>                        
+                    <RegularCurrentTrain className={"button is-info is-light has-text-weight-bold"}>
+                        {selectedTrainText}
+                    </RegularCurrentTrain>  
+                    <ShortenedCurrentTrain className={"button is-info is-light has-text-weight-bold"}>
+                        {shortenedSelectedTrainText}
+                    </ShortenedCurrentTrain>                    
                 </div>
             </div>
         </div>
