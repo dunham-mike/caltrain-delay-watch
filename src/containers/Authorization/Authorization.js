@@ -75,6 +75,7 @@ export const Authorization = (props) => {
                 await new Promise(resolve => setTimeout(resolve, 200));
                 await loginUser(email, password);
             } else {
+                console.log(response.data);
                 setError(response.data);
             }
         } catch(err) {

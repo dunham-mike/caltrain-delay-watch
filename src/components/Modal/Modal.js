@@ -10,7 +10,9 @@ export const Modal = (props) => {
                 onKeyDown={props.closeModal}
             ></div>
             <div className="modal-content" style={{ minWidth: '300px', width: '0' }}>
-                <div className={`box has-text-centered${props.isErrorModal ? ' has-text-primary' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className={`box has-text-centered${props.isErrorModal ? ' has-text-primary' : ''}`} 
+                    style={{ display: 'flex', flexDirection: 'column', whiteSpace: 'pre-line' }}
+                >
                     {props.modalMessage}
                     <div>
                         <button className={`button ${props.isErrorModal ? 'is-primary' : 'is-info'}`} style={{ marginTop: '1rem'}} onClick={props.closeModal}>

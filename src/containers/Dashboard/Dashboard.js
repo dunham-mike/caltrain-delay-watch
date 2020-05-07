@@ -69,8 +69,8 @@ const Dashboard = () => {
             dispatch({ type: 'SERVER_REQUEST_COMPLETE' });
 
             if(userFetchResponse.data.amWatchedTrain === null && userFetchResponse.data.pmWatchedTrain === null) {
-                setModalMessage('Set up your commute to receive a notification any time your usual train is running 10 mins or more late.' 
-                + ' You can also update your preferred notification method under Settings. Happy commuting!');
+                setModalMessage('Set up your commute to receive a notification any time your train is running more than 10 minutes late.\n\n' 
+                + 'You can also update your preferred notification method under Settings. Happy commuting!');
             }
 
             return true;
