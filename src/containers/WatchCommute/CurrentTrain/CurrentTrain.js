@@ -36,10 +36,10 @@ const CurrentTrain = (props) => {
                     <div>Current {props.commuteType} Train: </div>
                 </div>
                 <div className="column" style={{ display: 'flex', justifyContent: 'center' }}>
-                    <RegularCurrentTrain className={"button is-info is-light has-text-weight-bold"}>
+                    <RegularCurrentTrain className={"button is-light has-text-weight-bold " + (props.commuteType === "AM" ? "is-warning" : "is-info" )}>
                         {selectedTrainText}
                     </RegularCurrentTrain>  
-                    <ShortenedCurrentTrain className={"button is-info is-light has-text-weight-bold"}>
+                    <ShortenedCurrentTrain className={"button is-light has-text-weight-bold " + (props.commuteType === "AM" ? "is-warning" : "is-info" )}>
                         {shortenedSelectedTrainText}
                     </ShortenedCurrentTrain>                    
                 </div>
