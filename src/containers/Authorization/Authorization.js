@@ -1,13 +1,12 @@
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+
 import { store } from '../../store/store';
+import { loginUser, createAccount } from '../../services/backendService';
 
 import ErrorModal from '../../components/ErrorModal/ErrorModal';
 import AuthorizationForm from './AuthorizationForm/AuthorizationForm';
 import PageContainer from '../PageContainer/PageContainer';
-
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export const Authorization = (props) => {
     const [error, setError] = useState(null);
@@ -27,66 +26,19 @@ export const Authorization = (props) => {
         authRedirect = <Redirect to={'/'} />
     }
 
-    const loginUser = async (email, password) => {
-        try {
-            const response = await axios.post(backendUrl + '/api/auth/login',
-                {
-                    "user": {
-                        "email": email,
-                        "password": password
-                    }
-                })
-
-            if(response.data.email && response.data.token) {
-                const user = response.data.email;
-                const token = response.data.token;
-                dispatch({ type: 'LOG_IN_USER', user: user, token: token });
-            } else {
-                setError(response.data);
-            }
-        } catch(err) {
-            console.log(err);
-            setError(err);
-        }
-    }
-
     const loginSubmitHandler = async (values, { setSubmitting }) => {        
-        await loginUser(values.email, values.password);
+        const loginError = await loginUser(values.email, values.password, dispatch);
+        if(loginError !== null) {
+            setError(loginError);
+        }
         setSubmitting(false);
     }
 
-    const createAccount = async (email, password, preferredNotificationMethod, phoneNumber) => {
-        const accountCreationBody = {
-            "user": {
-                "email": email,
-                "password": password,
-                "preferredNotificationMethod": preferredNotificationMethod
-            }
-        };
-
-        if(preferredNotificationMethod === "sms") {
-            accountCreationBody.user.phoneNumber = phoneNumber;
-        }
-
-        try {
-            const response = await axios.post(backendUrl + '/api/auth/create-account', accountCreationBody);
-
-            if(response.data === 'Account successfully created.') {
-                // Small delay necessary for login request to resolve successfully
-                await new Promise(resolve => setTimeout(resolve, 200));
-                await loginUser(email, password);
-            } else {
-                console.log(response.data);
-                setError(response.data);
-            }
-        } catch(err) {
-            console.log(err);
-            setError(err);
-        }
-    }
-
     const createAccountSubmitHandler = async (values, { setSubmitting }) => {
-        await createAccount(values.email, values.password, values.preferredNotificationMethod, values.phoneNumber);
+        const createAccountError = await createAccount(values.email, values.password, values.preferredNotificationMethod, values.phoneNumber, dispatch);
+        if(createAccountError !== null) {
+            setError(createAccountError);
+        }
         setSubmitting(false);
     }
 
