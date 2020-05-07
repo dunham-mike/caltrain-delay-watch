@@ -3,7 +3,6 @@ import axios from 'axios';
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export const loginUser = async (email, password, dispatch) => {
-
     try {
         const response = await axios.post(backendUrl + '/api/auth/login',
             {
@@ -25,7 +24,7 @@ export const loginUser = async (email, password, dispatch) => {
         console.log(err);
         return err;
     }
-}
+};
 
 export const createAccount = async (email, password, preferredNotificationMethod, phoneNumber, dispatch) => {
     const accountCreationBody = {
@@ -56,4 +55,106 @@ export const createAccount = async (email, password, preferredNotificationMethod
         console.log(err);
         return err;
     }
-}
+};
+
+export const updateUserPreferences = async (preferredNotificationMethod, phoneNumber, dispatch, token) => {
+    const userUpdateBody = {
+        preferredNotificationMethod: preferredNotificationMethod,
+        phoneNumber: (preferredNotificationMethod === "sms" ? phoneNumber : null)
+    };
+    
+    try {
+        dispatch({ type: 'INITIATE_SERVER_REQUEST'});
+        const response = await axios.post(backendUrl + '/api/user-data/preferences', userUpdateBody,
+                { headers: { 'Authorization': `Bearer ${token}` } }
+            );
+        dispatch({ type: 'SERVER_REQUEST_COMPLETE'});
+
+        if(response.data === 'User preferences successfully updated.') {
+            dispatch({ 
+                type: 'UPDATE_USER_PREFERENCES', 
+                preferredNotificationMethod: preferredNotificationMethod,
+                phoneNumber: (preferredNotificationMethod === "sms" ? phoneNumber : null)
+            });
+            return null;
+        } else {
+            return response.data;
+        }
+    } catch(err) {
+        return 'Error communicating with the server. Please refresh the page.';
+    }
+};
+
+export const updateWatchedTrain = async (train, commuteType, operator, scheduleType, dispatch, token) => {
+    dispatch({ type: 'INITIATE_SERVER_REQUEST' });
+ 
+    if(train === null) {            
+        axios.delete(backendUrl + '/api/user-data',
+            { // Different format due to delete's parameters: https://github.com/axios/axios/issues/897#issuecomment-343715381
+                data: {
+                    commuteType: commuteType
+                },
+                headers: { 'Authorization': `Bearer ${token}` },
+                withCredentials: true
+            }
+        )
+        .then(fetchResponse => {
+            // 'Watched Train successfully cleared.';
+            // TODO: Confirm that got correct response status code from server.
+
+            dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
+        })
+        .catch(fetchError => {
+            console.log('[Error] Deleting Watched Train for user failed:', fetchError);
+            dispatch({ type: 'SET_ERROR', error: 'Deleting Watched Train for user failed.' });
+        });
+    } else {
+        axios.post(backendUrl + '/api/user-data',
+            {
+                commuteType: commuteType,
+                trainInfo: {
+                    operator: operator,
+                    scheduleType: scheduleType,
+                    station: train.station,
+                    stopId: train.stopId,
+                    direction: train.direction,
+                    time: train.time,
+                    trainNumber: train.trainNumber
+                }
+
+            },
+            { headers: { 'Authorization': `Bearer ${token}` } }
+
+            /* 
+                station: activeStation,
+                direction: (shortActiveDirection === 'NB' ? 'NB' : 'SB'),
+                time: moment('1970-01-01 ' + stationTimetable[j].arrivalTime).format('h:mm a'),
+                trainNumber: stationTimetable[j].trainNumber,
+            */
+        )
+        .then(fetchResponse => {
+            // TODO: Confirm that got correct response status code from server.
+
+            dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
+        })
+        .catch(fetchError => {
+            console.log('[Error] Updating Watched Train for user failed:', fetchError);
+            dispatch({ type: 'SET_ERROR', error: 'Updating Watched Train for user failed.' });
+        });
+    }
+};
+
+export const getTimetables = (dispatch, token) => {
+    dispatch({ type: 'INITIATE_SERVER_REQUEST' });
+    axios.get(backendUrl + '/api/timetables/caltrain/weekday',
+            { headers: { 'Authorization': `Bearer ${token}` } }
+        )
+        .then(fetchResponse => {
+            dispatch({ type: 'LOAD_WEEKDAY_TIMETABLES', timetables: fetchResponse.data.timetables });
+        })
+        .catch(fetchError => {
+            console.log('[Error] Loading Caltrain weekday timetables failed:', fetchError);
+            dispatch({ type: 'SET_ERROR', error: 'Loading Caltrain weekday timetables failed.' });
+        });
+};
+

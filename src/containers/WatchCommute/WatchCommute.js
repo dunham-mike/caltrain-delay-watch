@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import moment from 'moment';
 
 import { store } from '../../store/store';
+import { getTimetables, updateWatchedTrain } from '../../services/backendService';
+
 import CurrentTrain from './CurrentTrain/CurrentTrain';
 import HorizontalRule from '../../components/HorizontalRule/HorizontalRule';
 import UpdateCommute from './UpdateCommute/UpdateCommute';
@@ -11,8 +12,6 @@ import PageContainer from '../PageContainer/PageContainer';
 
 const operator = 'Caltrain';
 const scheduleType = 'Weekday';
-
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const WatchCommute = (props) => {
     // Setting Up Data From Store
@@ -22,19 +21,11 @@ const WatchCommute = (props) => {
     // Load Timetables
     useEffect(() => {
         if(state.timetables.weekday === null) {
-            dispatch({ type: 'INITIATE_SERVER_REQUEST' });
-            axios.get(backendUrl + '/api/timetables/caltrain/weekday',
-                   { headers: { 'Authorization': `Bearer ${state.token}` } }
-                )
-                .then(fetchResponse => {
-                    dispatch({ type: 'LOAD_WEEKDAY_TIMETABLES', timetables: fetchResponse.data.timetables });
-                })
-                .catch(fetchError => {
-                    console.log('[Error] Loading Caltrain weekday timetables failed:', fetchError);
-                    dispatch({ type: 'SET_ERROR', error: 'Loading Caltrain weekday timetables failed.' });
-                });
+            (async function() {
+                await getTimetables(dispatch, state.token);
+            }());
         }
-    }, [state.timetables.weekday, state.token, dispatch]);
+    }, [state.timetables.weekday, dispatch, state.token]);
 
     // Setting Up Data Passed Via RouterLink
     let commuteType = 'AM';
@@ -48,67 +39,8 @@ const WatchCommute = (props) => {
     }
 
     let history = useHistory();
-    const selectTrainHandler = async (train) => { // TODO: remove async
-        dispatch({ type: 'INITIATE_SERVER_REQUEST' });
- 
-        if(train === null) {            
-            axios.delete(backendUrl + '/api/user-data',
-                { // Different format due to delete's parameters: https://github.com/axios/axios/issues/897#issuecomment-343715381
-                    data: {
-                        commuteType: commuteType
-                    },
-                    headers: { 'Authorization': `Bearer ${state.token}` },
-                    withCredentials: true
-                }
-            )
-            .then(fetchResponse => {
-                // 'Watched Train successfully cleared.';
-                // TODO: Confirm that got correct response status code from server.
-
-                dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
-                history.push('/');
-            })
-            .catch(fetchError => {
-                console.log('[Error] Deleting Watched Train for user failed:', fetchError);
-                dispatch({ type: 'SET_ERROR', error: 'Deleting Watched Train for user failed.' });
-            });
-        } else {
-            axios.post(backendUrl + '/api/user-data',
-                {
-                    commuteType: commuteType,
-                    trainInfo: {
-                        operator: operator,
-                        scheduleType: scheduleType,
-                        station: train.station,
-                        stopId: train.stopId,
-                        direction: train.direction,
-                        time: train.time,
-                        trainNumber: train.trainNumber
-                    }
-
-                },
-                { headers: { 'Authorization': `Bearer ${state.token}` } }
-
-                /* 
-                    station: activeStation,
-                    direction: (shortActiveDirection === 'NB' ? 'NB' : 'SB'),
-                    time: moment('1970-01-01 ' + stationTimetable[j].arrivalTime).format('h:mm a'),
-                    trainNumber: stationTimetable[j].trainNumber,
-                */
-            )
-            .then(fetchResponse => {
-                // TODO: Confirm that got correct response status code from server.
-
-                dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
-                history.push('/');
-            })
-            .catch(fetchError => {
-                console.log('[Error] Updating Watched Train for user failed:', fetchError);
-                dispatch({ type: 'SET_ERROR', error: 'Updating Watched Train for user failed.' });
-            });
-        }
-
-        dispatch({ type: 'UPDATE_TRAIN_WATCHED', trainType: commuteType, train: train });
+    const selectTrainHandler = async (train) => {
+        await updateWatchedTrain(train, commuteType, operator, scheduleType, dispatch, state.token);
         history.push('/');
     }
 
