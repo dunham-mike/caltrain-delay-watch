@@ -7,6 +7,7 @@ import { store } from '../../store/store';
 import CurrentTrain from './CurrentTrain/CurrentTrain';
 import HorizontalRule from '../../components/HorizontalRule/HorizontalRule';
 import UpdateCommute from './UpdateCommute/UpdateCommute';
+import PageContainer from '../PageContainer/PageContainer';
 
 const operator = 'Caltrain';
 const scheduleType = 'Weekday';
@@ -176,7 +177,7 @@ const WatchCommute = (props) => {
     }
 
     return (
-        <div style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
+        <PageContainer>
             <CurrentTrain 
                 commuteType={commuteType}
                 selectedTrain={selectedTrain}
@@ -189,7 +190,7 @@ const WatchCommute = (props) => {
                 selectTrainHandler={selectTrainHandler}
                 getActiveTrainsFromState={getActiveTrainsFromState}
             />
-        </div>
+        </PageContainer>
     );
 }
 

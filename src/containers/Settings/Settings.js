@@ -4,6 +4,7 @@ import { store } from '../../store/store';
 
 import ErrorModal from '../../components/ErrorModal/ErrorModal';
 import SettingsForm from './SettingsForm/SettingsForm';
+import PageContainer from '../PageContainer/PageContainer';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -66,14 +67,14 @@ export const Settings = (props) => {
     }
 
     return(
-        <div style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
+        <PageContainer>
             <ErrorModal isErrorModalActive={error !== null} errorMessage={error} closeErrorModal={closeErrorModal} />
             <SettingsForm 
                 phoneNumber={state.phoneNumber}
                 preferredNotificationMethod={state.preferredNotificationMethod}
                 updateUserDataSubmitHandler={updateUserDataSubmitHandler}
             />
-        </div>
+        </PageContainer>
     );
 };
 

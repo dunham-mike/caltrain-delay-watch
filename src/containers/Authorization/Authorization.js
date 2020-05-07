@@ -5,6 +5,7 @@ import { store } from '../../store/store';
 
 import ErrorModal from '../../components/ErrorModal/ErrorModal';
 import AuthorizationForm from './AuthorizationForm/AuthorizationForm';
+import PageContainer from '../PageContainer/PageContainer';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -94,7 +95,7 @@ export const Authorization = (props) => {
     }
     
     return(
-        <div style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}>
+        <PageContainer>
             {authRedirect}
             <ErrorModal isErrorModalActive={error !== null} errorMessage={error} closeErrorModal={closeErrorModal} />
             <AuthorizationForm 
@@ -102,7 +103,7 @@ export const Authorization = (props) => {
                 loginSubmitHandler={loginSubmitHandler}
                 createAccountSubmitHandler={createAccountSubmitHandler}
             />
-        </div>
+        </PageContainer>
     );
 }
 

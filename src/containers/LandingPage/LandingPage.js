@@ -3,7 +3,7 @@ import React from 'react';
 import HeroImage from './HeroImage/HeroImage';
 import HeroContent from './HeroContent/HeroContent';
 
-const LandingPage = (props) => {    
+const LandingPage = () => {    
     return (
         <HeroImage>
             <HeroContent />

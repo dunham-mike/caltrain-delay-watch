@@ -7,6 +7,7 @@ import CurrentNotifications from './CurrentNotifications/CurrentNotifications';
 import Modal from '../../components/Modal/Modal';
 import HorizontalRule from '../../components/HorizontalRule/HorizontalRule';
 import CommuteContainer from './CommuteContainer/CommuteContainer';
+import PageContainer from '../PageContainer/PageContainer';
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -194,29 +195,29 @@ const Dashboard = () => {
     }
     
     return (
-        <div className={(!state.initialDataLoaded || state.error ? "is-hidden" : "" )} 
-            style={{ maxWidth: '850px', width: '100%', margin: '0 auto', padding: '1.5rem 1.5rem' }}
-        >    
-            <Modal modalMessage={modalMessage} closeModal={closeModal} isErrorModal={false} />
-            <CurrentNotifications 
-                statusLastUpdatedTime={(state.currentStatus ? state.currentStatus.createdAt : null)} 
-                mostRecentNotifications={state.mostRecentNotifications}  
-                refreshStatuses={refreshStatuses}
-                isRefreshing={isRefreshing}
-            />
-            <HorizontalRule />
-            <CommuteContainer
-                commuteType={"AM"}
-                trainWatched={state.amTrainWatched}
-                trainStatus={state.amTrainStatus}
-            />
-            <HorizontalRule />
-            <CommuteContainer
-                commuteType={"PM"}
-                trainWatched={state.pmTrainWatched}
-                trainStatus={state.pmTrainStatus}
-            />
-        </div>
+        <PageContainer>
+            <div className={(!state.initialDataLoaded || state.error ? "is-hidden" : "" )}>    
+                <Modal modalMessage={modalMessage} closeModal={closeModal} isErrorModal={false} />
+                <CurrentNotifications 
+                    statusLastUpdatedTime={(state.currentStatus ? state.currentStatus.createdAt : null)} 
+                    mostRecentNotifications={state.mostRecentNotifications}  
+                    refreshStatuses={refreshStatuses}
+                    isRefreshing={isRefreshing}
+                />
+                <HorizontalRule />
+                <CommuteContainer
+                    commuteType={"AM"}
+                    trainWatched={state.amTrainWatched}
+                    trainStatus={state.amTrainStatus}
+                />
+                <HorizontalRule />
+                <CommuteContainer
+                    commuteType={"PM"}
+                    trainWatched={state.pmTrainWatched}
+                    trainStatus={state.pmTrainStatus}
+                />
+            </div>
+        </PageContainer>
     );
 }
 
