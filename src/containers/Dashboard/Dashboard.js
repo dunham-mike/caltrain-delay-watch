@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useCallback, useState } from 'react';
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import moment from 'moment-timezone';
 
 import { store } from '../../store/store';
+import { getUserDataAndCurrentStatus } from '../../services/backendService';
+
 import CurrentNotifications from './CurrentNotifications/CurrentNotifications';
 import Modal from '../../components/Modal/Modal';
 import HorizontalRule from '../../components/HorizontalRule/HorizontalRule';
 import CommuteContainer from './CommuteContainer/CommuteContainer';
 import PageContainer from '../PageContainer/PageContainer';
-
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Dashboard = () => {
     const context = useContext(store);
@@ -18,86 +17,27 @@ const Dashboard = () => {
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [modalMessage, setModalMessage] = useState(null);
 
-    // Load App Data
-
-    const fetchUserData = useCallback(async () => {
-        const fetchResponse = await axios.get(backendUrl + '/api/user-data',
-                { headers: { 'Authorization': `Bearer ${state.token}` } }
-            )
-            .catch(fetchError => {
-                console.log('[Error] Loading Watched Trains and Notifications for user failed:', fetchError);
-                dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
-                return null;
-            });
-
-        return fetchResponse;
-    }, [state.token, dispatch]);
-
-    const fetchCurrentStatus = useCallback(async () => {
-        const fetchResponse = await axios.get(backendUrl + '/api/current-status',
-                { headers: { 'Authorization': `Bearer ${state.token}` } }
-            )
-            .catch(fetchError => {
-                console.log('[Error] Loading Current Status failed:', fetchError);
-                dispatch({ type: 'SET_ERROR', error: 'Loading Current Status failed.' });
-                return null;
-            });
-
-        return fetchResponse;
-    }, [state.token, dispatch]);
-
-    const fetchAppData = useCallback(async () => {
-        dispatch({ type: 'INITIATE_SERVER_REQUEST' });
-
-        const userFetchResponse = await fetchUserData();
-        const currentStatusFetchResponse = await fetchCurrentStatus();
-
-        if(userFetchResponse !== null && currentStatusFetchResponse !== null) {
-            dispatch({ 
-                type: 'SET_USER_DATA', 
-                mostRecentNotifications: (userFetchResponse.data.mostRecentNotifications ? userFetchResponse.data.mostRecentNotifications : null),
-                amTrainWatched: (userFetchResponse.data.amWatchedTrain ? userFetchResponse.data.amWatchedTrain.trainInfo : null), 
-                pmTrainWatched: (userFetchResponse.data.pmWatchedTrain ? userFetchResponse.data.pmWatchedTrain.trainInfo : null),
-                preferredNotificationMethod: userFetchResponse.data.preferredNotificationMethod,
-                phoneNumber: (userFetchResponse.data.phoneNumber ? userFetchResponse.data.phoneNumber : null)
-            });
-
-            dispatch({
-                type: 'SET_CURRENT_STATUS',
-                currentStatus: currentStatusFetchResponse.data
-            })
-
-            dispatch({ type: 'SERVER_REQUEST_COMPLETE' });
-
-            if(userFetchResponse.data.amWatchedTrain === null && userFetchResponse.data.pmWatchedTrain === null) {
-                setModalMessage('Set up your commute to receive a notification any time your train is running more than 10 minutes late.\n\n' 
-                + 'You can also update your preferred notification method under Settings. Happy commuting!');
-            }
-
-            return true;
-        } else {
-            dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
-
-            return false;
-        }
-    }, [dispatch, fetchUserData, fetchCurrentStatus]);
-
+    // Load Initial Data
     useEffect(() => {
         if(state.initialDataLoaded === false) {
             const fetchInitialData = async () => {
 
-                const isInitialLoadSuccessful = await fetchAppData();
+                const isInitialLoadSuccessful = await getUserDataAndCurrentStatus(dispatch, state.token);
                 if (isInitialLoadSuccessful) {
                     dispatch({ type: 'INITIAL_DATA_LOADED' });
+
+                    if(state.amTrainWatched === null && state.pmTrainWatched === null) {
+                        setModalMessage('Set up your commute to receive a notification any time your train is running more than 10 minutes late.\n\n' 
+                        + 'You can also update your preferred notification method under Settings. Happy commuting!');
+                    }
                 }
             }
 
             fetchInitialData();
         }
-    }, [dispatch, fetchAppData, state.initialDataLoaded]);
+    }, [dispatch, state.token, state.amTrainWatched, state.pmTrainWatched, state.initialDataLoaded]);
 
     // Refresh statuses
-
     const refreshStatuses = async () => {
         const dayOfWeek = moment.utc().tz('America/Los_Angeles').day();
 
@@ -112,7 +52,7 @@ const Dashboard = () => {
             );
         } else {
             setIsRefreshing(true);
-            const isRefreshSuccessful = await fetchAppData();
+            const isRefreshSuccessful = await getUserDataAndCurrentStatus(dispatch, state.token);
             setIsRefreshing(false);
             if(!isRefreshSuccessful) {
                 dispatch({ type: 'SET_ERROR', error: 'Unable to refresh data.' });
@@ -125,7 +65,6 @@ const Dashboard = () => {
     }
 
     // Update train statuses if needed
-
     if(state.currentStatus && moment.utc(state.currentStatus.createdAt).isAfter(moment.utc().subtract(30, 'minutes'))
         && (state.lastTrainStatusUpdate === null 
                 || moment.utc(state.currentStatus.createdAt).isAfter(moment.utc(state.lastTrainStatusUpdate))

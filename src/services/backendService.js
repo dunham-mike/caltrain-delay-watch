@@ -158,3 +158,60 @@ export const getTimetables = (dispatch, token) => {
         });
 };
 
+const getUserData = async (dispatch, token) => {
+    const fetchResponse = await axios.get(backendUrl + '/api/user-data',
+            { headers: { 'Authorization': `Bearer ${token}` } }
+        )
+        .catch(fetchError => {
+            console.log('[Error] Loading Watched Trains and Notifications for user failed:', fetchError);
+            dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
+            return null;
+        });
+
+    return fetchResponse;
+};
+
+const getCurrentStatus = async (dispatch, token) => {
+    const fetchResponse = await axios.get(backendUrl + '/api/current-status',
+            { headers: { 'Authorization': `Bearer ${token}` } }
+        )
+        .catch(fetchError => {
+            console.log('[Error] Loading Current Status failed:', fetchError);
+            dispatch({ type: 'SET_ERROR', error: 'Loading Current Status failed.' });
+            return null;
+        });
+
+    return fetchResponse;
+};
+
+export const getUserDataAndCurrentStatus = async (dispatch, token) => {
+    dispatch({ type: 'INITIATE_SERVER_REQUEST' });
+
+    const userFetchResponse = await getUserData(dispatch, token);
+    const currentStatusFetchResponse = await getCurrentStatus(dispatch, token);
+
+    if(userFetchResponse !== null && currentStatusFetchResponse !== null) {
+        dispatch({ 
+            type: 'SET_USER_DATA', 
+            mostRecentNotifications: (userFetchResponse.data.mostRecentNotifications ? userFetchResponse.data.mostRecentNotifications : null),
+            amTrainWatched: (userFetchResponse.data.amWatchedTrain ? userFetchResponse.data.amWatchedTrain.trainInfo : null), 
+            pmTrainWatched: (userFetchResponse.data.pmWatchedTrain ? userFetchResponse.data.pmWatchedTrain.trainInfo : null),
+            preferredNotificationMethod: userFetchResponse.data.preferredNotificationMethod,
+            phoneNumber: (userFetchResponse.data.phoneNumber ? userFetchResponse.data.phoneNumber : null)
+        });
+
+        dispatch({
+            type: 'SET_CURRENT_STATUS',
+            currentStatus: currentStatusFetchResponse.data
+        })
+
+        dispatch({ type: 'SERVER_REQUEST_COMPLETE' });
+
+        return true;
+    } else {
+        dispatch({ type: 'SET_ERROR', error: 'Loading Watched Trains and Notifications for user failed.' });
+
+        return false;
+    }
+
+};
