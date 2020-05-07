@@ -13,9 +13,10 @@ export const ForcedLogout = (props) => {
                 onClick={closeModal}
                 onKeyDown={closeModal}
             ></div>
-            <div className="modal-content" style={{ minWidth: '300px', width: '0' }}>
+            <div className="modal-content" style={{ minWidth: '350px', width: '0' }}>
                 <div className="box has-text-primary has-text-centered" style={{ display: 'flex', flexDirection: 'column' }}>
-                    Caltrain Delay Watch is having trouble communicating with the server. Please log back in again.
+                    Caltrain Delay Watch is having trouble communicating with the server.<br/><br/>
+                    Please check your internet connection and log back in.
                     <div>
                         <button className="button is-primary" style={{ marginTop: '1rem'}} onClick={closeModal}>
                             OK
