@@ -29,7 +29,11 @@ export const Authorization = (props) => {
     const loginSubmitHandler = async (values, { setSubmitting }) => {        
         const loginError = await loginUser(values.email, values.password, dispatch);
         if(loginError !== null) {
-            setError(loginError);
+            if(loginError.message) {
+                setError(loginError.message);
+            } else {
+                setError(loginError);
+            }
         }
         setSubmitting(false);
     }
