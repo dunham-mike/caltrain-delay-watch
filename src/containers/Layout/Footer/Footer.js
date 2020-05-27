@@ -9,7 +9,14 @@ const Footer = () => {
                 </p>
                 <p style={{margin: '0.75rem auto'}}>
                     © {new Date().getFullYear()}
+                    <img 
+                        src="https://www.mikedunham.org/images/uploads/caltrain-delay-watch.png" 
+                        height="1"
+                        width="1"
+                        alt="Screenshot" 
+                    />
                 </p>
+                
             </div>
         </footer>
     );
