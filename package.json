@@ -13,7 +13,7 @@
     "bulma": "0.8.2",
     "formik": "2.1.4",
     "jwt-decode": "2.2.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "moment-timezone": "0.5.28",
     "node-sass": "4.13.1",
     "react": "^16.13.1",
