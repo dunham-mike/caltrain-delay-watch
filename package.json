@@ -14,7 +14,7 @@
     "formik": "2.1.4",
     "jwt-decode": "2.2.0",
     "moment": "2.24.0",
-    "moment-timezone": "0.5.28",
+    "moment-timezone": "0.5.35",
     "node-sass": "4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
